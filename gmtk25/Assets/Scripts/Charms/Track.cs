@@ -12,11 +12,13 @@ public class Track : MonoBehaviour
 
         public GameObject VisualRoot;
         public float Distance;
+        public float Duration;
     }
 
     public struct TravelData
     {
         public CharmData Data;
+        public float Duration;
     }
 
     [SerializeField] private LineRenderer _line;
@@ -39,6 +41,7 @@ public class Track : MonoBehaviour
         {
             InstanceData instance = _activeCharms[i];
 
+            instance.Duration += Time.deltaTime;
             float movement = Time.deltaTime * instance.Data.Speed;
             float nextDistance = instance.Distance + movement;
 
@@ -69,7 +72,8 @@ public class Track : MonoBehaviour
                 CharmFinishedTravel?.Invoke(
                         new TravelData
                         {
-                            Data = instance.Data
+                            Data = instance.Data,
+                            Duration = instance.Duration
                         }
                     );
                 continue;

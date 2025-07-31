@@ -31,4 +31,10 @@ public class Health : MonoBehaviour
             _died.Invoke();
         }
     }
+
+    public void Heal(int amount)
+    {
+        _currentHealth += amount;
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+    }
 }

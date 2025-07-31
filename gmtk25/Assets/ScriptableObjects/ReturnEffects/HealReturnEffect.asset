@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f82ff363ec259c4bbc6d49f35c55683, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: f7362c0e3e47b22419e1339bdd3e58c7, type: 3}
+  m_Name: HealReturnEffect
   m_EditorClassIdentifier: 
-  _deck:
-  - {fileID: 11400000, guid: 64f8d25eea153e9489ad5f3e99927c42, type: 2}
+  _healPerSecond: 1
