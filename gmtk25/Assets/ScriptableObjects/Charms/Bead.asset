@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5cea0976c56fb41902fcfc08210f29, type: 3}
   m_Name: Bead
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 5
   _damage: 1
   _prefab: {fileID: 7044709641451085354, guid: 4ee6d9b716d5007438113ff75bd1c159, type: 3}

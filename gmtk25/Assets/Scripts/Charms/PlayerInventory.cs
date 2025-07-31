@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Scriptable Objects/PlayerInventory")]
 public class PlayerInventory : ScriptableObject
 {
+    public event Action CharmReturned;
+
     [SerializeField] private List<CharmData> _deck;
 
     private readonly List<CharmData> _drawPile = new List<CharmData>();
@@ -36,6 +41,7 @@ public class PlayerInventory : ScriptableObject
     public void ReturnCharm(CharmData data)
     {
         _discardPile.Add(data);
+        CharmReturned?.Invoke();
     }
 
     private void ShuffleDiscardIntoDraw()
