@@ -16,7 +16,8 @@ public class PlayerInventory : ScriptableObject
 
     public void Init()
     {
-        _drawPile.AddRange(_deck);
+        _discardPile.AddRange(_deck);
+        ShuffleDiscardIntoDraw();
     }
 
     public CharmData DrawCharm()

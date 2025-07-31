@@ -20,6 +20,7 @@ public class Track : MonoBehaviour
     }
 
     [SerializeField] private LineRenderer _line;
+    [SerializeField] private float _minSeparation = .5f;
     private readonly List<float> _segmentDistances = new List<float>();
 
     [SerializeField] private CharmInstance _charmPrefab;
@@ -38,8 +39,16 @@ public class Track : MonoBehaviour
         {
             InstanceData instance = _activeCharms[i];
 
-            float distance = Time.deltaTime * instance.Data.Speed;
-            instance.Distance += distance;
+            float movement = Time.deltaTime * instance.Data.Speed;
+            float nextDistance = instance.Distance + movement;
+
+            // Can't pass through charms ahead
+            if (i > 0)
+            {
+                float nextCharmDistance = _activeCharms[i - 1].Distance;
+                nextDistance = Mathf.Min(nextCharmDistance - _minSeparation, nextDistance);
+            }
+            instance.Distance = nextDistance;
 
             // Negative is where it would need to be to insert to maintain order,
             // so one earlier is the value that's lower
