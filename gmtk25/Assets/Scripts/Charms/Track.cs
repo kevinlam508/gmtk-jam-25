@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yarn : MonoBehaviour
+public class Track : MonoBehaviour
 {
     public event Action<TravelData> CharmFinishedTravel;
 
@@ -72,7 +72,7 @@ public class Yarn : MonoBehaviour
             Vector3 alongSegment = segmentEnd - segmentStart;
             Vector3 newPosition = segmentStart + (alongSegment.normalized * distanceInSegment);
 
-            instance.VisualRoot.transform.position = newPosition;
+            instance.VisualRoot.transform.localPosition = newPosition;
         }
     }
 
