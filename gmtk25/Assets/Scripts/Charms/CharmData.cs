@@ -3,9 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharmData", menuName = "Scriptable Objects/CharmData")]
 public class CharmData : ScriptableObject
 {
+    [Header("Effects")]
     [SerializeField] private float _speed;
     [SerializeField] private int _damage;
+    [SerializeField] private BaseStatusEffect _onHitStatus;
 
+    [Header("Appearance")]
     [SerializeField] private GameObject _prefab;
 
     public float Speed => _speed;
@@ -14,10 +17,14 @@ public class CharmData : ScriptableObject
 
     public virtual void CollisionCallback(Collider other)
     {
-        Health health = other.GetComponent<Health>();
-        if (health != null)
+        Mob mob = other.GetComponent<Mob>();
+        if (mob != null)
         {
-            health.TakeDamage(_damage);
+            mob.TakeDamage(_damage);
+            if (_onHitStatus != null)
+            {
+                mob.AddStatus(_onHitStatus);
+            }
         }
     }
 }
