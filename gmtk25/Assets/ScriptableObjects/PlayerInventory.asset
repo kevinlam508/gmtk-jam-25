@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   _deck:
-  - {fileID: 11400000, guid: 64f8d25eea153e9489ad5f3e99927c42, type: 2}
+  - {fileID: 11400000, guid: 38374ded9ece84d41876d71d45dfee36, type: 2}
+  - {fileID: 11400000, guid: 38374ded9ece84d41876d71d45dfee36, type: 2}
+  - {fileID: 11400000, guid: 95bbfa6d0dfa7744baeccabf0a6383c8, type: 2}
