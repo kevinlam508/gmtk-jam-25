@@ -22,6 +22,7 @@ public class Track : MonoBehaviour
     [SerializeField] private LineRenderer _line;
     private readonly List<float> _segmentDistances = new List<float>();
 
+    [SerializeField] private CharmInstance _charmPrefab;
     private readonly List<InstanceData> _activeCharms = new List<InstanceData>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,6 +80,9 @@ public class Track : MonoBehaviour
     public void AddCharm(CharmData charm)
     {
         GameObject newInstance = Instantiate(charm.Prefab, transform);
+
+        CharmInstance charmInstance = newInstance.GetComponent<CharmInstance>();
+        charmInstance.AssignData(charm);
 
         _activeCharms.Add(new InstanceData
         { 

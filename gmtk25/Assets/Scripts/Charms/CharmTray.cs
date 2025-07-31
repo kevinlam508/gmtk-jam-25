@@ -14,7 +14,7 @@ public class CharmTray : MonoBehaviour
     [SerializeField] private Transform _handParent;
 
     [Header("Draw")]
-    [SerializeField] private float _drawCooldown = 1f;
+    [SerializeField] private float _drawCooldown = 2f;
     [SerializeField] private Slider _drawCooldownVisual;
 
 

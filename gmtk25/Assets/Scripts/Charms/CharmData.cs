@@ -14,6 +14,10 @@ public class CharmData : ScriptableObject
 
     public virtual void CollisionCallback(Collider other)
     {
-
+        Health health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(_damage);
+        }
     }
 }

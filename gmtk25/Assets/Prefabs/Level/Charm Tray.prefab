@@ -433,7 +433,7 @@ MonoBehaviour:
   _maxHandSize: 5
   _optionTemplate: {fileID: 5214043989819594979, guid: c0c2c3e2ef5883e428fe7088e485d27b, type: 3}
   _handParent: {fileID: 4480252846927838126}
-  _drawCooldown: 1
+  _drawCooldown: 2
   _drawCooldownVisual: {fileID: 6988844518033634733}
 --- !u!1 &5507598581833482380
 GameObject:
