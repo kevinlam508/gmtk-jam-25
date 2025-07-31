@@ -63,6 +63,7 @@ public class Track : MonoBehaviour
             if (closestSegment == _line.positionCount - 1)
             {
                 _activeCharms.RemoveAt(i);
+                i--; // Go back due to index change
 
                 Destroy(instance.VisualRoot);
                 CharmFinishedTravel?.Invoke(
