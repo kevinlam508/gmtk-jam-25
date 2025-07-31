@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Yarn : MonoBehaviour
+{
+    public event Action<TravelData> CharmFinishedTravel;
+
+    private class InstanceData
+    {
+        public CharmData Data;
+
+        public GameObject VisualRoot;
+        public float Distance;
+    }
+
+    public struct TravelData
+    {
+        public CharmData Data;
+    }
+
+    [SerializeField] private LineRenderer _line;
+    private readonly List<float> _segmentDistances = new List<float>();
+
+    private readonly List<InstanceData> _activeCharms = new List<InstanceData>();
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        ComputeSegmentLengths();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        for (int i = 0; i < _activeCharms.Count; i++)
+        {
+            InstanceData instance = _activeCharms[i];
+
+            float distance = Time.deltaTime * instance.Data.Speed;
+            instance.Distance += distance;
+
+            // Negative is where it would need to be to insert to maintain order,
+            // so one earlier is the value that's lower
+            int closestSegment = _segmentDistances.BinarySearch(instance.Distance);
+            if (closestSegment < 0)
+            {
+                closestSegment = ~closestSegment;
+                closestSegment--;
+            }
+
+            // Passed the end, get rid of it
+            if (closestSegment == _line.positionCount - 1)
+            {
+                _activeCharms.RemoveAt(i);
+
+                Destroy(instance.VisualRoot);
+                CharmFinishedTravel?.Invoke(
+                        new TravelData
+                        {
+                            Data = instance.Data
+                        }
+                    );
+                continue;
+            }
+
+            // Compute new position
+            Vector3 segmentStart = _line.GetPosition(closestSegment);
+            Vector3 segmentEnd = _line.GetPosition(closestSegment + 1);
+            
+            float distanceInSegment = instance.Distance - _segmentDistances[closestSegment];
+            Vector3 alongSegment = segmentEnd - segmentStart;
+            Vector3 newPosition = segmentStart + (alongSegment.normalized * distanceInSegment);
+
+            instance.VisualRoot.transform.position = newPosition;
+        }
+    }
+
+    public void AddCharm(CharmData charm)
+    {
+        GameObject newInstance = Instantiate(charm.Prefab, transform);
+
+        _activeCharms.Add(new InstanceData
+        { 
+            Data = charm,
+            VisualRoot = newInstance
+        });
+    }
+
+    private void ComputeSegmentLengths()
+    {
+        _segmentDistances.Add(0);
+        for (int i = 1; i < _line.positionCount; i++)
+        {
+            float length = (_line.GetPosition(i) - _line.GetPosition(i - 1)).magnitude;
+            _segmentDistances.Add(_segmentDistances[_segmentDistances.Count - 1] + length);
+        }
+    }
+}
