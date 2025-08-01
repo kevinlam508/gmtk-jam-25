@@ -45,50 +45,87 @@ public class Track : MonoBehaviour
             float movement = Time.deltaTime * instance.Data.Speed;
             float nextDistance = instance.Distance + movement;
 
-            // Can't pass through charms ahead
             if (i > 0)
             {
-                float nextCharmDistance = _activeCharms[i - 1].Distance;
-                nextDistance = Mathf.Min(nextCharmDistance - _minSeparation, nextDistance);
-            }
-            instance.Distance = nextDistance;
+                // Push charms ahead to match this movement
+                if (instance.Data.CanShove)
+                {
+                    for (int j = i - 1; j >= 0; j--)
+                    {
+                        InstanceData adjacentInstance = _activeCharms[j];
+                        float nextCharmDistance = adjacentInstance.Distance;
+                        float adjustedDistance = nextDistance + (_minSeparation * (i - j));
 
-            // Negative is where it would need to be to insert to maintain order,
-            // so one earlier is the value that's lower
-            int closestSegment = _segmentDistances.BinarySearch(instance.Distance);
-            if (closestSegment < 0)
-            {
-                closestSegment = ~closestSegment;
-                closestSegment--;
-            }
+                        // Next charm is too far away to be shoved, so the rest will also be too far
+                        if (nextCharmDistance > adjustedDistance)
+                        {
+                            break;
+                        }
 
-            // Passed the end, get rid of it
-            if (closestSegment == _line.positionCount - 1)
+                        // Update i to be correctly in sync in the outer loop
+                        // but j can stay the same since this loop is always decrementing
+                        if (MoveCharm(adjacentInstance, adjustedDistance))
+                        {
+                            _activeCharms.RemoveAt(j);
+                            i--;
+                        }
+                    }
+                }
+                // Can't pass through charms ahead
+                else
+                {
+                    float nextCharmDistance = _activeCharms[i - 1].Distance;
+                    nextDistance = Mathf.Min(nextCharmDistance - _minSeparation, nextDistance);
+                }
+            }
+            
+            if (MoveCharm(instance, nextDistance))
             {
                 _activeCharms.RemoveAt(i);
-                i--; // Go back due to index change
-
-                Destroy(instance.VisualRoot);
-                CharmFinishedTravel?.Invoke(
-                        new TravelData
-                        {
-                            Data = instance.Data,
-                            Duration = instance.Duration
-                        }
-                    );
-                continue;
+                i--;
             }
-
-            // Compute new position
-            Vector3 segmentStart = _line.GetPosition(closestSegment);
-            Vector3 segmentEnd = _line.GetPosition(closestSegment + 1);
-            
-            float distanceInSegment = instance.Distance - _segmentDistances[closestSegment];
-            Vector3 alongSegment = segmentEnd - segmentStart;
-            Vector3 newPosition = segmentStart + (alongSegment.normalized * distanceInSegment);
-
-            instance.VisualRoot.transform.localPosition = newPosition;
         }
+    }
+
+    // returns if charm was removed
+    private bool MoveCharm(InstanceData instance, float newDistance)
+    {
+        instance.Distance = newDistance;
+
+        // Negative is where it would need to be to insert to maintain order,
+        // so one earlier is the value that's lower
+        int closestSegment = _segmentDistances.BinarySearch(instance.Distance);
+        if (closestSegment < 0)
+        {
+            closestSegment = ~closestSegment;
+            closestSegment--;
+        }
+
+        // Passed the end, get rid of it
+        if (closestSegment == _line.positionCount - 1)
+        {
+            Destroy(instance.VisualRoot);
+            CharmFinishedTravel?.Invoke(
+                    new TravelData
+                    {
+                        Data = instance.Data,
+                        Duration = instance.Duration
+                    }
+                );
+            return true;
+        }
+
+        // Compute new position
+        Vector3 segmentStart = _line.GetPosition(closestSegment);
+        Vector3 segmentEnd = _line.GetPosition(closestSegment + 1);
+
+        float distanceInSegment = instance.Distance - _segmentDistances[closestSegment];
+        Vector3 alongSegment = segmentEnd - segmentStart;
+        Vector3 newPosition = segmentStart + (alongSegment.normalized * distanceInSegment);
+
+        instance.VisualRoot.transform.localPosition = newPosition;
+
+        return false;
     }
 
     public void AddCharm(CharmData charm)

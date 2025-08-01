@@ -6,6 +6,7 @@ public class CharmData : ScriptableObject
     [Header("Effects")]
     [SerializeField] private float _speed;
     [SerializeField] private int _damage;
+    [SerializeField] private bool _canShove;
     [SerializeField] private BaseStatusEffect _onHitStatus;
     [SerializeField] private BaseReturnEffect _returnEffect;
 
@@ -13,6 +14,7 @@ public class CharmData : ScriptableObject
     [SerializeField] private GameObject _prefab;
 
     public float Speed => _speed;
+    public bool CanShove => _canShove;
     public BaseReturnEffect ReturnEffect => _returnEffect;
 
     public GameObject Prefab => _prefab;
