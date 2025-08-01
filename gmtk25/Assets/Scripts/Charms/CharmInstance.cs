@@ -13,6 +13,6 @@ public class CharmInstance : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _data.CollisionCallback(other, transform.position, _travelStateData);
+        _data.CollisionCallback(other, _travelStateData);
     }
 }

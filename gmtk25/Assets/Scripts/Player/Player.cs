@@ -22,10 +22,13 @@ public class Player : MonoBehaviour
     {
         _inventory.ReturnCharm(travelData.Data);
 
-        BaseReturnEffect returnEffect = travelData.Data.ReturnEffect;
-        if (returnEffect != null)
+        BaseReturnEffect[] returnEffects = travelData.Data.ReturnEffects;
+        if (returnEffects != null)
         {
-            returnEffect.Apply(this, travelData);
+            foreach (BaseReturnEffect effect in returnEffects)
+            {
+                effect.Apply(this, travelData);
+            }
         }
     }
 }

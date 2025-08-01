@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Heal Charm
   m_EditorClassIdentifier: 
   _speed: 3
+  _canShove: 0
+  _impactType: 0
+  _explosionCount: 0
+  _explosionRadius: 0
+  _chainCount: 0
+  _chainRadius: 0
   _damage: 0
-  _onHitStatus: {fileID: 0}
-  _returnEffect: {fileID: 11400000, guid: afe6990407cd8ae4b98726cba6f1b16f, type: 2}
+  _onHitStatus: []
+  _returnEffect:
+  - {fileID: 11400000, guid: afe6990407cd8ae4b98726cba6f1b16f, type: 2}
   _prefab: {fileID: 7044709641451085354, guid: 7eb1326049f5fcb46b0eba5a589e347f, type: 3}
