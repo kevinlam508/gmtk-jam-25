@@ -9,6 +9,7 @@ public class Track : MonoBehaviour
     private class InstanceData
     {
         public CharmData Data;
+        public CharmData.TravelState TravelStateData;
 
         public GameObject VisualRoot;
         public float Distance;
@@ -18,6 +19,8 @@ public class Track : MonoBehaviour
     public struct TravelData
     {
         public CharmData Data;
+        public CharmData.TravelState TravelStateData;
+
         public float Duration;
     }
 
@@ -109,6 +112,8 @@ public class Track : MonoBehaviour
                     new TravelData
                     {
                         Data = instance.Data,
+                        TravelStateData = instance.TravelStateData,
+
                         Duration = instance.Duration
                     }
                 );
@@ -131,13 +136,16 @@ public class Track : MonoBehaviour
     public void AddCharm(CharmData charm)
     {
         GameObject newInstance = Instantiate(charm.Prefab, transform);
+        CharmData.TravelState travelState = charm.NewTravelStateData();
 
         CharmInstance charmInstance = newInstance.GetComponent<CharmInstance>();
-        charmInstance.AssignData(charm);
+        charmInstance.AssignData(charm, travelState);
 
         _activeCharms.Add(new InstanceData
         { 
             Data = charm,
+            TravelStateData = travelState,
+
             VisualRoot = newInstance
         });
     }

@@ -7,6 +7,12 @@ public class HealReturnEffect : BaseReturnEffect
 
     public override void Apply(Player player, Track.TravelData data)
     {
+        // Can only heal if it made it through without touching anything
+        if (data.TravelStateData.CollisionCount > 0)
+        {
+            return;
+        }
+
         player.Heal((int)Mathf.Ceil(_healPerSecondTraveled * data.Duration));
     }
 }
