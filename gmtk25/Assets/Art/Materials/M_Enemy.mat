@@ -7,11 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Tank
+  m_Name: M_Enemy
   m_Shader: {fileID: 4800000, guid: 2a230514c860643f69b6a4d1871d3825, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - DR_RIM_ON
+  - DR_SPECULAR_ON
   - _DETAILMAPBLENDINGMODE_MULTIPLY
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords: []
@@ -119,9 +121,9 @@ Material:
     - _EnvironmentReflections: 1
     - _FlatRimEdgeSmoothness: 0.5
     - _FlatRimLightAlign: 0
-    - _FlatRimSize: 0.5
+    - _FlatRimSize: 0.649
     - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.1
+    - _FlatSpecularSize: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -145,11 +147,11 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimEnabled: 0
+    - _RimEnabled: 1
     - _SelfShadingSize: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SpecularEnabled: 0
+    - _SpecularEnabled: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -166,8 +168,8 @@ Material:
     - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
     - _DetailMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FlatSpecularColor: {r: 5.216476, g: 5.216476, b: 5.216476, a: 0.85056}
+    - _FlatRimColor: {r: 1, g: 0.2745098, b: 0.5717379, a: 0.85056}
+    - _FlatSpecularColor: {r: 2.270603, g: 2.270603, b: 2.270603, a: 0.85056}
     - _LightAttenuation: {r: 0, g: 1, b: 0, a: 0}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
@@ -181,7 +183,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: z__GradientRampTex{"mode":0,"colorKeys":[{"color":{"r":0.5040971040725708,"g":0.29874205589294436,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_Name: z__GradientRampTex{"mode":0,"colorKeys":[{"color":{"r":0.7484512329101563,"g":0.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -215,7 +217,7 @@ Texture2D:
   m_ColorSpace: 1
   m_PlatformBlob: 
   image data: 1024
-  _typelessdata: ff814cffff814dffff824effff824effff834fffff8350ffff8450ffff8451ffff8552ffff8552ffff8653ffff8654ffff8655ffff8755ffff8756ffff8857ffff8857ffff8958ffff8959ffff8a5affff8a5affff8b5bffff8b5cffff8c5cffff8c5dffff8d5effff8d5effff8e5fffff8e60ffff8f61ffff8f61ffff9062ffff9063ffff9163ffff9164ffff9265ffff9265ffff9366ffff9367ffff9468ffff9468ffff9569ffff956affff966affff966bffff976cffff976cffff986dffff986effff996fffff996fffff9a70ffff9a71ffff9b71ffff9b72ffff9c73ffff9c73ffff9d74ffff9d75ffff9e76ffff9e76ffff9f77ffff9f78ffffa078ffffa079ffffa17affffa17affffa27bffffa27cffffa37dffffa37dffffa47effffa47fffffa57fffffa580ffffa681ffffa681ffffa782ffffa783ffffa884ffffa884ffffa985ffffa986ffffaa86ffffaa87ffffab88ffffab88ffffac89ffffac8affffad8bffffad8bffffae8cffffae8dffffaf8dffffaf8effffb08fffffb090ffffb190ffffb191ffffb292ffffb292ffffb393ffffb394ffffb494ffffb495ffffb596ffffb597ffffb697ffffb698ffffb799ffffb799ffffb89affffb89bffffb99bffffb99cffffba9dffffba9effffbb9effffbb9fffffbca0ffffbca0ffffbda1ffffbda2ffffbea2ffffbea3ffffbfa4ffffbfa5ffffc0a5ffffc0a6ffffc1a7ffffc1a7ffffc2a8ffffc2a9ffffc2a9ffffc3aaffffc3abffffc4acffffc4acffffc5adffffc5aeffffc6aeffffc6afffffc7b0ffffc7b0ffffc8b1ffffc8b2ffffc9b3ffffc9b3ffffcab4ffffcab5ffffcbb5ffffcbb6ffffccb7ffffccb7ffffcdb8ffffcdb9ffffcebaffffcebaffffcfbbffffcfbcffffd0bcffffd0bdffffd1beffffd1beffffd2bfffffd2c0ffffd3c1ffffd3c1ffffd4c2ffffd4c3ffffd5c3ffffd5c4ffffd6c5ffffd6c5ffffd7c6ffffd7c7ffffd8c8ffffd8c8ffffd9c9ffffd9caffffdacaffffdacbffffdbccffffdbcdffffdccdffffdcceffffddcfffffddcfffffded0ffffded1ffffdfd1ffffdfd2ffffe0d3ffffe0d4ffffe1d4ffffe1d5ffffe2d6ffffe2d6ffffe3d7ffffe3d8ffffe4d8ffffe4d9ffffe5daffffe5dbffffe6dbffffe6dcffffe7ddffffe7ddffffe8deffffe8dfffffe9dfffffe9e0ffffeae1ffffeae2ffffebe2ffffebe3ffffece4ffffece4ffffede5ffffede6ffffeee6ffffeee7ffffefe8ffffefe9fffff0e9fffff0eafffff1ebfffff1ebfffff2ecfffff2edfffff3edfffff3eefffff4effffff4f0fffff5f0fffff5f1fffff6f2fffff6f2fffff7f3fffff7f4fffff8f4fffff8f5fffff9f6fffff9f7fffffaf7fffffaf8fffffbf9fffffbf9fffffcfafffffcfbfffffdfbfffffdfcfffffefdfffffefefffffffeffffffffff
+  _typelessdata: ffbf00ffffbf01ffffbf02ffffc003ffffc004ffffc005ffffc006ffffc107ffffc108ffffc109ffffc10affffc20bffffc20cffffc20dffffc20effffc30fffffc310ffffc311ffffc312ffffc413ffffc414ffffc415ffffc416ffffc517ffffc518ffffc519ffffc51affffc61bffffc61cffffc61dffffc61effffc71fffffc720ffffc721ffffc722ffffc823ffffc824ffffc825ffffc826ffffc927ffffc928ffffc929ffffc92affffca2bffffca2cffffca2dffffca2effffcb2fffffcb30ffffcb31ffffcb32ffffcc33ffffcc34ffffcc35ffffcc36ffffcd37ffffcd38ffffcd39ffffcd3affffce3bffffce3cffffce3dffffce3effffcf3fffffcf40ffffcf41ffffcf42ffffd043ffffd044ffffd045ffffd046ffffd147ffffd148ffffd149ffffd14affffd24bffffd24cffffd24dffffd24effffd34fffffd350ffffd351ffffd352ffffd453ffffd454ffffd455ffffd456ffffd557ffffd558ffffd559ffffd55affffd65bffffd65cffffd65dffffd75effffd75fffffd760ffffd761ffffd862ffffd863ffffd864ffffd865ffffd966ffffd967ffffd968ffffd969ffffda6affffda6bffffda6cffffda6dffffdb6effffdb6fffffdb70ffffdb71ffffdc72ffffdc73ffffdc74ffffdc75ffffdd76ffffdd77ffffdd78ffffdd79ffffde7affffde7bffffde7cffffde7dffffdf7effffdf7fffffdf80ffffdf81ffffe082ffffe083ffffe084ffffe085ffffe186ffffe187ffffe188ffffe189ffffe28affffe28bffffe28cffffe28dffffe38effffe38fffffe390ffffe391ffffe492ffffe493ffffe494ffffe495ffffe596ffffe597ffffe598ffffe599ffffe69affffe69bffffe69cffffe69dffffe79effffe79fffffe7a0ffffe7a1ffffe8a2ffffe8a3ffffe8a4ffffe8a5ffffe9a6ffffe9a7ffffe9a8ffffe9a9ffffeaaaffffeaabffffeaacffffeaadffffebaeffffebafffffebb0ffffebb1ffffecb2ffffecb3ffffecb4ffffecb5ffffedb6ffffedb7ffffedb8ffffedb9ffffeebaffffeebbffffeebcffffeebdffffefbeffffefbfffffefc0ffffefc1fffff0c2fffff0c3fffff0c4fffff0c5fffff1c6fffff1c7fffff1c8fffff1c9fffff2cafffff2cbfffff2ccfffff2cdfffff3cefffff3cffffff3d0fffff3d1fffff4d2fffff4d3fffff4d4fffff4d5fffff5d6fffff5d7fffff5d8fffff5d9fffff6dafffff6dbfffff6dcfffff6ddfffff7defffff7dffffff7e0fffff7e1fffff8e2fffff8e3fffff8e4fffff8e5fffff9e6fffff9e7fffff9e8fffff9e9fffffaeafffffaebfffffaecfffffaedfffffbeefffffbeffffffbf0fffffbf1fffffcf2fffffcf3fffffcf4fffffcf5fffffdf6fffffdf7fffffdf8fffffdf9fffffefafffffefbfffffefcfffffefdfffffffeffffffffff
   m_StreamData:
     serializedVersion: 2
     offset: 0
