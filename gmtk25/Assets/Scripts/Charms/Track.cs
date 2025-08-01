@@ -140,6 +140,7 @@ public class Track : MonoBehaviour
         Vector3 newPosition = segmentStart + (alongSegment.normalized * distanceInSegment);
 
         instance.VisualRoot.transform.localPosition = newPosition;
+        instance.VisualRoot.transform.rotation = Quaternion.LookRotation(alongSegment, Vector3.up);
 
         return false;
     }
