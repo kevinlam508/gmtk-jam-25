@@ -17,6 +17,8 @@ public class MobMovement : MonoBehaviour
     /// </summary>
     public event Action OnMovementFinish;
 
+    private float _speedMultiplier = 1f;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +31,11 @@ public class MobMovement : MonoBehaviour
             }
             MoveMobTick(TargetPosition);
         }   
+    }
+
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        _speedMultiplier *= multiplier;
     }
 
     /// <summary>
@@ -73,7 +80,7 @@ public class MobMovement : MonoBehaviour
 
         Vector3 direction = (targetPosition.position - transform.position).normalized;
 
-        Vector3 newPosition = transform.position + (direction * MovementSpeed) * Time.deltaTime;
+        Vector3 newPosition = transform.position + (direction * MovementSpeed * _speedMultiplier) * Time.deltaTime;
 
         transform.position = newPosition;
 

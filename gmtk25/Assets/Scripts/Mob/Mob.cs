@@ -15,7 +15,9 @@ public class Mob : MonoBehaviour
     }
 
     [SerializeField] private Health _health;
+    [SerializeField] private MobMovement _movement;
     [SerializeField] MobScriptableObject MobStats;
+
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
 
     private void Awake()
@@ -50,6 +52,8 @@ public class Mob : MonoBehaviour
     {
         _health.TakeDamage(amount);
     }
+
+    public void ApplySpeedMultiplier(float multiplier) => _movement.ApplySpeedMultiplier(multiplier);
 
     private void TickStatusEffects()
     {

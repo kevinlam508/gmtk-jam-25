@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 6382568267222756122}
+  _movement: {fileID: 7877165009029190834}
 --- !u!114 &7877165009029190834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
+  CanMove: 1
   TargetPosition: {fileID: 0}
 --- !u!1 &7925394258315281924
 GameObject:
