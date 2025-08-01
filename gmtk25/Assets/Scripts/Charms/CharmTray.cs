@@ -9,12 +9,16 @@ public class CharmTray : MonoBehaviour
 
     [Header("Hand")]
     [SerializeField] private int _startingHandSize = 3;
-    [SerializeField] private int _maxHandSize = 5;
+    [SerializeField] private int _startingMaxHandSize = 5;
+    [SerializeField] private int _minMaxHandSize = 1;
+    [SerializeField] private int _maxMaxHandSize = 1;
     [SerializeField] private CharmOption _optionTemplate;
     [SerializeField] private Transform _handParent;
 
     [Header("Draw")]
-    [SerializeField] private float _drawCooldown = 2f;
+    [SerializeField] private float _startingDrawCooldown = 2f;
+    [SerializeField] private float _minDrawCooldown = .1f;
+    [SerializeField] private float _maxDrawCooldown = 3f;
     [SerializeField] private Slider _drawCooldownVisual;
 
 
@@ -23,13 +27,42 @@ public class CharmTray : MonoBehaviour
     private bool _drawOnUse;
     private Coroutine _drawCoroutine;
 
+    private float _currentDrawCooldown;
+    private int _currentMaxHandSize;
+
     private void Start()
     {
+        ResetHandStats();
+
         _charmInventory.Init();
         DrawInitialHand();
 
         _charmInventory.CharmReturned += OnCharmsRefilled;
         StartDrawCooldown();
+    }
+
+    public void ResetHandStats()
+    {
+        _currentDrawCooldown = _startingDrawCooldown;
+        _currentMaxHandSize = _startingMaxHandSize;
+    }
+
+    public void ModifyDrawCooldown(float amount)
+    {
+        _currentDrawCooldown += amount;
+        _currentDrawCooldown = Mathf.Clamp(_currentDrawCooldown, _minDrawCooldown, _maxDrawCooldown);
+    }
+
+    public void ModifyMaxHandSize(int amount)
+    {
+        _currentMaxHandSize += amount;
+        _currentMaxHandSize = Mathf.Clamp(_currentMaxHandSize, _minMaxHandSize, _maxMaxHandSize);
+
+        if (amount > 0 && _drawOnUse)
+        {
+            TryDrawOne();
+            _drawOnUse = false;
+        }
     }
 
     private void DrawInitialHand()
@@ -65,8 +98,7 @@ public class CharmTray : MonoBehaviour
 
         if (_drawOnUse)
         {
-            DrawOne();
-            StartDrawCooldown();
+            TryDrawOne();
             _drawOnUse = false;
         }
     }
@@ -78,8 +110,7 @@ public class CharmTray : MonoBehaviour
             return;
         }
 
-        DrawOne();
-        StartDrawCooldown();
+        TryDrawOne();
         _drawOnRefill = false;
     }
 
@@ -96,31 +127,44 @@ public class CharmTray : MonoBehaviour
     private IEnumerator DrawCooldown()
     {
         float timePassed = 0;
-        while (timePassed < _drawCooldown)
+        while (timePassed < _currentDrawCooldown)
         {
             timePassed += Time.deltaTime;
-            _drawCooldownVisual.value = timePassed / _drawCooldown;
+            _drawCooldownVisual.value = timePassed / _currentDrawCooldown;
             yield return null;
         }
 
         // If there's hand space, draw and reset the CD
         _drawCoroutine = null;
-        if (_handParent.childCount < _maxHandSize)
+        TryDrawOne();
+    }
+
+    private void TryDrawOne()
+    {
+        StartCoroutine(DelayedDraw());
+
+        // Delay actual draw by 1 frame to wait for any cleanup effects
+        IEnumerator DelayedDraw()
         {
-            if(DrawOne())
+            yield return null;
+
+            if (_handParent.childCount < _currentMaxHandSize)
             {
-                StartDrawCooldown();
+                if (DrawOne())
+                {
+                    StartDrawCooldown();
+                }
+                // Out of draw, draw when one becomes available
+                else
+                {
+                    _drawOnRefill = true;
+                }
             }
-            // Out of draw, draw when one becomes available
+            // Hand full, draw immediately on use
             else
             {
-                _drawOnRefill = true;
+                _drawOnUse = true;
             }
-        }
-        // Hand full, draw immediately on use
-        else
-        {
-            _drawOnUse = true;
         }
     }
 }

@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private Health _health;
+    [SerializeField] private CharmTray _tray;
 
     [SerializeField] private Track[] _tracks;
 
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount) => _health.TakeDamage(amount);
     public void Heal(int amount) => _health.Heal(amount);
+    public void ModifyDrawCooldown(float amount) => _tray.ModifyDrawCooldown(amount);
+    public void ModifyMaxHandSize(int amount) => _tray.ModifyMaxHandSize(amount);
 
     private void OnCharmTravelFinished(Track.TravelData travelData)
     {

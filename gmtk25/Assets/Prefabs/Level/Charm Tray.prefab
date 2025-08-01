@@ -430,10 +430,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _charmInventory: {fileID: 11400000, guid: 6cf8fd26480d77746966532ec201621b, type: 2}
   _startingHandSize: 3
-  _maxHandSize: 5
+  _startingMaxHandSize: 3
+  _minMaxHandSize: 1
+  _maxMaxHandSize: 5
   _optionTemplate: {fileID: 5214043989819594979, guid: c0c2c3e2ef5883e428fe7088e485d27b, type: 3}
   _handParent: {fileID: 4480252846927838126}
-  _drawCooldown: 2
+  _startingDrawCooldown: 2
+  _minDrawCooldown: 0.1
+  _maxDrawCooldown: 3
   _drawCooldownVisual: {fileID: 6988844518033634733}
 --- !u!1 &5507598581833482380
 GameObject:

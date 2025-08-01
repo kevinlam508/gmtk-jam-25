@@ -81,11 +81,22 @@ public class Track : MonoBehaviour
                     nextDistance = Mathf.Min(nextCharmDistance - _minSeparation, nextDistance);
                 }
             }
-            
+
             if (MoveCharm(instance, nextDistance))
             {
                 _activeCharms.RemoveAt(i);
                 i--;
+            }
+        }
+
+        for (int i = 1; i < _activeCharms.Count; i++)
+        {
+            InstanceData current = _activeCharms[i];
+            InstanceData front = _activeCharms[i - 1];
+            if (Mathf.Approximately(front.Distance - current.Distance, _minSeparation))
+            {
+                front.TravelStateData.BackNeighbor = current.Data;
+                current.TravelStateData.FrontNeighbor = front.Data;
             }
         }
     }

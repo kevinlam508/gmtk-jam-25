@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad5cea0976c56fb41902fcfc08210f29, type: 3}
-  m_Name: Burn Charm
+  m_Name: Chain Charm
   m_EditorClassIdentifier: 
-  _speed: 6
+  _speed: 2
   _canShove: 0
-  _impactType: 0
+  _impactType: 2
   _explosionCount: 0
   _explosionRadius: 0
-  _chainCount: 0
-  _chainRadius: 0
-  _damage: 0
-  _onHitStatus:
-  - {fileID: 11400000, guid: 6dd94be9b836c16488d460a3e1e2221a, type: 2}
+  _chainCount: 3
+  _chainRadius: 5
+  _damage: 2
+  _onHitStatus: []
   _returnEffect: []
-  _prefab: {fileID: 7044709641451085354, guid: 4ee6d9b716d5007438113ff75bd1c159, type: 3}
+  _prefab: {fileID: 7044709641451085354, guid: 7eb1326049f5fcb46b0eba5a589e347f, type: 3}

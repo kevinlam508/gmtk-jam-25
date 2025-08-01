@@ -20,6 +20,10 @@ public class CharmData : ScriptableObject
     public class TravelState
     {
         public int CollisionCount;
+        public int HitCount;
+
+        public CharmData FrontNeighbor;
+        public CharmData BackNeighbor;
     }
 
     [Header("Movement")]
@@ -49,6 +53,23 @@ public class CharmData : ScriptableObject
 
     public TravelState NewTravelStateData() => new TravelState();
 
+    private CharmData Clone()
+    {
+        CharmData data = new CharmData();
+        data._explosionCount = _explosionCount;
+        data._explosionRadius = _explosionRadius;
+        data._chainCount = _chainCount;
+        data._chainRadius = _chainRadius;
+
+        data._damage = _damage;
+        data._onHitStatus = new BaseStatusEffect[_onHitStatus.Length];
+        Array.Copy(_onHitStatus, data._onHitStatus, _onHitStatus.Length);
+        data._returnEffect = new BaseReturnEffect[_returnEffect.Length];
+        Array.Copy(_returnEffect, data._returnEffect, _returnEffect.Length);
+
+        return data;
+    }
+
     public void CollisionCallback(Collider other, TravelState travelStateData)
     {
         Mob mob = other.GetComponent<Mob>();
@@ -57,7 +78,8 @@ public class CharmData : ScriptableObject
             return;
         }
 
-        ApplyImpact(_impactType, mob, mob.transform.position, travelStateData);
+        CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
+            .ApplyImpact(_impactType, mob, mob.transform.position, travelStateData);
         travelStateData.CollisionCount++;
     }
 
@@ -73,7 +95,7 @@ public class CharmData : ScriptableObject
         switch (effectToApply)
         {
             case ImpactTypes.Single:
-                ApplyDamageAndStatusToMob(mob);
+                ApplyDamageAndStatusToMob(mob, travelStateData);
                 break;
             case ImpactTypes.Splash:
                 ApplySplash(remainingEffects, mob, location, travelStateData);
@@ -141,7 +163,7 @@ public class CharmData : ScriptableObject
         }
     }
 
-    private void ApplyDamageAndStatusToMob(Mob mob)
+    private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData)
     {
         mob.TakeDamage(_damage);
         if (_onHitStatus != null)
@@ -151,5 +173,57 @@ public class CharmData : ScriptableObject
                 mob.AddStatus(status);
             }
         }
+
+        travelStateData.HitCount++;
+    }
+
+    private static CharmData CombineEffects(CharmData main, CharmData sub1, CharmData sub2)
+    {
+        if (sub1 == null && sub2 == null)
+        {
+            return main;
+        }
+
+        CharmData result = main.Clone();
+        result._impactType |= (sub1?._impactType ?? ImpactTypes.Single)
+                        | (sub2?._impactType ?? ImpactTypes.Single);
+        result._explosionCount += WeightedAdd(sub1?._explosionCount, sub2?._explosionCount, 1);
+        result._explosionRadius += WeightedAdd(sub1?._explosionRadius, sub2?._explosionRadius, 1);
+        result._chainCount += WeightedAdd(sub1?._chainCount, sub2?._chainCount, 1);
+        result._chainRadius += WeightedAdd(sub1?._chainRadius, sub2?._chainRadius, 1);
+
+        result._damage += WeightedAdd(sub1?._damage, sub2?._damage, 1);
+        result._onHitStatus = CombineArrays(result._onHitStatus, sub1?._onHitStatus, sub2?._onHitStatus);
+        //result._returnEffect = CombineArrays(result._returnEffect, sub1?._returnEffect, sub2?._returnEffect);
+        return result;
+    }
+
+    private static int WeightedAdd(int? value1, int? value2, float weight)
+    {
+        return (int)Mathf.Ceil(((value1 ?? 0) + (value2 ?? 0)) * weight);
+    }
+
+    private static float WeightedAdd(float? value1, float? value2, float weight)
+    {
+        return ((value1 ?? 0) + (value2 ?? 0)) * weight;
+    }
+
+    public static T[] CombineArrays<T>(T[] main, T[] sub1, T[] sub2)
+    {
+        T[] result = new T[main.Length + (sub1?.Length ?? 0) + (sub2?.Length ?? 0)];
+        Array.Copy(main, result, main.Length);
+
+        int start = main.Length;
+        if (sub1 != null)
+        {
+            Array.Copy(sub1, 0, result, start, sub1.Length);
+            start += sub1.Length;
+        }
+        if (sub2 != null)
+        {
+            Array.Copy(sub2, 0, result, start, sub2.Length);
+        }
+
+        return result;
     }
 }
