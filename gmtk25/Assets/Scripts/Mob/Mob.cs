@@ -15,8 +15,18 @@ public class Mob : MonoBehaviour
     }
 
     [SerializeField] private Health _health;
-
+    [SerializeField] MobScriptableObject MobStats;
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
+
+    private void Awake()
+    {
+        if (MobStats != null)
+        {
+            GetComponent<MobMovement>().SetMobMovementSpeed(MobStats.MobSpeed);
+            //_health.SetMaxHealth(MobStats.MobHealth);
+
+        }
+    }
 
     private void Update()
     {
