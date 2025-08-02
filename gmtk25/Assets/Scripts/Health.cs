@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [Serializable]
     public class DamageTakenEvent : UnityEvent<int, int> { }
     [Serializable]
-    public class DeathEvent : UnityEvent { }
+    public class DeathEvent : UnityEvent<GameObject, bool> { }
 
     [SerializeField] private int _maxHealth;
 
@@ -18,6 +18,25 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    public DeathEvent GetOnDeathEvent()
+    {
+        return _died;
+    }
+
+    private void OnDisable()
+    {
+        _died.RemoveAllListeners();
+    }
+
+    /// <summary>
+    /// Assings an enemy a max health value and sets current to max health
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetMaxHealth(int value)
+    {
+        _maxHealth = value;
         _currentHealth = _maxHealth;
     }
 
@@ -28,8 +47,17 @@ public class Health : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            _died.Invoke();
+            _died.Invoke(this.gameObject, true);
         }
+    }
+
+
+    /// <summary>
+    /// Use this to kill the enemy if the Player did not kill the enemy
+    /// </summary>
+    public void EnemyFinish()
+    {
+        _died.Invoke(this.gameObject, false);
     }
 
     public void Heal(int amount)

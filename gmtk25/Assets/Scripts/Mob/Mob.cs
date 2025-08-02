@@ -19,10 +19,13 @@ public class Mob : MonoBehaviour
         public GameObject Instance;
         public int Count;
     }
-
+    [Tooltip("True if you want to auto-initalize the enemy on awake (AKA the enemy was not spawned by SpawnerCore")]
+    [SerializeField] bool InitializeOnAwake = false;
     [SerializeField] private Health _health;
     [SerializeField] private MobMovement _movement;
-    [SerializeField] MobScriptableObject MobStats;
+    [SerializeField] MobScriptableObject MobStats = null;
+    [SerializeField] Transform artParentTransform;
+    private MobTypesNonFlag mobTypeNoFlag; 
 
     private FxAttachPoint[] _attachPoints;
     private float _currentArmor;
@@ -30,14 +33,46 @@ public class Mob : MonoBehaviour
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
     private Dictionary<Type, StatusFx> _statusFxes = new Dictionary<Type, StatusFx>();
 
+  
+
     private void Awake()
     {
-        if (MobStats != null)
+        if (InitializeOnAwake)
         {
-            GetComponent<MobMovement>().SetMobMovementSpeed(MobStats.MobSpeed);
-            //_health.SetMaxHealth(MobStats.MobHealth);
-
+            if (MobStats != null)
+            {
+                InitializeEnemy(MobStats, MobStats.MobTypeNonFlag);
+            }
         }
+    }
+
+    /// <summary>
+    /// Sets up the Default Enemy prefab with the stats that are included on a MobScriptableObject
+    /// </summary>
+    /// <param name="mobStats"></param>
+    public void InitializeEnemy(MobScriptableObject mobStats, MobTypesNonFlag mobTypeNonFlag)
+    {
+        MobStats = mobStats;
+        GetComponent<MobMovement>().SetMobMovementSpeed(MobStats.MobSpeed);
+        GetComponent<MobMovement>().OnMovementFinish += Mob_OnMovementFinish;
+        _health.SetMaxHealth(MobStats.MobHealth);
+        Instantiate(MobStats.MobModel, artParentTransform.position, Quaternion.identity, artParentTransform);
+        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+        collider.center = mobStats.ColliderCenter;
+        collider.radius = MobStats.ColliderRadius;
+        collider.height = MobStats.ColliderHeight;
+        this.mobTypeNoFlag = mobTypeNonFlag;
+        
+    }
+
+    /// <summary>
+    /// When the enemy finishes it's movement, tell the health system that we have completed our movement so we can despawn the enemy, also handle any effects that should be
+    /// Done to player here
+    /// </summary>
+    private void Mob_OnMovementFinish()
+    {
+        //damage player?
+        _health.EnemyFinish();
     }
 
     private void Start()
@@ -47,6 +82,11 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
+        if (MobStats == null)
+        {
+            Debug.LogWarning("WARNING NO STATS ATTACHED TO ENEMY; EITHER SPAWN THIS ENEMY FROM SPAWNER CORE OR MARK InitializeOnAwake = true and assign MobStats in the Inspector");
+        }
+ 
         TickStatusEffects();
     }
 
@@ -156,5 +196,11 @@ public class Mob : MonoBehaviour
                 RemoveStatusFx(instance.Data);
             }
         }
+    }
+
+
+    private void OnDisable()
+    {
+        GetComponent<MobMovement>().OnMovementFinish -= Mob_OnMovementFinish;
     }
 }

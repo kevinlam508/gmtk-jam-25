@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: CrowdControlResistdata
   m_EditorClassIdentifier: 
   MobType: 4
+  MobTypeNonFlag: 4
   MobHealth: 5
   MobSpeed: 3
   MobAttackDamage: 1
   MobCCResist: 0.5
+  MobArmorGainPerHit: 0
+  MobModel: {fileID: 7318994548829112473, guid: b9fdda05085bc2e46801d764b5797746, type: 3}
+  ColliderCenter: {x: 0.014558673, y: 0.19533002, z: 0}
+  ColliderRadius: 0.6542121
+  ColliderHeight: 1.461069

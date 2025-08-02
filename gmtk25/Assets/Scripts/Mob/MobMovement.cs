@@ -83,6 +83,7 @@ public class MobMovement : MonoBehaviour
         Vector3 newPosition = transform.position + (direction * MovementSpeed * _speedMultiplier) * Time.deltaTime;
 
         transform.position = newPosition;
+        transform.LookAt(targetPosition, Vector3.up);
 
         if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
         {

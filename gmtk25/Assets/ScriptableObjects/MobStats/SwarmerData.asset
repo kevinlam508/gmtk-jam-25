@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: SwarmerData
   m_EditorClassIdentifier: 
   MobType: 1
+  MobTypeNonFlag: 3
   MobHealth: 5
   MobSpeed: 3
   MobAttackDamage: 1
+  MobCCResist: 0
+  MobArmorGainPerHit: 0
+  MobModel: {fileID: 7341598793184711286, guid: e1cd371feff7c0f49abf7f5b9ba2b560, type: 3}
+  ColliderCenter: {x: 0, y: 0, z: 0}
+  ColliderRadius: 0.5
+  ColliderHeight: 1

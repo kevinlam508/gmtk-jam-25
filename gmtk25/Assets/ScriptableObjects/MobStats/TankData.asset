@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: TankData
   m_EditorClassIdentifier: 
   MobType: 1
-  MobHealth: 5
-  MobSpeed: 3
+  MobTypeNonFlag: 1
+  MobHealth: 10
+  MobSpeed: 1.75
   MobAttackDamage: 1
+  MobCCResist: 0
+  MobArmorGainPerHit: 0
+  MobModel: {fileID: 4431405722788906483, guid: b2f45e0ef130d714480223f29052d0da, type: 3}
+  ColliderCenter: {x: 0.061058044, y: 0.6617193, z: 0.22016549}
+  ColliderRadius: 0.8397863
+  ColliderHeight: 2.323439

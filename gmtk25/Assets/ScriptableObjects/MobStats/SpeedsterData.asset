@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: SpeedsterData
   m_EditorClassIdentifier: 
   MobType: 1
-  MobHealth: 5
-  MobSpeed: 3
+  MobTypeNonFlag: 2
+  MobHealth: 3
+  MobSpeed: 4
   MobAttackDamage: 1
+  MobCCResist: 0
+  MobArmorGainPerHit: 0
+  MobModel: {fileID: 6078385607709717332, guid: 15af25aebc724104bab7e7ed12d21892, type: 3}
+  ColliderCenter: {x: 0, y: 0.5506425, z: 0}
+  ColliderRadius: 0.5
+  ColliderHeight: 2.101285

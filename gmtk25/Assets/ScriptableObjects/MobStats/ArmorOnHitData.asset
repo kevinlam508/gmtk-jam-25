@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: ArmorOnHitData
   m_EditorClassIdentifier: 
   MobType: 6
+  MobTypeNonFlag: 6
   MobHealth: 2
   MobSpeed: 5
   MobAttackDamage: 1
   MobCCResist: 0
   MobArmorGainPerHit: 5
+  MobModel: {fileID: 0}
+  ColliderCenter: {x: 0, y: 0, z: 0}
+  ColliderRadius: 0.5
+  ColliderHeight: 1

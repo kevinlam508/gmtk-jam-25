@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86428eeece3c65438033dfe3f0cb2a6, type: 3}
   m_Name: SplitterData
   m_EditorClassIdentifier: 
-  MobType: 1
+  MobType: 5
+  MobTypeNonFlag: 5
   MobHealth: 5
   MobSpeed: 3
   MobAttackDamage: 1
+  MobCCResist: 0
+  MobArmorGainPerHit: 0
+  MobModel: {fileID: 0}
+  ColliderCenter: {x: 0, y: 0, z: 0}
+  ColliderRadius: 0
+  ColliderHeight: 0
