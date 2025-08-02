@@ -48,6 +48,7 @@ public class CharmData : ScriptableObject
     [SerializeField] private GameObject _hitFx;
     [SerializeField] private GameObject _splashFx;
     [SerializeField] private float _splashExpandDuration = .1f;
+    [SerializeField] private GameObject _chainFx;
     [SerializeField] private float _chainJumpDelay = .1f;
 
     public float Speed => _speed;
@@ -152,7 +153,6 @@ public class CharmData : ScriptableObject
         alreadyHit.Add(mob);
         for (int i = 0; i < _chainCount; i++)
         {
-            yield return new WaitForSeconds(_chainJumpDelay);
 
             Mob nextHit = null;
             RaycastHit[] hits = Physics.SphereCastAll(location, _chainRadius, Vector3.up, 0);
@@ -174,8 +174,16 @@ public class CharmData : ScriptableObject
                 yield break;
             }
 
+            GameObject chainFx = Instantiate(_chainFx);
+            chainFx.transform.position = location;
+            TweenToTarget tween = chainFx.GetComponent<TweenToTarget>();
+            tween.Init(nextHit.transform.position, _chainJumpDelay);
+
+            yield return new WaitForSeconds(_chainJumpDelay);
             location = nextHit.transform.position;
             instance.StartCoroutine(ApplyImpact(types, nextHit, location, travelStateData, instance));
+
+
             alreadyHit.Add(nextHit);
         }
     }
