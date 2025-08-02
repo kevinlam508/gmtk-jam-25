@@ -22,6 +22,8 @@ MonoBehaviour:
   _damage: 2
   _onHitStatus: []
   _returnEffect: []
-  _prefab: {fileID: 7044709641451085354, guid: 7eb1326049f5fcb46b0eba5a589e347f, type: 3}
+  _prefab: {fileID: 3005140030163739832, guid: 084a7fe0ff1088a4fb8fd632d9e3304b, type: 3}
   _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
   _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
+  _splashExpandDuration: 0.1
+  _chainJumpDelay: 0.1
