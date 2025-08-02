@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5576761527391842133}
-  - component: {fileID: 8761927638075002787}
   - component: {fileID: 3783320901253450657}
   m_Layer: 0
   m_Name: Charm 2
@@ -35,27 +34,6 @@ Transform:
   - {fileID: 5468411010437896994}
   m_Father: {fileID: 8943686425150058846}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &8761927638075002787
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992015171000389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3783320901253450657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +532,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _waitTimeMax: 0.15
-  _waitTimeMin: 0.08
+  _waitTimeMin: 0.03
   source: {fileID: 0}
   hover: {fileID: 0}
   click: {fileID: 0}
@@ -625,7 +603,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1359828369684664930}
-  - component: {fileID: 5042626799993136527}
   - component: {fileID: 2912053627574896741}
   m_Layer: 0
   m_Name: Charm 4
@@ -651,27 +628,6 @@ Transform:
   - {fileID: 4757904640012134181}
   m_Father: {fileID: 8943686425150058846}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &5042626799993136527
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756177960188818541}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2912053627574896741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,7 +1009,6 @@ GameObject:
   - component: {fileID: 5468411010437896994}
   - component: {fileID: 6061968661943584253}
   - component: {fileID: 581511866719964829}
-  - component: {fileID: 8066037728860946426}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -1129,27 +1084,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8066037728860946426
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883061114662260719}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &904665597773092793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1093,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2786883524786717335}
-  - component: {fileID: 441614351154549354}
   - component: {fileID: 6416660436110041431}
   m_Layer: 0
   m_Name: Charm 3
@@ -1185,27 +1118,6 @@ Transform:
   - {fileID: 6705796902601653715}
   m_Father: {fileID: 8943686425150058846}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &441614351154549354
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904665597773092793}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6416660436110041431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,7 +1728,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _waitTimeMax: 0.15
-  _waitTimeMin: 0.08
+  _waitTimeMin: 0.03
   source: {fileID: 0}
   hover: {fileID: 0}
   click: {fileID: 0}
@@ -1833,6 +1745,7 @@ GameObject:
   - component: {fileID: 4198754378925831117}
   - component: {fileID: 8019696100308393951}
   - component: {fileID: 7847552267589156478}
+  - component: {fileID: 8475726569159754430}
   m_Layer: 0
   m_Name: Mesh (2)
   m_TagString: Untagged
@@ -1929,6 +1842,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8475726569159754430
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551542951838194112}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &3777853775595579378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,8 +2042,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _waitTimeMax: 0.08
-  _waitTimeMin: 0.076
+  _waitTimeMax: 0.03
+  _waitTimeMin: 0.03
   source: {fileID: 0}
   hover: {fileID: 8300000, guid: 7d25ca544d3516e4f956a6879caed31f, type: 3}
   click: {fileID: 8300000, guid: 553a534018d30f445aa7fd7b9c98ef1b, type: 3}
@@ -2304,8 +2244,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
+  m_sharedMaterial: {fileID: 825978846655786095, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2335,7 +2275,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2440,8 +2380,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
+  m_sharedMaterial: {fileID: 825978846655786095, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2471,7 +2411,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2670,7 +2610,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _waitTimeMax: 0.15
-  _waitTimeMin: 0.08
+  _waitTimeMin: 0.03
   source: {fileID: 0}
   hover: {fileID: 0}
   click: {fileID: 0}
@@ -2721,7 +2661,6 @@ GameObject:
   - component: {fileID: 6705796902601653715}
   - component: {fileID: 8696361091789015954}
   - component: {fileID: 5838409828241530840}
-  - component: {fileID: 4369788785931585506}
   m_Layer: 0
   m_Name: Mesh (1)
   m_TagString: Untagged
@@ -2797,27 +2736,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4369788785931585506
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6211786152494842754}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6403736280684860805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,7 +2747,6 @@ GameObject:
   - component: {fileID: 644445997524812381}
   - component: {fileID: 5382107138604436867}
   - component: {fileID: 5703945818137062994}
-  - component: {fileID: 8574303137339371663}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -2905,27 +2822,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8574303137339371663
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6403736280684860805}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6453825435974323868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,7 +3035,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4882713586674134148}
-  - component: {fileID: 5120287620440846024}
   - component: {fileID: 3090681219899707679}
   - component: {fileID: 8249132652372900952}
   - component: {fileID: 98637838777440394}
@@ -3167,27 +3062,6 @@ Transform:
   - {fileID: 644445997524812381}
   m_Father: {fileID: 8943686425150058846}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &5120287620440846024
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976361625584741866}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3090681219899707679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3610,8 +3484,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
+  m_sharedMaterial: {fileID: 825978846655786095, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3641,7 +3515,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3746,8 +3620,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: P
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
+  m_sharedMaterial: {fileID: 825978846655786095, guid: 1d02e074310f4744ba047837ce9a2bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

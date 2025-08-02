@@ -18,10 +18,14 @@ public class MenuCharmTweening : MonoBehaviour
     [SerializeField] private Transform _charmMesh;
     private Vector3 _initialScale;
     private float _waitTime;
+    private Sequence _hoverEnterSequence;
+    private Sequence _hoverExitSequence;
     void Awake()
     {
         _initialScale = _charmMesh.localScale;
         _waitTime = Random.Range(_waitTimeMin, _waitTimeMax);
+        _hoverEnterSequence = DOTween.Sequence();
+        _hoverExitSequence = DOTween.Sequence();
     }
     void Start()
     {
@@ -35,22 +39,30 @@ public class MenuCharmTweening : MonoBehaviour
 
     public void OnHoverEnterTween(Button button)
     {
-        Sequence hoverEnterSequence = DOTween.Sequence();
-        hoverEnterSequence.AppendInterval(_waitTime);
-        hoverEnterSequence.Append(button.GetComponent<RectTransform>().DOScale(ButtonHoverScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
-        hoverEnterSequence.Join(_charmMesh.DOScale(ButtonHoverScale * _initialScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
-        hoverEnterSequence.Play();
+        if (_hoverExitSequence.IsPlaying())
+        {
+            _hoverExitSequence.Kill();
+        }
+        _hoverEnterSequence = DOTween.Sequence();
+        _hoverEnterSequence.AppendInterval(_waitTime);
+        _hoverEnterSequence.Append(button.GetComponent<RectTransform>().DOScale(ButtonHoverScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
+        _hoverEnterSequence.Join(_charmMesh.DOScale(ButtonHoverScale * _initialScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
+        _hoverEnterSequence.Play();
         
     }
 
     public void OnHoverExitTween(Button button)
     {
-        Sequence hoverExitSequence = DOTween.Sequence();
+        if (_hoverEnterSequence.IsPlaying())
+        {
+            _hoverEnterSequence.Kill();
+        }
+        _hoverExitSequence = DOTween.Sequence();
         _waitTime = Random.Range(_waitTimeMin, _waitTimeMax);
-        hoverExitSequence.AppendInterval(_waitTime);
-        hoverExitSequence.Append(button.GetComponent<RectTransform>().DOScale(1, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
-        hoverExitSequence.Join(_charmMesh.DOScale(_initialScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
-        hoverExitSequence.Play();
+        _hoverExitSequence.AppendInterval(_waitTime);
+        _hoverExitSequence.Append(button.GetComponent<RectTransform>().DOScale(1, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
+        _hoverExitSequence.Join(_charmMesh.DOScale(_initialScale, ButtonHoverScaleTime).SetEase(ButtonHoverScaleCurve));
+        _hoverExitSequence.Play();
     }
     
     
