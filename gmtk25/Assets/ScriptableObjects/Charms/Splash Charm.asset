@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _canShove: 0
-  _impactType: 0
+  _impactType: 1
   _explosionCount: 1
   _explosionRadius: 2
   _chainCount: 0
