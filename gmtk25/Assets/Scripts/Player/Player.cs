@@ -16,6 +16,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ClearForRound()
+    {
+        foreach (Track t in _tracks)
+        {
+            t.Clear();
+        }
+    }
+
     public void TakeDamage(int amount) => _health.TakeDamage(amount);
     public void Heal(int amount) => _health.Heal(amount);
     public void ModifyDrawCooldown(float amount) => _tray.ModifyDrawCooldown(amount);

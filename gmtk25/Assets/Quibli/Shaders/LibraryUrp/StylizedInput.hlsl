@@ -60,6 +60,11 @@ half _OutlineScale;
 half _OutlineDepthOffset;
 half _CameraDistanceImpact;
 
+float4 _HitColor;
+float _HitAmount;
+float _CurrentTime;
+float _HitDuration;
+
 CBUFFER_END
 
 inline void InitializeSimpleLitSurfaceData(float2 uv, out SurfaceData outSurfaceData)

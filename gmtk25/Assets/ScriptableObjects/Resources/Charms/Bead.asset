@@ -26,4 +26,5 @@ MonoBehaviour:
   _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
   _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
   _splashExpandDuration: 0.1
+  _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
