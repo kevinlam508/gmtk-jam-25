@@ -32,19 +32,26 @@ public class CharmTray : MonoBehaviour
 
     private void Start()
     {
-        ResetHandStats();
-
         _charmInventory.Init();
+        ResetForNextRound();
+    }
+
+    public void ResetForNextRound()
+    {
+        _currentHand.Clear();
+        for(int i = 0; i < _handParent.childCount; i++)
+        {
+            Destroy(_handParent.GetChild(i).gameObject);
+        }
+
+        _currentDrawCooldown = _startingDrawCooldown;
+        _currentMaxHandSize = _startingMaxHandSize;
+
+        _charmInventory.SetupForRound();
         DrawInitialHand();
 
         _charmInventory.CharmReturned += OnCharmsRefilled;
         StartDrawCooldown();
-    }
-
-    public void ResetHandStats()
-    {
-        _currentDrawCooldown = _startingDrawCooldown;
-        _currentMaxHandSize = _startingMaxHandSize;
     }
 
     public void ModifyDrawCooldown(float amount)

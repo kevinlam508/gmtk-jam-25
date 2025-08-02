@@ -10,6 +10,12 @@ public class AddCharmButton : MonoBehaviour
 
     private CharmData _data;
 
+    public bool Interactable
+    {
+        get => _addButton.interactable;
+        set => _addButton.interactable = value;
+    }
+
     private void Start()
     {
         _addButton.onClick.AddListener(OnButtonPressed);

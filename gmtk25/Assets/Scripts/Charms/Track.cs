@@ -101,6 +101,15 @@ public class Track : MonoBehaviour
         }
     }
 
+    public void Clear()
+    {
+        foreach (InstanceData data in _activeCharms)
+        {
+            Destroy(data.VisualRoot);
+        }
+        _activeCharms.Clear();
+    }
+
     // returns if charm was removed
     private bool MoveCharm(InstanceData instance, float newDistance)
     {

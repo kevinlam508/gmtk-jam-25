@@ -11,12 +11,23 @@ public class PlayerInventory : ScriptableObject
 
     [SerializeField] private List<CharmData> _deck;
 
+    private readonly List<CharmData> _entireDeck = new List<CharmData>();
     private readonly List<CharmData> _drawPile = new List<CharmData>();
     private readonly List<CharmData> _discardPile = new List<CharmData>();
 
+    public List<CharmData> EntireDeck => _entireDeck;
+
     public void Init()
     {
-        _discardPile.AddRange(_deck);
+        _entireDeck.AddRange(_deck);
+    }
+
+    public void SetupForRound()
+    {
+        _discardPile.Clear();
+        _drawPile.Clear();
+
+        _discardPile.AddRange(_entireDeck);
         ShuffleDiscardIntoDraw();
     }
 
@@ -47,7 +58,7 @@ public class PlayerInventory : ScriptableObject
 
     public void AddCharm(CharmData data)
     {
-        ReturnCharm(data);
+        _entireDeck.Add(data);
     }
 
     private void ShuffleDiscardIntoDraw()
