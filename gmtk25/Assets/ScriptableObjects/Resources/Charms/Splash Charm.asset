@@ -16,7 +16,7 @@ MonoBehaviour:
   _canShove: 0
   _impactType: 1
   _explosionCount: 1
-  _explosionRadius: 2
+  _explosionRadius: 5
   _chainCount: 0
   _chainRadius: 0
   _damage: 2

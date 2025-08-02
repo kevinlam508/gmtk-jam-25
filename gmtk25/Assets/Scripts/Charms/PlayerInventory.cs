@@ -45,6 +45,11 @@ public class PlayerInventory : ScriptableObject
         CharmReturned?.Invoke();
     }
 
+    public void AddCharm(CharmData data)
+    {
+        ReturnCharm(data);
+    }
+
     private void ShuffleDiscardIntoDraw()
     {
         for(int i = 0; i < _discardPile.Count; i++)
