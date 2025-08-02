@@ -16,13 +16,14 @@ public class DotStatus : BaseStatusEffect
         return new InstanceData();
     }
 
-    public override void Tick(Mob mob, object dataStore)
+    public override void Tick(Mob mob, float resistance, object dataStore)
     {
         InstanceData data = (InstanceData)dataStore;
         data.TimePassed += Time.deltaTime;
         if (data.TimePassed > _timeBetweenTicks)
         {
-            mob.TakeDamage(_damagePerTick);
+            float rawDamage = _damagePerTick * (1 - resistance);
+            mob.TakeDamage((int)Mathf.Ceil(rawDamage));
             data.TimePassed -= _timeBetweenTicks;
         }
     }

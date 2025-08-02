@@ -8,8 +8,8 @@ public abstract class BaseStatusEffect : ScriptableObject
 
     public virtual object NewDataStore() => null;
 
-    public virtual void OnApplied(Mob mob, object dataStore) { }
-    public virtual void OnRemoved(Mob mob, object dataStore) { }
-    public virtual void Tick(Mob mob, object dataStore) { }
+    public virtual void OnApplied(Mob mob, float resistance, object dataStore) { }
+    public virtual void OnRemoved(Mob mob, float resistance, object dataStore) { }
+    public virtual void Tick(Mob mob, float resistance, object dataStore) { }
 
 }

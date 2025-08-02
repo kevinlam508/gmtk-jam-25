@@ -7,6 +7,8 @@ public class MobScriptableObject : ScriptableObject
     public int MobHealth = 2;
     public float MobSpeed = 5;
     public int MobAttackDamage = 1;
+    [Range(0, 1)] public float MobCCResist = 0;
+
     GameObject MobModel;
 
 

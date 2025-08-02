@@ -45,7 +45,7 @@ public class Mob : MonoBehaviour
         };
         _statusEffects.Add(newInstance);
 
-        effect.OnApplied(this, newInstance.DataStore);
+        effect.OnApplied(this, MobStats.MobCCResist, newInstance.DataStore);
     }
 
     public void TakeDamage(int amount)
@@ -61,11 +61,11 @@ public class Mob : MonoBehaviour
         {
             StatusEffectInstance instance = _statusEffects[i];
             instance.TimePassed += Time.deltaTime;
-            instance.Data.Tick(this, instance.DataStore);
+            instance.Data.Tick(this, MobStats.MobCCResist, instance.DataStore);
 
             if (instance.TimePassed > instance.Data.Duration)
             {
-                instance.Data.OnRemoved(this, instance.DataStore);
+                instance.Data.OnRemoved(this, MobStats.MobCCResist, instance.DataStore);
                 _statusEffects.RemoveAt(i);
             }
         }
