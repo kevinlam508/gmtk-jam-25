@@ -22,11 +22,12 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private GameObject _charmRoot;
     [SerializeField] private UiDangle _charmDangle;
     [SerializeField] private Image _charmImage;
+    [SerializeField] private Image _shadow;
 
     public void Init(CharmData data)
     {
         _data = data;
-        
+
         if (data.IsBead)
         {
             _beadImage.sprite = data.UiSprite;
@@ -48,6 +49,7 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _dragOffset = _dragParent.transform.position - Input.mousePosition;
         _dragRoutine = StartCoroutine(DragCoroutine());
+        _shadow.enabled = false;
 
         if (!_data.IsBead)
         {
@@ -64,6 +66,7 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         StopCoroutine(_dragRoutine);
         _dragRoutine = null;
+        _shadow.enabled = true;
 
         // TODO: Tween back into place instead of snapping
         _dragParent.transform.localPosition = _dragParentOriginalPosition;
