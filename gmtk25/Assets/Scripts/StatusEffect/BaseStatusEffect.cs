@@ -5,10 +5,10 @@ public abstract class BaseStatusEffect : ScriptableObject
 {
 
     [SerializeField] private float _duration;
-    [SerializeField] private FxPlacementData _fxData;
+    [SerializeField] private FxPlacementData[] _fxData;
 
     public float Duration => _duration;
-    public FxPlacementData FxData => _fxData;
+    public FxPlacementData[] FxData => _fxData;
 
     public virtual object NewDataStore() => null;
 

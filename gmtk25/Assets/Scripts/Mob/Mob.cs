@@ -16,9 +16,10 @@ public class Mob : MonoBehaviour
 
     private class StatusFx
     {
-        public GameObject Instance;
+        public GameObject[] Instances;
         public int Count;
     }
+
     [Tooltip("True if you want to auto-initalize the enemy on awake (AKA the enemy was not spawned by SpawnerCore")]
     [SerializeField] bool InitializeOnAwake = false;
     [SerializeField] private Health _health;
@@ -109,43 +110,49 @@ public class Mob : MonoBehaviour
     {
         if (!_statusFxes.TryGetValue(effect.GetType(), out StatusFx fxInfo))
         {
-            GameObject fx = effect.FxData.Prefab;
-            if (fx == null)
+            GameObject[] fxInstances = new GameObject[effect.FxData.Length];
+            for (int i = 0; i < fxInstances.Length; i++)
             {
-                return;
-            }
-
-            float scale = 1;
-            foreach (var settings in effect.FxData.TypeSize)
-            {
-                if (settings.Type == MobStats.MobType)
+                var fxData = effect.FxData[i];
+                GameObject fx = fxData.Prefab;
+                if (fx == null)
                 {
-                    scale = settings.Scale;
-                    break;
+                    return;
                 }
-            }
 
-            FxAttachPoint attachPoint = null;
-            foreach (FxAttachPoint point in _attachPoints)
-            {
-                if (point.LocationType == effect.FxData.Location)
+                float scale = 1;
+                foreach (var settings in fxData.TypeSize)
                 {
-                    attachPoint = point;
-                    break;
+                    if (settings.Type == MobStats.MobType)
+                    {
+                        scale = settings.Scale;
+                        break;
+                    }
                 }
-            }
 
-            if (attachPoint == null)
-            {
-                return;
-            }
+                FxAttachPoint attachPoint = null;
+                foreach (FxAttachPoint point in _attachPoints)
+                {
+                    if (point.LocationType == fxData.Location)
+                    {
+                        attachPoint = point;
+                        break;
+                    }
+                }
 
-            GameObject fxInstance = Instantiate(fx, attachPoint.transform);
-            fxInstance.transform.localScale = Vector3.one * scale;
+                if (attachPoint == null)
+                {
+                    return;
+                }
+
+                GameObject fxInstance = Instantiate(fx, attachPoint.transform);
+                fxInstance.transform.localScale = Vector3.one * scale;
+                fxInstances[i] = fxInstance;
+            }
 
             fxInfo = new StatusFx 
             { 
-                Instance = fxInstance
+                Instances = fxInstances
             };
             _statusFxes.Add(effect.GetType(), fxInfo);
         }
@@ -165,7 +172,10 @@ public class Mob : MonoBehaviour
         if (fxInfo.Count == 0)
         {
             _statusFxes.Remove(effect.GetType());
-            Destroy(fxInfo.Instance);
+            foreach (GameObject go in fxInfo.Instances)
+            {
+                Destroy(go);
+            }
         }
     }
 

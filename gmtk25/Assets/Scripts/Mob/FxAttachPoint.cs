@@ -4,7 +4,8 @@ public class FxAttachPoint : MonoBehaviour
 {
     public enum Location
     {
-        Head
+        Head,
+        Root
     }
 
     public Location LocationType;
