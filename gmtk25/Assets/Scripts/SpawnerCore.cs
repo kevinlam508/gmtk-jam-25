@@ -52,7 +52,8 @@ public class SpawnerCore : MonoBehaviour
     public float MaxDistanceForSpawn = 5f;//the max distance that an enemy can spawn from the player
     public float MinDistanceForSpawn = 5f;//the min distance that an enemy can spawn from the player
     public int debugCurveSmoothness = 30;//The amount of smoothness that is shown in the debug arc
-
+    bool waitingOnEnemiesToDie = false;
+    int enemiesOnScreen = 0;
 
     private void Awake()
     {
@@ -68,7 +69,6 @@ public class SpawnerCore : MonoBehaviour
         }
         SetSpawnRates();
     }
-
     private void Start()
     {
         AddCharmSelection.Instance.GetClosedEvent().AddListener(StartWave);
@@ -95,6 +95,11 @@ public class SpawnerCore : MonoBehaviour
                 timeUntilNextSpawn = DetermineNextSpawnTime();
 
             }
+        }
+
+        if (waitingOnEnemiesToDie)
+        {
+            EndWaveStage2();
         }
     }
 
@@ -144,10 +149,10 @@ public class SpawnerCore : MonoBehaviour
         timeUntilNextSpawn = .4f;
     }
 
-
     void OnEnemyDeath(GameObject enemyThatDied, bool playerKill)
     {
         Destroy(enemyThatDied);
+        enemiesOnScreen--;
     }
 
     void ShuffleSpawnRates(int numberOfEnemiestoShuffleFor)
@@ -203,47 +208,62 @@ public class SpawnerCore : MonoBehaviour
         }
     }
 
+    void EndWaveStage2()
+    {
+        if (enemiesOnScreen <= 0)
+        {
+            waveNumber++;
+            waitingOnEnemiesToDie = false;
+
+            if (waveNumber >= 10 && waveNumber <= 20)
+            {
+                float scaleFactor = (waveNumber - 10) / 10f; // Starts at 0 / 10 goes up to 10 / 10
+                float chanceIncrease = Mathf.Pow(scaleFactor, 1.6f) * 0.10f;
+                chanceForADoubleSpawn = 0.15f + chanceIncrease;
+                chanceForADoubleSpawn = Mathf.Clamp(chanceForADoubleSpawn, 0, 0.25f);
+            }
+
+            SetSpawnRates();
+
+
+            AddCharmSelection.Instance.ShowAndGenerate();
+        }
+        else
+        {
+            waitingOnEnemiesToDie = true;
+        }
+    }
+
     void EndWave(GameObject enemyThatEndedWave, bool playerKill)
     {
         if (enemyThatEndedWave)
         {
+            enemiesOnScreen--;
             Destroy(enemyThatEndedWave);
         }
-        waveNumber++;
-
-
-        if (waveNumber >= 10 && waveNumber <= 20)
-        {
-            float scaleFactor = (waveNumber - 10) / 10f; // Starts at 0 / 10 goes up to 10 / 10
-            float chanceIncrease = Mathf.Pow(scaleFactor, 1.6f) * 0.10f;
-            chanceForADoubleSpawn = 0.15f + chanceIncrease;
-            chanceForADoubleSpawn = Mathf.Clamp(chanceForADoubleSpawn, 0, 0.25f);
-        }
-
-        SetSpawnRates();
-
-
-        AddCharmSelection.Instance.ShowAndGenerate();
-
-      //  if (!onAwake)
-
-        
+        EndWaveStage2();        
+      //  if (!onAwake)        
     }
 
     int GetNumberOfEnemySpawns(int waveNumber)
     {
+        float scaledEnemyNumber;
+        int enemyNumber;
         if (waveNumber <= 10)
         {
-            return 4 + (waveNumber - 1);
+            scaledEnemyNumber = Mathf.Pow(waveNumber, 1.2f);
+            return 4 + (int)Mathf.Floor(scaledEnemyNumber);//1 : 4 | 2: 5 | 3: 6| 4: 7
         }
         else
         {
-            int baseEnemies = 13;//Keep base always at 13 so this does not go out of wack
+            int baseEnemies = 15;//Keep base always at 13 so this does not go out of wack
             int wavesPast10 = waveNumber - 10;
 
-            float scaledEnemyNumber = Mathf.Pow(wavesPast10, 1.5f);
+            scaledEnemyNumber = Mathf.Pow(wavesPast10, 1.25f);
 
-            return baseEnemies + (int)Mathf.Floor(scaledEnemyNumber);
+            enemyNumber = baseEnemies + (int)Mathf.Floor(scaledEnemyNumber);
+            Debug.Log(enemyNumber);
+            return enemyNumber;
         }
     }
 
@@ -321,7 +341,20 @@ public class SpawnerCore : MonoBehaviour
         GameObject newEnemy = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
         newEnemy.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
         newEnemy.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
-        
+        enemiesOnScreen++;
+
+        if (enemyType == MobTypesNonFlag.Swarmer)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject swamerExtra = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
+                swamerExtra.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
+                swamerExtra.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
+                swamerExtra.GetComponent<Health>().GetOnDeathEvent().AddListener(OnEnemyDeath);
+                enemiesOnScreen++;
+            }
+        }
+
         NumberOfSpawnsForThisWave--;
         if (specialSpawnRateValueRemaining > 0)
         {

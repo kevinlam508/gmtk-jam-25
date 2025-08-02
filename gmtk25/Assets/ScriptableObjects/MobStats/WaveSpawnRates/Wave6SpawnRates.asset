@@ -15,13 +15,11 @@ MonoBehaviour:
   SpawnRates:
   - percentChanceToSpawn: 0.25
     MobTypeToSpawn: 0
-  - percentChanceToSpawn: 0.4
+  - percentChanceToSpawn: 0.45
     MobTypeToSpawn: 1
-  - percentChanceToSpawn: 0.55
+  - percentChanceToSpawn: 0.65
     MobTypeToSpawn: 2
-  - percentChanceToSpawn: 0.7
-    MobTypeToSpawn: 3
   - percentChanceToSpawn: 0.85
-    MobTypeToSpawn: 4
+    MobTypeToSpawn: 3
   - percentChanceToSpawn: 1
-    MobTypeToSpawn: 5
+    MobTypeToSpawn: 4

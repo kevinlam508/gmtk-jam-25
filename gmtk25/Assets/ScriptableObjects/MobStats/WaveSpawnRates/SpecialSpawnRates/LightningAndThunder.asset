@@ -18,4 +18,4 @@ MonoBehaviour:
   - percentChanceToSpawn: 0.5
     MobTypeToSpawn: 2
   - percentChanceToSpawn: 1
-    MobTypeToSpawn: 6
+    MobTypeToSpawn: 1
