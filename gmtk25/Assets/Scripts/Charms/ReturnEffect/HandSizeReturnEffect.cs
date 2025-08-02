@@ -15,4 +15,9 @@ public class HandSizeReturnEffect : BaseReturnEffect
 
         player.ModifyMaxHandSize(_handSizeChange);
     }
+
+    public override bool ShouldSwitchState(CharmData.TravelState data)
+    {
+        return data.CollisionCount >= _minContactsToTrigger;
+    }
 }

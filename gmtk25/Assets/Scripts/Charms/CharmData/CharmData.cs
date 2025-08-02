@@ -78,7 +78,8 @@ public class CharmData : ScriptableObject
         return data;
     }
 
-    public void CollisionCallback(Collider other, TravelState travelStateData, CharmInstance instance)
+    public void CollisionCallback(Collider other, TravelState travelStateData, CharmInstance instance, 
+        Action<int> stateChangeCallback)
     {
         Mob mob = other.GetComponent<Mob>();
         if (mob == null)
@@ -92,18 +93,28 @@ public class CharmData : ScriptableObject
         TravelState copy = new TravelState
         {
             CollisionCount = travelStateData.CollisionCount,
-            HitCount = travelStateData.HitCount,
 
             FrontNeighbor = travelStateData.FrontNeighbor,
             BackNeighbor = travelStateData.BackNeighbor,
         };
         travelStateData.CollisionCount++;
 
-        instance.StartCoroutine( 
-            CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
-                .ApplyImpact(_impactType, mob, mob.transform.position, copy, instance));
+        instance.StartCoroutine(RunEffects());
 
-        travelStateData.HitCount += copy.HitCount;
+
+        IEnumerator RunEffects()
+        {
+            yield return CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
+                .ApplyImpact(_impactType, mob, mob.transform.position, copy, instance);
+            travelStateData.HitCount += copy.HitCount;
+
+            bool changeState = false;
+            foreach (BaseReturnEffect re in _returnEffect)
+            {
+                changeState = changeState || re.ShouldSwitchState(travelStateData);
+            }
+            stateChangeCallback?.Invoke(changeState ? 1 : 0);
+        }
     }
 
     private IEnumerator ApplyImpact(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData, 

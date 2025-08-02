@@ -15,4 +15,9 @@ public class DrawTimerReturnEffect : BaseReturnEffect
 
         player.ModifyDrawCooldown(_drawTimerChange);
     }
+
+    public override bool ShouldSwitchState(CharmData.TravelState data)
+    {
+        return data.CollisionCount >= _minContactsToTrigger;
+    }
 }

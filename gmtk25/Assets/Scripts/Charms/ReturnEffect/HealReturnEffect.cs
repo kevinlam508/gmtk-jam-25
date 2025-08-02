@@ -15,4 +15,9 @@ public class HealReturnEffect : BaseReturnEffect
 
         player.Heal((int)Mathf.Ceil(_healPerSecondTraveled * data.Duration));
     }
+
+    public override bool ShouldSwitchState(CharmData.TravelState data)
+    {
+        return data.CollisionCount > 0;
+    }
 }
