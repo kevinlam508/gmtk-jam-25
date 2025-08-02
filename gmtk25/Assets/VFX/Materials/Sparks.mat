@@ -56,6 +56,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -88,6 +92,10 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CenterHardness: 0
+    - _CenterOpacity: 0
+    - _CenterPower: 2
+    - _CenterRadius: 0.25
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorIntensity: 2
@@ -103,7 +111,11 @@ Material:
     - _GlossyReflections: 0
     - _Hardness: 0.6
     - _Metallic: 0
+    - _NoiseStrength: 0.09
     - _OcclusionStrength: 1
+    - _OuterHardness: 0
+    - _OuterOpactiy: 0.5
+    - _OuterPower: 2
     - _Parallax: 0.005
     - _Power: 1
     - _QueueControl: 0
