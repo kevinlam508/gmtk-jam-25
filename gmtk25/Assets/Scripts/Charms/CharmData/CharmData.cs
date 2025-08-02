@@ -44,6 +44,8 @@ public class CharmData : ScriptableObject
 
     [Header("Appearance")]
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private GameObject _hitFx;
+    [SerializeField] private GameObject _splashFx;
 
     public float Speed => _speed;
     public bool CanShove => _canShove;
@@ -150,6 +152,10 @@ public class CharmData : ScriptableObject
             return;
         }
 
+        GameObject newSplashFx = Instantiate(_splashFx);
+        newSplashFx.transform.position = mob.transform.position;
+        newSplashFx.transform.localScale = Vector3.one * _explosionRadius;
+
         RaycastHit[] hits = Physics.SphereCastAll(location, _explosionRadius, Vector3.up, 0);
         foreach (RaycastHit hit in hits)
         {
@@ -165,6 +171,9 @@ public class CharmData : ScriptableObject
 
     private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData)
     {
+        GameObject newHitFx = Instantiate(_hitFx);
+        newHitFx.transform.position = mob.transform.position;
+
         mob.TakeDamage(_damage);
         if (_onHitStatus != null)
         {

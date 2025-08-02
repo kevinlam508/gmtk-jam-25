@@ -24,3 +24,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6dd94be9b836c16488d460a3e1e2221a, type: 2}
   _returnEffect: []
   _prefab: {fileID: 7044709641451085354, guid: 4ee6d9b716d5007438113ff75bd1c159, type: 3}
+  _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
+  _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}

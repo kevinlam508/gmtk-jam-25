@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: Heavy Bead
   m_EditorClassIdentifier: 
   _speed: 1
+  _canShove: 0
+  _impactType: 0
+  _explosionCount: 0
+  _explosionRadius: 0
+  _chainCount: 0
+  _chainRadius: 0
   _damage: 10
+  _onHitStatus: []
+  _returnEffect: []
   _prefab: {fileID: 7044709641451085354, guid: 7eb1326049f5fcb46b0eba5a589e347f, type: 3}
+  _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
+  _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
