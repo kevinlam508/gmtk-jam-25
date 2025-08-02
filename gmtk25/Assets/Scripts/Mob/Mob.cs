@@ -151,7 +151,8 @@ public class Mob : MonoBehaviour
                 }
 
                 GameObject fxInstance = Instantiate(fx, attachPoint.transform);
-                fxInstance.transform.localScale = Vector3.one * scale;
+                float parentScale = attachPoint.transform.lossyScale.x;
+                fxInstance.transform.localScale = Vector3.one * scale / parentScale;
                 fxInstances[i] = fxInstance;
             }
 
