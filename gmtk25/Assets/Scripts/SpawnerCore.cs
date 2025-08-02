@@ -26,6 +26,8 @@ public class SpawnerCore : MonoBehaviour
     float specialSpawnChance = 0.00f;
 
 
+    float doubleSpawnChance = 0.0f;
+
 
     [SerializeField]
     List<SpawnRateScriptableObject> SpawnRatesPerWave = new List<SpawnRateScriptableObject>();//list of SpawnRateSO's that will determine the chance each indiviudal mob is spawned once a pariticular wave is reached
@@ -210,6 +212,14 @@ public class SpawnerCore : MonoBehaviour
         waveNumber++;
 
 
+        if (waveNumber >= 10 && waveNumber <= 20)
+        {
+            float scaleFactor = (waveNumber - 10) / 10f; // Starts at 0 / 10 goes up to 10 / 10
+            float chanceIncrease = Mathf.Pow(scaleFactor, 1.6f) * 0.10f;
+            chanceForADoubleSpawn = 0.15f + chanceIncrease;
+            chanceForADoubleSpawn = Mathf.Clamp(chanceForADoubleSpawn, 0, 0.25f);
+        }
+
         SetSpawnRates();
 
 
@@ -266,13 +276,40 @@ public class SpawnerCore : MonoBehaviour
         return false;
     }
 
-    public void SpawnEnemy()
+
+    public bool CheckForDoubleSpawn()
+    {
+        if (waveNumber < 9 || NumberOfSpawnsForThisWave <= 2)
+        {
+            return false;
+        }
+
+        float randomValue = Random.Range(0.0f, 1.0f);
+
+        if (randomValue <= chanceForADoubleSpawn)
+        {
+            Debug.Log("Double Spawn is true");
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public void SpawnEnemy(bool calledFromDoubleSpawn = false)
     {
         //check for double spawn
         float randomValue = DetermineRandomValue();
 
-        CheckForSpecialSpawn();//only comes into play at round 9
-        //CheckForDoubleSpawn();
+        if (!calledFromDoubleSpawn)
+        {
+            CheckForSpecialSpawn();//only comes into play at round 9
+
+            if (CheckForDoubleSpawn())
+            {
+                SpawnEnemy(true);
+            }
+        }
 
         MobTypesNonFlag enemyType = ReturnMobType(randomValue);
 
