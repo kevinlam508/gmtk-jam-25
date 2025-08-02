@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
 
     private int _currentHealth;
 
+    public DamageTakenEvent DamageTaken => _damageTaken;
+
     private void Awake()
     {
     }
