@@ -57,13 +57,18 @@ public class Mob : MonoBehaviour
         GetComponent<MobMovement>().SetMobMovementSpeed(MobStats.MobSpeed);
         GetComponent<MobMovement>().OnMovementFinish += Mob_OnMovementFinish;
         _health.SetMaxHealth(MobStats.MobHealth);
-        Instantiate(MobStats.MobModel, artParentTransform.position, Quaternion.identity, artParentTransform);
+        GameObject modelInstance = Instantiate(MobStats.MobModel, artParentTransform.position, Quaternion.identity, artParentTransform);
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         collider.center = mobStats.ColliderCenter;
         collider.radius = MobStats.ColliderRadius;
         collider.height = MobStats.ColliderHeight;
         this.mobTypeNoFlag = mobTypeNonFlag;
-        
+
+        HitGlow glow = modelInstance.GetComponentInChildren<HitGlow>();
+        if (glow != null)
+        {
+            _health.DamageTaken.AddListener((_, __) => glow.Hit());
+        }
     }
 
     /// <summary>
