@@ -27,6 +27,8 @@ public class CharmData : ScriptableObject
         public CharmData BackNeighbor;
     }
 
+    [SerializeField] private bool _isBead;
+
     [Header("Movement")]
     [SerializeField] private float _speed;
     [SerializeField] private bool _canShove;
@@ -51,11 +53,17 @@ public class CharmData : ScriptableObject
     [SerializeField] private GameObject _chainFx;
     [SerializeField] private float _chainJumpDelay = .1f;
 
+    [Header("UI")]
+    [SerializeField] private Sprite _uiSprite;
+
     public float Speed => _speed;
     public bool CanShove => _canShove;
     public BaseReturnEffect[] ReturnEffects => _returnEffect;
 
     public GameObject Prefab => _prefab;
+
+    public Sprite UiSprite => _uiSprite;
+    public bool IsBead => _isBead;
 
     public TravelState NewTravelStateData() => new TravelState();
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -16,10 +17,26 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Coroutine _dragRoutine;
     private Vector3 _dragParentOriginalPosition;
 
+    [SerializeField] private GameObject _beadRoot;
+    [SerializeField] private Image _beadImage;
+    [SerializeField] private GameObject _charmRoot;
+    [SerializeField] private UiDangle _charmDangle;
+    [SerializeField] private Image _charmImage;
+
     public void Init(CharmData data)
     {
         _data = data;
-        // TODO: setup appearance for charm data
+        
+        if (data.IsBead)
+        {
+            _beadImage.sprite = data.UiSprite;
+            _charmRoot.SetActive(false);
+        }
+        else
+        {
+            _charmImage.sprite = data.UiSprite;
+            _beadRoot.SetActive(false);
+        }
     }
 
     private void Awake()
@@ -31,11 +48,15 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _dragOffset = _dragParent.transform.position - Input.mousePosition;
         _dragRoutine = StartCoroutine(DragCoroutine());
+
+        if (!_data.IsBead)
+        {
+            _charmDangle.BeginDangle();
+        }
     }
     
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-
         if (_dragRoutine == null)
         {
             return;
@@ -50,6 +71,11 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (TryPlaceCharm())
         {
             CharmPlaced?.Invoke(transform.GetSiblingIndex());
+        }
+
+        if (!_data.IsBead)
+        {
+            _charmDangle.EndDangle();
         }
     }
 
