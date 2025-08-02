@@ -1002,7 +1002,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.25,
+    "m_Value": 0.5,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -3910,8 +3910,8 @@
     "m_ObjectId": "989e7469e75949b7b37a0a0c4e92f0dc",
     "m_Title": "CenterGlow",
     "m_Position": {
-        "x": -2269.999755859375,
-        "y": 873.3335571289063
+        "x": -2269.99951171875,
+        "y": 873.333251953125
     }
 }
 
@@ -4743,8 +4743,8 @@
     "m_ObjectId": "c423f9b583674959a80bd4571bb04b9b",
     "m_Title": "OuterGlow",
     "m_Position": {
-        "x": -2115.999755859375,
-        "y": 363.333251953125
+        "x": -2115.99951171875,
+        "y": 363.3333435058594
     }
 }
 
