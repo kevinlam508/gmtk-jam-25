@@ -143,7 +143,7 @@ MonoBehaviour:
   - 40
   - 20
   - 50
-  _gravity: -25
+  _gravity: -50
 --- !u!1 &2994153881514846296
 GameObject:
   m_ObjectHideFlags: 0
