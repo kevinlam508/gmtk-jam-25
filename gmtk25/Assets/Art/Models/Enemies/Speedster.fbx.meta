@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0fa3e33675b7a94f90adf0e7500ddbc
+guid: a2c2585de4e47a94ab997baa2584f358
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Pawn_Armature|Pawn_Walk
-      takeName: Pawn_Armature|Pawn_Walk
-      internalID: -6764984845984159562
+      name: Speedster_Armature|Speedster_Walk
+      takeName: Speedster_Armature|Speedster_Walk
+      internalID: -4612399232747830116
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
