@@ -8,6 +8,7 @@ public class MobScriptableObject : ScriptableObject
     public float MobSpeed = 5;
     public int MobAttackDamage = 1;
     [Range(0, 1)] public float MobCCResist = 0;
+    public float MobArmorGainPerHit = 0;
 
     GameObject MobModel;
 
@@ -23,5 +24,6 @@ public enum MobTypes
     Swarmer,
     CrowdControlResist,
     Splitter,
+    ArmorWhenHit,
     Count
 }

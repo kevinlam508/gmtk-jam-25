@@ -18,6 +18,8 @@ public class Mob : MonoBehaviour
     [SerializeField] private MobMovement _movement;
     [SerializeField] MobScriptableObject MobStats;
 
+    private float _currentArmor;
+
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
 
     private void Awake()
@@ -50,7 +52,12 @@ public class Mob : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        // Reduced by armor, but min of 1
+        amount -= Mathf.FloorToInt(MobStats.MobArmorGainPerHit);
+        amount = Mathf.Max(amount, 1);
         _health.TakeDamage(amount);
+
+        _currentArmor += MobStats.MobArmorGainPerHit;
     }
 
     public void ApplySpeedMultiplier(float multiplier) => _movement.ApplySpeedMultiplier(multiplier);
