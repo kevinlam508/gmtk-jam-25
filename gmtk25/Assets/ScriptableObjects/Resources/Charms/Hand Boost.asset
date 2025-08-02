@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad5cea0976c56fb41902fcfc08210f29, type: 3}
-  m_Name: Draw Boost
+  m_Name: Hand Boost
   m_EditorClassIdentifier: 
   _speed: 1
   _canShove: 0
@@ -22,8 +22,8 @@ MonoBehaviour:
   _damage: 0
   _onHitStatus: []
   _returnEffect:
-  - {fileID: 11400000, guid: 8fbed02f4af5da148bf0337f858239f0, type: 2}
-  _prefab: {fileID: 6340362576596242171, guid: 461d1818aa9204b4a85a2440f1d01a40, type: 3}
+  - {fileID: 11400000, guid: 37f15c55be1b89b40b48d21108d1b8fb, type: 2}
+  _prefab: {fileID: 531531083679637177, guid: 88602c3727a5cda428b6cd62ff88b2ea, type: 3}
   _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
   _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
   _splashExpandDuration: 0.1
