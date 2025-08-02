@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5cea0976c56fb41902fcfc08210f29, type: 3}
   m_Name: Chain Charm
   m_EditorClassIdentifier: 
-  _speed: 2
+  _isBead: 0
+  _speed: 4
   _canShove: 0
   _impactType: 2
   _explosionCount: 0
@@ -28,3 +29,4 @@ MonoBehaviour:
   _splashExpandDuration: 0.1
   _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
+  _uiSprite: {fileID: 0}
