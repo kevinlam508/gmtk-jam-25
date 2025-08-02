@@ -15,11 +15,11 @@ MonoBehaviour:
   MobType: 6
   MobTypeNonFlag: 6
   MobHealth: 2
-  MobSpeed: 5
+  MobSpeed: 2
   MobAttackDamage: 1
   MobCCResist: 0
   MobArmorGainPerHit: 5
-  MobModel: {fileID: 0}
+  MobModel: {fileID: 3504237349822381816, guid: d34a7bdce5a32a14d8d720aeaeb49782, type: 3}
   ColliderCenter: {x: 0, y: 0, z: 0}
   ColliderRadius: 0.5
   ColliderHeight: 1

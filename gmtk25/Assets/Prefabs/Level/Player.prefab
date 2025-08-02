@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62f6bfa141659d41a000ab94019ffe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableDebug: 1
+  DebugStartAtSpecificRound: 1
   enemyGameStatArray:
   - {fileID: 11400000, guid: a0ea0b9c08e3c9d4594a257e6c706808, type: 2}
   - {fileID: 11400000, guid: 57a8f113799d39b4cb0ff22711aff56d, type: 2}
@@ -168,6 +170,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e704183a0f79c6c44ae94a66ca8bcb71, type: 2}
   - {fileID: 11400000, guid: 6b571aff8809d80438b8b3ff46f6f157, type: 2}
   - {fileID: 11400000, guid: 7e56f5503ae7e614798173c1abedb11a, type: 2}
+  SpecialSpawnRates:
+  - {fileID: 11400000, guid: 260451806c22de146b1cc66ce32cff73, type: 2}
+  - {fileID: 11400000, guid: 62d9691413c8e2641a0adc43345ee7d5, type: 2}
+  - {fileID: 11400000, guid: db3cdadc6f987974489ec3feff2f7468, type: 2}
+  - {fileID: 11400000, guid: 421bb85d6f690d74b884b9e0819f1af8, type: 2}
+  - {fileID: 11400000, guid: 847c257aff811ae4b8405a36dee047b7, type: 2}
+  currentSpawnRateStats: {fileID: 0}
   playerTarget: {fileID: 3862265857295856727}
   previousRandomGenerationNumbers:
   - 0
@@ -190,8 +199,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  AngleRange: 135
-  AngleOffset: 20
+  previousRandomGenerationInt: 
+  AngleRange: 115
+  AngleOffset: 33
   MaxDistanceForSpawn: 22.7
   MinDistanceForSpawn: 18.5
   debugCurveSmoothness: 25

@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb6ce18baeaab147a13c31e89dd030d, type: 3}
-  m_Name: Wave2SpawnRate
+  m_Name: SpecialTankPalette
   m_EditorClassIdentifier: 
   SpawnRates:
-  - percentChanceToSpawn: 0.6
+  - percentChanceToSpawn: 0.2
     MobTypeToSpawn: 0
-  - percentChanceToSpawn: 1
+  - percentChanceToSpawn: 0.65
     MobTypeToSpawn: 1
+  - percentChanceToSpawn: 1
+    MobTypeToSpawn: 6
