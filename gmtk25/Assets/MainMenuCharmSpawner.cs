@@ -31,11 +31,12 @@ public class MainMenuCharmSpawner : MonoBehaviour
         while (true)
         {
             Vector3 positionToSpawn = new Vector3(UnityEngine.Random.Range(_leftPosition.x,_righttPosition.x),_leftPosition.y,_leftPosition.z);
-            GameObject parent = GameObject.Instantiate(_charmRigidbody,positionToSpawn,UnityEngine.Random.rotation);
+            GameObject parent = Instantiate(_charmRigidbody,positionToSpawn,UnityEngine.Random.rotation) as GameObject;
+            parent.transform.localScale *= UnityEngine.Random.Range(50f, 100f);
             GameObject.Instantiate(_charms[UnityEngine.Random.Range(0, _charms.Count)], parent.transform);
-            parent.transform.localScale.Set(50, 50, 50);
-            parent.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
-            yield return new WaitForSeconds(UnityEngine.Random.Range(.1f, .5f));
+            parent.GetComponent<Rigidbody>().AddForce(0, -175f, 0f);
+            parent.GetComponent<Rigidbody>().AddTorque(UnityEngine.Random.Range(5f, 20f),UnityEngine.Random.Range(5f, 20f),UnityEngine.Random.Range(5f, 20f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(.25f, .75f));
         }
     }
 }
