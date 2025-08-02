@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PawnData
   m_EditorClassIdentifier: 
   MobType: 0
+  MobTypeNonFlag: 0
   MobHealth: 2
-  MobSpeed: 5
+  MobSpeed: 2.5
   MobAttackDamage: 1
   MobCCResist: 0
   MobArmorGainPerHit: 0

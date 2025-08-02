@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class AddCharmSelection : MonoBehaviour
 {
+    public static AddCharmSelection Instance { get; private set; }
+
     [SerializeField] private string _allCharmsFolder = "Charms";
     [SerializeField] private PlayerInventory _inventory;
 
@@ -30,11 +32,19 @@ public class AddCharmSelection : MonoBehaviour
     {
         _allCharms = Resources.LoadAll<CharmData>(_allCharmsFolder);
 
+        Instance = this;
+
         foreach (AddCharmButton button in _buttons)
         {
             button.ButtonSelected += AddCharmSelected;
         }
         Hide(false);
+
+    }
+
+    public UnityEvent GetClosedEvent()
+    {
+        return _closed;
     }
 
     public void ShowAndGenerate()
@@ -82,7 +92,7 @@ public class AddCharmSelection : MonoBehaviour
         foreach (AddCharmButton button in _buttons)
         {
             int i = Random.Range(0, _allCharms.Length - 1);
-            while(drawn.Contains(_allCharms[i]))
+            while (drawn.Contains(_allCharms[i]))
             {
                 i = Random.Range(0, _allCharms.Length - 1);
             }
