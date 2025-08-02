@@ -14,13 +14,21 @@ public class Mob : MonoBehaviour
         public object DataStore;
     }
 
+    private class StatusFx
+    {
+        public GameObject Instance;
+        public int Count;
+    }
+
     [SerializeField] private Health _health;
     [SerializeField] private MobMovement _movement;
     [SerializeField] MobScriptableObject MobStats;
 
+    private FxAttachPoint[] _attachPoints;
     private float _currentArmor;
 
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
+    private Dictionary<Type, StatusFx> _statusFxes = new Dictionary<Type, StatusFx>();
 
     private void Awake()
     {
@@ -30,6 +38,11 @@ public class Mob : MonoBehaviour
             //_health.SetMaxHealth(MobStats.MobHealth);
 
         }
+    }
+
+    private void Start()
+    {
+        _attachPoints = GetComponentsInChildren<FxAttachPoint>();
     }
 
     private void Update()
@@ -48,6 +61,72 @@ public class Mob : MonoBehaviour
         _statusEffects.Add(newInstance);
 
         effect.OnApplied(this, MobStats.MobCCResist, newInstance.DataStore);
+
+        SpawnStatusFx(effect);
+    }
+
+    private void SpawnStatusFx(BaseStatusEffect effect)
+    {
+        if (!_statusFxes.TryGetValue(effect.GetType(), out StatusFx fxInfo))
+        {
+            GameObject fx = effect.FxData.Prefab;
+            if (fx == null)
+            {
+                return;
+            }
+
+            float scale = 1;
+            foreach (var settings in effect.FxData.TypeSize)
+            {
+                if (settings.Type == MobStats.MobType)
+                {
+                    scale = settings.Scale;
+                    break;
+                }
+            }
+
+            FxAttachPoint attachPoint = null;
+            foreach (FxAttachPoint point in _attachPoints)
+            {
+                if (point.LocationType == effect.FxData.Location)
+                {
+                    attachPoint = point;
+                    break;
+                }
+            }
+
+            if (attachPoint == null)
+            {
+                return;
+            }
+
+            GameObject fxInstance = Instantiate(fx, attachPoint.transform);
+            fxInstance.transform.localScale = Vector3.one * scale;
+
+            fxInfo = new StatusFx 
+            { 
+                Instance = fxInstance
+            };
+            _statusFxes.Add(effect.GetType(), fxInfo);
+        }
+
+        fxInfo.Count++;
+    }
+
+    private void RemoveStatusFx(BaseStatusEffect effect)
+    {
+        if (!_statusFxes.TryGetValue(effect.GetType(), out StatusFx fxInfo))
+        {
+            return;
+        }
+
+        fxInfo.Count--;
+
+        if (fxInfo.Count == 0)
+        {
+            _statusFxes.Remove(effect.GetType());
+            Destroy(fxInfo.Instance);
+        }
     }
 
     public void TakeDamage(int amount)
@@ -74,6 +153,7 @@ public class Mob : MonoBehaviour
             {
                 instance.Data.OnRemoved(this, MobStats.MobCCResist, instance.DataStore);
                 _statusEffects.RemoveAt(i);
+                RemoveStatusFx(instance.Data);
             }
         }
     }
