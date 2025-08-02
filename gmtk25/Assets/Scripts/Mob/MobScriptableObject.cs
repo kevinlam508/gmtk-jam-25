@@ -12,10 +12,12 @@ public class MobScriptableObject : ScriptableObject
 
     GameObject MobModel;
 
+    
 
 }
 
 
+[System.Flags]
 public enum MobTypes
 {
     Pawn,
