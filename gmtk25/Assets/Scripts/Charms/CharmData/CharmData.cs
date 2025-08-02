@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "CharmData", menuName = "Scriptable Objects/Charms/CharmData")]
@@ -46,6 +47,8 @@ public class CharmData : ScriptableObject
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _hitFx;
     [SerializeField] private GameObject _splashFx;
+    [SerializeField] private float _splashExpandDuration = .1f;
+    [SerializeField] private float _chainJumpDelay = .1f;
 
     public float Speed => _speed;
     public bool CanShove => _canShove;
@@ -75,7 +78,7 @@ public class CharmData : ScriptableObject
         return data;
     }
 
-    public void CollisionCallback(Collider other, TravelState travelStateData)
+    public void CollisionCallback(Collider other, TravelState travelStateData, CharmInstance instance)
     {
         Mob mob = other.GetComponent<Mob>();
         if (mob == null)
@@ -83,12 +86,28 @@ public class CharmData : ScriptableObject
             return;
         }
 
-        CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
-            .ApplyImpact(_impactType, mob, mob.transform.position, travelStateData);
+        // Pass a copy through the actual effects so that collision count can be updated immediately
+        // without affecting actual effect
+        // But need to get the hits back out of the result
+        TravelState copy = new TravelState
+        {
+            CollisionCount = travelStateData.CollisionCount,
+            HitCount = travelStateData.HitCount,
+
+            FrontNeighbor = travelStateData.FrontNeighbor,
+            BackNeighbor = travelStateData.BackNeighbor,
+        };
         travelStateData.CollisionCount++;
+
+        instance.StartCoroutine( 
+            CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
+                .ApplyImpact(_impactType, mob, mob.transform.position, copy, instance));
+
+        travelStateData.HitCount += copy.HitCount;
     }
 
-    private void ApplyImpact(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData)
+    private IEnumerator ApplyImpact(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData, 
+        CharmInstance instance)
     {
         ImpactTypes effectToApply = MaxImpactType;
         while (effectToApply != ImpactTypes.Single && (effectToApply & types) == 0)
@@ -103,24 +122,27 @@ public class CharmData : ScriptableObject
                 ApplyDamageAndStatusToMob(mob, travelStateData);
                 break;
             case ImpactTypes.Splash:
-                ApplySplash(remainingEffects, mob, location, travelStateData);
+                yield return ApplySplash(remainingEffects, mob, location, travelStateData, instance);
                 break;
             case ImpactTypes.Chain:
-                ApplyChain(remainingEffects, mob, location, travelStateData);
+                yield return ApplyChain(remainingEffects, mob, location, travelStateData, instance);
                 break;
         }
     }
 
-    private void ApplyChain(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData)
+    private IEnumerator ApplyChain(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData,
+        CharmInstance instance)
     {
         // Apply to first link of the chain
-        ApplyImpact(types, mob, location, travelStateData);
+        instance.StartCoroutine(ApplyImpact(types, mob, location, travelStateData, instance));
 
         // Try to find chain targets
         HashSet<Mob> alreadyHit = new HashSet<Mob>();
         alreadyHit.Add(mob);
         for (int i = 0; i < _chainCount; i++)
         {
+            yield return new WaitForSeconds(_chainJumpDelay);
+
             Mob nextHit = null;
             RaycastHit[] hits = Physics.SphereCastAll(location, _chainRadius, Vector3.up, 0);
             foreach (RaycastHit hit in hits)
@@ -138,37 +160,47 @@ public class CharmData : ScriptableObject
             // Ran out of targets
             if (nextHit == null)
             {
-                break;
+                yield break;
             }
 
-            Debug.DrawLine(location, nextHit.transform.position, Color.red, 100f);
             location = nextHit.transform.position;
-            ApplyImpact(types, nextHit, location, travelStateData);
+            instance.StartCoroutine(ApplyImpact(types, nextHit, location, travelStateData, instance));
             alreadyHit.Add(nextHit);
         }
     }
 
-    private void ApplySplash(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData)
+    private IEnumerator ApplySplash(ImpactTypes types, Mob mob, Vector3 location, TravelState travelStateData,
+        CharmInstance instance)
     {
         if (_explosionCount > 0 && travelStateData.CollisionCount >= _explosionCount)
         {
-            return;
+            yield break;
         }
 
         GameObject newSplashFx = Instantiate(_splashFx);
         newSplashFx.transform.position = mob.transform.position;
         newSplashFx.transform.localScale = Vector3.one * _explosionRadius;
 
-        RaycastHit[] hits = Physics.SphereCastAll(location, _explosionRadius, Vector3.up, 0);
-        foreach (RaycastHit hit in hits)
+        HashSet<Mob> alreadyHit = new HashSet<Mob>();
+        float timePassed = 0;
+        while (timePassed < _splashExpandDuration)
         {
-            Mob splashed = hit.collider.GetComponent<Mob>();
-            if (splashed == null)
-            {
-                continue;
-            }
+            yield return null;
+            timePassed += Time.deltaTime;
 
-            ApplyImpact(types, splashed, splashed.transform.position, travelStateData);
+            float radiusForTick = _explosionRadius * timePassed / _splashExpandDuration;
+            RaycastHit[] hits = Physics.SphereCastAll(location, radiusForTick, Vector3.up, 0);
+            foreach (RaycastHit hit in hits)
+            {
+                Mob splashed = hit.collider.GetComponent<Mob>();
+                if (splashed == null || alreadyHit.Contains(splashed))
+                {
+                    continue;
+                }
+
+                alreadyHit.Add(splashed);
+                instance.StartCoroutine(ApplyImpact(types, splashed, splashed.transform.position, travelStateData, instance));
+            }
         }
     }
 
