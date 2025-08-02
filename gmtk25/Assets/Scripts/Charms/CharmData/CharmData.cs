@@ -57,7 +57,7 @@ public class CharmData : ScriptableObject
 
     private CharmData Clone()
     {
-        CharmData data = new CharmData();
+        CharmData data = CreateInstance<CharmData>();
         data._explosionCount = _explosionCount;
         data._explosionRadius = _explosionRadius;
         data._chainCount = _chainCount;
@@ -68,6 +68,9 @@ public class CharmData : ScriptableObject
         Array.Copy(_onHitStatus, data._onHitStatus, _onHitStatus.Length);
         data._returnEffect = new BaseReturnEffect[_returnEffect.Length];
         Array.Copy(_returnEffect, data._returnEffect, _returnEffect.Length);
+
+        data._hitFx = _hitFx;
+        data._splashFx = _splashFx;
 
         return data;
     }
