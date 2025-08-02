@@ -177,6 +177,10 @@ half4 StylizedPassFragment(Varyings input) : SV_Target
     color.a = OutputAlpha(color.a, _Surface);
     #endif
 
+    // Hit Logic
+    float t = saturate((_Time.y - _CurrentTime)/_HitDuration);
+    color.rgb = lerp(_HitColor.rgb, color.rgb, t);
+
     return color;
 }
 

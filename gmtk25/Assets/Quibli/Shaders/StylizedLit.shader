@@ -87,6 +87,11 @@
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
+
+        [HDR] _HitColor("[FOLDOUT(Hit Effect){11}]Hit Color", Color) = (1, 0, 0, 1)
+        _HitDuration("Hit Duration", Float) = 0.3
+        _HitAmount("Hit Blend Amount", Range(0, 1)) = 0
+        _CurrentTime("CurrentTime", Float) = -1
     }
 
     SubShader
