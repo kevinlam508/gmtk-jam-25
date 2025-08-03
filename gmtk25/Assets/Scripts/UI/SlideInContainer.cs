@@ -11,6 +11,7 @@ public class SlideInContainer : MonoBehaviour
     [SerializeField] private Ease _toDestinationEasing;
     [SerializeField] private float _speed = 6;
     [SerializeField] private float _spacing = 10;
+    [SerializeField] private float _delay = 0.25f;
 
     private Dictionary<Transform, Sequence> _tweens = new Dictionary<Transform, Sequence>();
 
@@ -33,10 +34,10 @@ public class SlideInContainer : MonoBehaviour
             Vector3 beginToCurrent = child.position - _trackBegin.position;
             if (Vector3.Dot(alongTrack, beginToCurrent) < 0)
             {
-                slideIn.Append(child.DOMove(_trackBegin.position, beginToCurrent.magnitude / _speed).SetEase(_toBeginEasing));
+                slideIn.Insert(i * _delay, child.DOMove(_trackBegin.position, beginToCurrent.magnitude / _speed).SetEase(_toBeginEasing));
             }
 
-            slideIn.Append(child.DOMove(targetLocation, (child.position - targetLocation).magnitude / _speed).SetEase(_toDestinationEasing));
+            slideIn.Insert(i * _delay, child.DOMove(targetLocation, (child.position - targetLocation).magnitude / _speed).SetEase(_toDestinationEasing));
 
             _tweens.Add(child, slideIn);
         }

@@ -123,8 +123,9 @@ MonoBehaviour:
   _trackBegin: {fileID: 4173407504337391185}
   _toBeginEasing: 1
   _toDestinationEasing: 9
-  _speed: 600
+  _speed: 750
   _spacing: 150
+  _delay: 0.1
 --- !u!1 &1404465397870002695
 GameObject:
   m_ObjectHideFlags: 0
