@@ -59,7 +59,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaMultiply: 2
+    - _AlphaMultiply: 5
     - _CenterHardness: 0
     - _CenterOpacity: 0
     - _CenterPower: 1
@@ -67,13 +67,14 @@ Material:
     - _ColorIntensity: 1
     - _DepthFadeDistance: 1
     - _NoiseMultiply: 0.5
-    - _NoisePower: 2
+    - _NoisePower: 1
     - _NoiseValueSlider: 1
     - _OuterHardness: 0.1
     - _OuterOpactiy: 2
     - _OuterPower: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _NoiseSpeed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
