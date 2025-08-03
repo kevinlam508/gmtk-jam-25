@@ -26,6 +26,8 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public bool Interactable { get; set; } = true;
 
+    public Track _hoveredTrack;
+
     public void Init(CharmData data)
     {
         _data = data;
@@ -94,11 +96,27 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         while(true)
         {
             _dragParent.transform.position = Input.mousePosition + _dragOffset;
+
+            Track t = GetTrackUnderMouse();
+            if (t != _hoveredTrack)
+            {
+                if (_hoveredTrack != null)
+                {
+                    _hoveredTrack.ShowHighlight(false);
+                }
+
+                if (t != null)
+                {
+                    t.ShowHighlight(true);
+                }
+
+                _hoveredTrack = t;
+            }
             yield return null;
         }
     }
 
-    private bool TryPlaceCharm()
+    private Track GetTrackUnderMouse()
     {
         Vector3 screenPoint = Input.mousePosition;
         screenPoint.z = 1;
@@ -115,7 +133,6 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _dropLayers.value,
             QueryTriggerInteraction.Collide);
 
-        bool hasDropped = false;
         foreach (RaycastHit hit in hits)
         {
             // Not a track, don't care
@@ -126,11 +143,21 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 continue;
             }
 
-            track.AddCharm(_data);
-            hasDropped = true;
-            break;
+            return track;
         }
 
-        return hasDropped;
+        return null;
+    }
+
+    private bool TryPlaceCharm()
+    {
+        if (_hoveredTrack != null)
+        {
+            _hoveredTrack.ShowHighlight(false);
+        }
+
+        Track t = GetTrackUnderMouse();
+        t?.AddCharm(_data);
+        return t != null;
     }
 }

@@ -30,9 +30,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9068506935813876685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 64.20831, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1020753925088330774
@@ -123,8 +123,9 @@ MonoBehaviour:
   _trackBegin: {fileID: 4173407504337391185}
   _toBeginEasing: 1
   _toDestinationEasing: 9
-  _speed: 600
-  _spacing: 150
+  _speed: 750
+  _spacing: 100
+  _delay: 0.1
 --- !u!1 &1404465397870002695
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,8 +774,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9068506935813876685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111.1, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 469.80832, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -34,8 +34,10 @@ public class Mob : MonoBehaviour
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
     private Dictionary<Type, StatusFx> _statusFxes = new Dictionary<Type, StatusFx>();
 
-  
+    private AudioSource mobAudioSource;
+    public GameObject OnDeathSFXSpawner;
 
+    public GameObject spawnFX;
     private void Awake()
     {
         if (InitializeOnAwake)
@@ -47,6 +49,34 @@ public class Mob : MonoBehaviour
         }
     }
 
+
+    public void PlayOnHitSFX(int damageTaken, int currentHealth)
+    {
+        if (currentHealth > 0 && mobAudioSource.clip != null)
+        {
+            if (damageTaken < 5)
+            {
+                mobAudioSource.volume = .4f;
+            }
+            else if (damageTaken < 10)
+            {
+                mobAudioSource.volume = .5f;
+            }
+            else
+            {
+                mobAudioSource.volume = .6f;
+            }
+            mobAudioSource.Play();
+        }
+        else if (currentHealth <= 0)
+        {
+            GameObject sfx = Instantiate(OnDeathSFXSpawner, transform.position, Quaternion.identity);
+            Instantiate(spawnFX, artParentTransform.position, Quaternion.identity);
+            sfx.GetComponent<AudioSource>().clip = MobStats.onDeathSFX;
+            sfx.GetComponent<AudioSource>().Play();
+        }
+    }    
+
     /// <summary>
     /// Sets up the Default Enemy prefab with the stats that are included on a MobScriptableObject
     /// </summary>
@@ -54,10 +84,14 @@ public class Mob : MonoBehaviour
     public void InitializeEnemy(MobScriptableObject mobStats, MobTypesNonFlag mobTypeNonFlag)
     {
         MobStats = mobStats;
+        mobAudioSource = GetComponent<AudioSource>();
+        mobAudioSource.clip = MobStats.onHitSFX;
         GetComponent<MobMovement>().SetMobMovementSpeed(MobStats.MobSpeed);
         GetComponent<MobMovement>().OnMovementFinish += Mob_OnMovementFinish;
         _health.SetMaxHealth(MobStats.MobHealth);
+        _health.DamageTaken.AddListener(PlayOnHitSFX);
         GameObject modelInstance = Instantiate(MobStats.MobModel, artParentTransform.position, Quaternion.identity, artParentTransform);
+        Instantiate(spawnFX, artParentTransform.position, Quaternion.identity);
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         collider.center = mobStats.ColliderCenter;
         collider.radius = MobStats.ColliderRadius;

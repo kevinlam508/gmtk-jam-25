@@ -25,6 +25,7 @@ public class Track : MonoBehaviour
     }
 
     [SerializeField] private LineRenderer _line;
+    [SerializeField] private LineRenderer _hoverHighlight;
     [SerializeField] private float _minSeparation = .5f;
     private readonly List<float> _segmentDistances = new List<float>();
 
@@ -35,6 +36,12 @@ public class Track : MonoBehaviour
     void Start()
     {
         ComputeSegmentLengths();
+
+        Vector3[] points = new Vector3[_line.positionCount];
+        _line.GetPositions(points);
+        _hoverHighlight.positionCount = _line.positionCount;
+        _hoverHighlight.SetPositions(points);
+        ShowHighlight(false);
     }
 
     // Update is called once per frame
@@ -169,6 +176,11 @@ public class Track : MonoBehaviour
 
             VisualRoot = newInstance
         });
+    }
+
+    public void ShowHighlight(bool show)
+    {
+        _hoverHighlight.gameObject.SetActive(show);
     }
 
     private void ComputeSegmentLengths()

@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
     private void OnDisable()
     {
         _died.RemoveAllListeners();
+        _damageTaken.RemoveAllListeners();
     }
 
     /// <summary>
@@ -45,6 +46,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
+
         _damageTaken.Invoke(amount, _currentHealth);
 
         if (_currentHealth <= 0)

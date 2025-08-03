@@ -16,6 +16,9 @@ public class MobScriptableObject : ScriptableObject
     public float ColliderRadius;
     public float ColliderHeight;
 
+    public AudioClip onHitSFX;
+    public AudioClip onDeathSFX;
+
     
 
 }

@@ -442,9 +442,9 @@ RectTransform:
   - {fileID: 8000516890970368046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2528707577908943424
@@ -477,6 +477,7 @@ MonoBehaviour:
   _charmDangle: {fileID: 1609771588339279782}
   _charmImage: {fileID: 3287401082335330624}
   _shadow: {fileID: 1573883560497763034}
+  _hoveredTrack: {fileID: 0}
 --- !u!114 &5698875408325414451
 MonoBehaviour:
   m_ObjectHideFlags: 0
