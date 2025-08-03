@@ -5913,7 +5913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7980897334447694137, guid: ed68945b9af74e447b97c407bce95de7, type: 3}
       propertyPath: PlayScene
-      value: HowToPlay
+      value: Play Scene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22155,8 +22155,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6869535583945677943, guid: 735c4bb5271713946a505b4d3e510e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadPlayScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869535583945677943, guid: 735c4bb5271713946a505b4d3e510e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnClickSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869535583945677943, guid: 735c4bb5271713946a505b4d3e510e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelLoadTransitions, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6869535583945677943, guid: 735c4bb5271713946a505b4d3e510e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
