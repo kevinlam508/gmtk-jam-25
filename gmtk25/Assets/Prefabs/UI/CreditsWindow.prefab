@@ -729,7 +729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 491.2
+      value: 165.59999
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -837,7 +837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1044.8
+      value: 719.2
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -945,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1044.8
+      value: 719.2
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1047,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 491.2
+      value: 165.59999
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1155,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1044.8
+      value: 719.2
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1263,7 +1263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1044.8
+      value: 719.2
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 491.2
+      value: 165.59999
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1410,7 +1410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 202826476320341419, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_text
-      value: '<sprite="UI_BeadsCharms" name="UI_Charm_Heart"> Olivia Uzosike
+      value: '<sprite="UI_BeadsCharms" name="UI_Charm_Heart"> Tselky
 
         Audio'
       objectReference: {fileID: 0}
@@ -1480,7 +1480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 491.2
+      value: 165.59999
       objectReference: {fileID: 0}
     - target: {fileID: 8372215541815986672, guid: 74478133e35563b42955b27211f1dd82, type: 3}
       propertyPath: m_AnchoredPosition.y

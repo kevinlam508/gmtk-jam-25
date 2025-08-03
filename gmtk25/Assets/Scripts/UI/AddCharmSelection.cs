@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 
 using Random = UnityEngine.Random;
 
