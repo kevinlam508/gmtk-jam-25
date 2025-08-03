@@ -7,13 +7,16 @@ public class CharmTray : MonoBehaviour
 {
     [SerializeField] private PlayerInventory _charmInventory;
 
+    [Header("Appearance")]
+    [SerializeField] private CharmOption _optionTemplate;
+    [SerializeField] private Transform _handParent;
+    [SerializeField] private Transform _pileParent;
+
     [Header("Hand")]
     [SerializeField] private int _startingHandSize = 3;
     [SerializeField] private int _startingMaxHandSize = 5;
     [SerializeField] private int _minMaxHandSize = 1;
     [SerializeField] private int _maxMaxHandSize = 1;
-    [SerializeField] private CharmOption _optionTemplate;
-    [SerializeField] private Transform _handParent;
 
     [Header("Draw")]
     [SerializeField] private float _startingDrawCooldown = 2f;
@@ -30,6 +33,8 @@ public class CharmTray : MonoBehaviour
     private float _currentDrawCooldown;
     private int _currentMaxHandSize;
 
+    private readonly Dictionary<CharmData, List<CharmOption>> _optionPile = new Dictionary<CharmData, List<CharmOption>>();
+
     private void Start()
     {
         _charmInventory.Init();
@@ -39,15 +44,21 @@ public class CharmTray : MonoBehaviour
     public void ResetForNextRound()
     {
         _currentHand.Clear();
-        for(int i = 0; i < _handParent.childCount; i++)
+        _optionPile.Clear();
+        for (int i = 0; i < _handParent.childCount; i++)
         {
             Destroy(_handParent.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < _pileParent.childCount; i++)
+        {
+            Destroy(_pileParent.GetChild(i).gameObject);
         }
 
         _currentDrawCooldown = _startingDrawCooldown;
         _currentMaxHandSize = _startingMaxHandSize;
 
         _charmInventory.SetupForRound();
+        AddCharmsToPile();
         DrawInitialHand();
 
         _charmInventory.CharmReturned += OnCharmsRefilled;
@@ -89,9 +100,12 @@ public class CharmTray : MonoBehaviour
             return false;
         }
 
-        CharmOption newOption = Instantiate(_optionTemplate, _handParent);
-        newOption.Init(charm);
-        newOption.CharmPlaced += OnCharmPlaced;
+        List<CharmOption> optionInstances = _optionPile[charm];
+        CharmOption option = optionInstances[0];
+        optionInstances.RemoveAt(0);
+
+        option.Interactable = true;
+        option.transform.SetParent(_handParent, true);
 
         _currentHand.Add(charm);
 
@@ -110,8 +124,53 @@ public class CharmTray : MonoBehaviour
         }
     }
 
-    private void OnCharmsRefilled()
+    private void AddCharmsToPile()
     {
+        Dictionary<CharmData, int> instanceCount = new Dictionary<CharmData, int>();
+        foreach (CharmData data in _charmInventory.DrawPile)
+        {
+            instanceCount.TryGetValue(data, out int count);
+            count++;
+            instanceCount[data] = count;
+
+
+            if (!_optionPile.TryGetValue(data, out var list))
+            {
+                list = new List<CharmOption>();
+                _optionPile.Add(data, list);
+            }
+
+            if (list.Count < count)
+            {
+                CharmOption newOption = Instantiate(_optionTemplate, _pileParent);
+                newOption.Init(data);
+                newOption.CharmPlaced += OnCharmPlaced;
+                newOption.Interactable = false;
+
+                list.Add(newOption);
+            }
+        }
+    }
+
+    private void AddCharmToPile(CharmData data)
+    {
+        if (!_optionPile.TryGetValue(data, out var list))
+        {
+            list = new List<CharmOption>();
+            _optionPile.Add(data, list);
+        }
+
+        CharmOption newOption = Instantiate(_optionTemplate, _pileParent);
+        newOption.Init(data);
+        newOption.CharmPlaced += OnCharmPlaced;
+        newOption.Interactable = false;
+
+        list.Add(newOption);
+    }
+
+    private void OnCharmsRefilled(CharmData data)
+    {
+        AddCharmToPile(data);
         if (!_drawOnRefill)
         {
             return;
