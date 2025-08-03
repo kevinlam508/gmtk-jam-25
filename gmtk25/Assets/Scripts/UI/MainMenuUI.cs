@@ -28,7 +28,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnSettingsOpened()
     {
         _settingsWindow.SetActive(true);
-        _settingsUiBG.DOFade(1f, 1f).SetEase(_settingsUiElementsFadeIn);
+        _settingsUiBG.DOFade(.4f, 1f).SetEase(_settingsUiElementsFadeIn);
         TweenIn_Settings();
     }
 
