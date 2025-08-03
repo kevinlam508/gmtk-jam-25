@@ -132,6 +132,7 @@ public class AddCharmSelection : MonoBehaviour
     {
         _inventory.AddCharm(data);
         EnableAddButtons(false);
+        Hide(true);
     }
 
     private void EnableAddButtons(bool enable)

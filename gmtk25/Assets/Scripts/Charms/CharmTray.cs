@@ -167,6 +167,7 @@ public class CharmTray : MonoBehaviour
         CharmOption newOption = Instantiate(_optionTemplate, _pileParent);
         newOption.Init(data);
         newOption.CharmPlaced += OnCharmPlaced;
+        newOption.CharmHeld += OnCharmHeld;
         newOption.Interactable = false;
 
         list.Add(newOption);
