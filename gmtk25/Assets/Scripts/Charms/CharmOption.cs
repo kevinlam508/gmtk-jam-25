@@ -24,9 +24,11 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Image _charmImage;
     [SerializeField] private Image _shadow;
 
+    [SerializeField] private TooltipTrigger _tooltip;
+
     public bool Interactable { get; set; } = true;
 
-    public Track _hoveredTrack;
+    private Track _hoveredTrack;
 
     public void Init(CharmData data)
     {
@@ -41,6 +43,12 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             _charmImage.sprite = data.UiSprite;
             _beadRoot.SetActive(false);
+        }
+
+        if (_tooltip != null)
+        {
+            _tooltip.header = data.TooltipName;
+            _tooltip.content = data.TooltipDescription;
         }
     }
 

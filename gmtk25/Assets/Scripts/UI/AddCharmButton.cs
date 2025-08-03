@@ -8,6 +8,7 @@ public class AddCharmButton : MonoBehaviour
 
     [SerializeField] public Button _addButton;
     [SerializeField] private Image _iamge;
+    [SerializeField] private TooltipTrigger _tooltip;
 
     private CharmData _data;
 
@@ -26,6 +27,12 @@ public class AddCharmButton : MonoBehaviour
     {
         _data = data;
         _iamge.sprite = data.UiSprite;
+
+        if (_tooltip != null)
+        {
+            _tooltip.header = data.TooltipName;
+            _tooltip.content = data.TooltipDescription;
+        }
     }
 
     private void OnButtonPressed()

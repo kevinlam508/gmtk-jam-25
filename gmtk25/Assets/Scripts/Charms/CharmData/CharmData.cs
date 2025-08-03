@@ -55,6 +55,8 @@ public class CharmData : ScriptableObject
 
     [Header("UI")]
     [SerializeField] private Sprite _uiSprite;
+    [SerializeField] private string _tooltipName;
+    [SerializeField] private string _tooltipDescription;
 
     public float Speed => _speed;
     public bool CanShove => _canShove;
@@ -64,6 +66,9 @@ public class CharmData : ScriptableObject
 
     public Sprite UiSprite => _uiSprite;
     public bool IsBead => _isBead;
+
+    public string TooltipName => _tooltipName;
+    public string TooltipDescription => _tooltipDescription;
 
     public TravelState NewTravelStateData() => new TravelState();
 

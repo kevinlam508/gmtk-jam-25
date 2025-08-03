@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _addButton: {fileID: 3900198735347112705}
   _iamge: {fileID: 1000499525354128955}
+  _tooltip: {fileID: 812873279582273910}
 --- !u!1 &5672394568395414666
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +140,7 @@ GameObject:
   - component: {fileID: 4525101119355484535}
   - component: {fileID: 3900198735347112705}
   - component: {fileID: 1010802412056897673}
+  - component: {fileID: 812873279582273910}
   m_Layer: 5
   m_Name: Add
   m_TagString: Untagged
@@ -262,3 +264,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &812873279582273910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952512597846664501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601fb1a5d5a5ef341a0f6838233117a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 
