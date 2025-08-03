@@ -69,4 +69,12 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void ShowDropHighlights(bool show)
+    {
+        foreach (Track t in _tracks)
+        {
+            t.ShowDropHighlight(show);
+        }
+    }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CharmTray : MonoBehaviour
 {
     [SerializeField] private PlayerInventory _charmInventory;
+    [SerializeField] private UnityEvent _charmSelected;
+    [SerializeField] private UnityEvent _charmUnselected;
 
     [Header("Appearance")]
     [SerializeField] private CharmOption _optionTemplate;
@@ -145,6 +148,7 @@ public class CharmTray : MonoBehaviour
                 CharmOption newOption = Instantiate(_optionTemplate, _pileParent);
                 newOption.Init(data);
                 newOption.CharmPlaced += OnCharmPlaced;
+                newOption.CharmHeld += OnCharmHeld;
                 newOption.Interactable = false;
 
                 list.Add(newOption);
@@ -203,6 +207,18 @@ public class CharmTray : MonoBehaviour
         // If there's hand space, draw and reset the CD
         _drawCoroutine = null;
         TryDrawOne();
+    }
+
+    private void OnCharmHeld(bool held)
+    {
+        if (held)
+        {
+            _charmSelected.Invoke();
+        }
+        else
+        {
+            _charmUnselected.Invoke();
+        }
     }
 
     private void TryDrawOne()

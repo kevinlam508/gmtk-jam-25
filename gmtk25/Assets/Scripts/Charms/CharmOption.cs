@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public event Action<int> CharmPlaced;
+    public event Action<bool> CharmHeld;
 
     private CharmData _data;
 
@@ -72,6 +73,8 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             _charmDangle.BeginDangle();
         }
+
+        CharmHeld?.Invoke(true);
     }
     
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
@@ -97,6 +100,8 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             _charmDangle.EndDangle();
         }
+
+        CharmHeld?.Invoke(false);
     }
 
     private IEnumerator DragCoroutine()

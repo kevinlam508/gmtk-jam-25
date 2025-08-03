@@ -34,6 +34,8 @@ public class Track : MonoBehaviour
 
     [SerializeField] private AudioSource _placeSource;
 
+    [SerializeField] private GameObject _dropHighlight;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +46,7 @@ public class Track : MonoBehaviour
         _hoverHighlight.positionCount = _line.positionCount;
         _hoverHighlight.SetPositions(points);
         ShowHighlight(false);
+        ShowDropHighlight(false);
     }
 
     // Update is called once per frame
@@ -185,6 +188,14 @@ public class Track : MonoBehaviour
     public void ShowHighlight(bool show)
     {
         _hoverHighlight.gameObject.SetActive(show);
+    }
+
+    public void ShowDropHighlight(bool show)
+    {
+        if (_dropHighlight != null)
+        {
+            _dropHighlight.SetActive(show);
+        }
     }
 
     private void ComputeSegmentLengths()
