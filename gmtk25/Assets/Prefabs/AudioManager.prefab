@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMusicTrack: {fileID: 0}
   MainMusicAudioSource: {fileID: 4389327105410557269}
-  defaultMusicValue: 0.7
+  attachedSlider: {fileID: 0}
+  mixer: {fileID: 24300002, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
 --- !u!82 &4389327105410557269
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ AudioSource:
   m_GameObject: {fileID: 6142164951799758841}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
