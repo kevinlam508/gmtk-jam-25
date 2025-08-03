@@ -18,8 +18,11 @@ public class AudioSettingManager : MonoBehaviour
 
     private void OnEnable()
     {
-        attachedSlider.value = gameSettings.audioVolume;
-        attachedSlider.onValueChanged.AddListener(ChangeAudioVolume);
+        if (attachedSlider != null)
+        {
+            attachedSlider.value = gameSettings.audioVolume;
+            attachedSlider.onValueChanged.AddListener(ChangeAudioVolume);
+        }
         mixer.SetFloat("MasterVolume", LinearToDecibel(gameSettings.audioVolume));
     }
 
