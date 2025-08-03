@@ -23,3 +23,5 @@ MonoBehaviour:
   ColliderCenter: {x: 0.014558673, y: 0.19533002, z: 0}
   ColliderRadius: 0.6542121
   ColliderHeight: 1.461069
+  onHitSFX: {fileID: 0}
+  onDeathSFX: {fileID: 8300000, guid: 4bca9d4e5ac4fcc4b9d684e6bbefe8b8, type: 3}

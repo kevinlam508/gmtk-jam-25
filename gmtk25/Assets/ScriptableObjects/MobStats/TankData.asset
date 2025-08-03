@@ -24,4 +24,4 @@ MonoBehaviour:
   ColliderRadius: 1
   ColliderHeight: 2.5
   onHitSFX: {fileID: 0}
-  onDeathSFX: {fileID: 0}
+  onDeathSFX: {fileID: 8300000, guid: 4bca9d4e5ac4fcc4b9d684e6bbefe8b8, type: 3}
