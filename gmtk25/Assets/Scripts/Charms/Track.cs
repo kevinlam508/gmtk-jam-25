@@ -180,7 +180,6 @@ public class Track : MonoBehaviour
 
     public void ShowHighlight(bool show)
     {
-        _line.gameObject.SetActive(!show);
         _hoverHighlight.gameObject.SetActive(show);
     }
 
