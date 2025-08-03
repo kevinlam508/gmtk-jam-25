@@ -90,6 +90,8 @@ public class SpawnerCore : MonoBehaviour
         AddCharmSelection.Instance.GetClosedEvent().AddListener(StartWave);
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -120,6 +122,8 @@ public class SpawnerCore : MonoBehaviour
             EndWaveStage2();
         }
     }
+
+
 
     /// <summary>
     /// Uses the defaultTimeBetweenSpawns and comes up with the next mob spawn time with a little bit of randomness
@@ -642,6 +646,11 @@ public class SpawnerCore : MonoBehaviour
 
         //Debug.Log(randomValue);
         return randomValue;
+    }
+
+    public int GetWaveNumber()
+    {
+        return waveNumber;
     }
 
 }
