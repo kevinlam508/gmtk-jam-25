@@ -334,6 +334,7 @@ MonoBehaviour:
   _hoverHighlight: {fileID: 1636298691063620343}
   _minSeparation: 1
   _charmPrefab: {fileID: 0}
+  _placeSource: {fileID: 207417091362285327}
 --- !u!82 &207417091362285327
 AudioSource:
   m_ObjectHideFlags: 0
