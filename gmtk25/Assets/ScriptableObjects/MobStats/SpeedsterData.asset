@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MobType: 8
   MobTypeNonFlag: 2
-  MobHealth: 3
+  MobHealth: 1
   MobSpeed: 2.3
   MobAttackDamage: 1
   MobCCResist: 0
