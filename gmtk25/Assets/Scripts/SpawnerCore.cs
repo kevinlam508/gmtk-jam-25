@@ -44,7 +44,21 @@ public class SpawnerCore : MonoBehaviour
 
     [SerializeField]
     SpawnRateScriptableObject currentSpawnRateStats;//the current loaded  in SpawnRates
-    int waveNumber = 0;
+
+    private int _waveNumber = 0;
+    public int waveNumber 
+    {
+        get => _waveNumber;
+        set
+        {
+            _waveNumber = value;
+            if (_waveCountText != null)
+            {
+                _waveCountText.text = _waveNumber.ToString();
+            }
+        }
+    } 
+    public TextMeshProUGUI _waveCountText;
     int NumberOfSpawnsForThisWave;
     MobTypes agentTypesUnlocked;//not really used anymore teehee
 
@@ -238,7 +252,6 @@ public class SpawnerCore : MonoBehaviour
     {
         yield return new WaitForSeconds(timeTowait);
         waveNumber++;
-
 
         if (waveNumber > 4)
         {
