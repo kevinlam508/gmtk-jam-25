@@ -10,20 +10,23 @@ public class AudioSettingManager : MonoBehaviour
     public AudioMixer mixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    System.Collections.IEnumerator Start()
     {
+        yield return null;
+
+        mixer.SetFloat("MasterVolume", LinearToDecibel(gameSettings.audioVolume));
         if (MainMusicTrack != null)
             PlayMusic();
+
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         if (attachedSlider != null)
         {
             attachedSlider.value = gameSettings.audioVolume;
             attachedSlider.onValueChanged.AddListener(ChangeAudioVolume);
         }
-        mixer.SetFloat("MasterVolume", LinearToDecibel(gameSettings.audioVolume));
     }
 
     void PlayMusic()
@@ -42,7 +45,7 @@ public class AudioSettingManager : MonoBehaviour
         float dB;
 
         if (linear != 0)
-            dB = 20.0f * Mathf.Log10(linear);
+            dB = (float)8.6858896380650365530225783783321 * Mathf.Log(linear);
         else
             dB = -144.0f;
 
