@@ -23,6 +23,9 @@ MonoBehaviour:
   _damage: 10
   _onHitStatus: []
   _returnEffect: []
+  _hitSfx: {fileID: 8300000, guid: 6ff11a3187968714abe0a5219e10d01b, type: 3}
+  _chainSfx: {fileID: 8300000, guid: 29d1719283fdc32409abe9373be31279, type: 3}
+  _splashSfx: {fileID: 8300000, guid: 9429f098c4f524d448f31681f6ea3c60, type: 3}
   _prefab: {fileID: 8087276763814975203, guid: 4107ea44500df4a4081fdcaea5087cb1, type: 3}
   _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
   _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
