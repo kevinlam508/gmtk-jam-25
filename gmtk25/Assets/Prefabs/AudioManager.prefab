@@ -48,7 +48,7 @@ MonoBehaviour:
   MainMusicTrack: {fileID: 0}
   MainMusicAudioSource: {fileID: 4389327105410557269}
   attachedSlider: {fileID: 0}
-  mixer: {fileID: 24300002, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
+  mixer: {fileID: 24100000, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
 --- !u!82 &4389327105410557269
 AudioSource:
   m_ObjectHideFlags: 0
