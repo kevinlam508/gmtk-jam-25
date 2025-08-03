@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth;
 
     [SerializeField] private DamageTakenEvent _damageTaken;
+    [SerializeField] private DamageTakenEvent _healRecieved;
     [SerializeField] private DamageTakenEvent _healthChanged;
     [SerializeField] private DeathEvent _died;
 
@@ -73,6 +74,7 @@ public class Health : MonoBehaviour
         _currentHealth += amount;
         _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
 
+        _healRecieved.Invoke(amount, _currentHealth);
         _healthChanged.Invoke(_currentHealth, _maxHealth);
     }
 }
