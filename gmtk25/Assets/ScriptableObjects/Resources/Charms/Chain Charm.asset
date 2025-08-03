@@ -19,7 +19,7 @@ MonoBehaviour:
   _explosionCount: 0
   _explosionRadius: 0
   _chainCount: 3
-  _chainRadius: 5
+  _chainRadius: 4
   _damage: 2
   _onHitStatus: []
   _returnEffect: []
