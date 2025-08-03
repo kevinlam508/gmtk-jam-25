@@ -421,6 +421,17 @@ PrefabInstance:
       addedObject: {fileID: 1535491048}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6fbc6a40f8262a40a05d3fe701c1c39, type: 3}
+--- !u!114 &543739641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2786377378439257785, guid: a6fbc6a40f8262a40a05d3fe701c1c39, type: 3}
+  m_PrefabInstance: {fileID: 543739640}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &547253977 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1167992747498424870, guid: ec8b3921705c2414ea02da42da9bfebd, type: 3}
@@ -1263,6 +1274,10 @@ PrefabInstance:
       propertyPath: _tray
       value: 
       objectReference: {fileID: 1760303467}
+    - target: {fileID: 4406446482042534069, guid: ec8b3921705c2414ea02da42da9bfebd, type: 3}
+      propertyPath: remainingEnemyText
+      value: 
+      objectReference: {fileID: 543739641}
     - target: {fileID: 5098555859105952457, guid: ec8b3921705c2414ea02da42da9bfebd, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.75

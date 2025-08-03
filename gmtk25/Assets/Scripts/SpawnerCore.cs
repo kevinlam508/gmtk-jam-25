@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 
 
 public class SpawnerCore : MonoBehaviour
@@ -12,6 +12,7 @@ public class SpawnerCore : MonoBehaviour
     public int DebugStartAtSpecificRound = 1;
     public float delayUntilGameStarts = 2.3f;
     public float downTimeAfterWave = 1f;
+    public TextMeshProUGUI remainingEnemyText;
 
     public MobScriptableObject[] enemyGameStatArray;//Holds each mobs individual stats
     public GameObject basePawnPrefab;//the base pawn prefab that needs thats to function
@@ -109,6 +110,8 @@ public class SpawnerCore : MonoBehaviour
 
             }
         }
+
+        remainingEnemyText.text = "" + NumberOfSpawnsForThisWave;
 
         if (waitingOnEnemiesToDie)
         {
