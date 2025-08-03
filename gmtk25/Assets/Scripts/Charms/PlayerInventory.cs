@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Scriptable Objects/PlayerInventory")]
 public class PlayerInventory : ScriptableObject
 {
-    public event Action CharmReturned;
+    public event Action<CharmData> CharmReturned;
 
     [SerializeField] private List<CharmData> _deck;
 
@@ -16,6 +16,7 @@ public class PlayerInventory : ScriptableObject
     private readonly List<CharmData> _discardPile = new List<CharmData>();
 
     public List<CharmData> EntireDeck => _entireDeck;
+    public List<CharmData> DrawPile => _drawPile;
 
     public void Init()
     {
@@ -53,7 +54,7 @@ public class PlayerInventory : ScriptableObject
     public void ReturnCharm(CharmData data)
     {
         _discardPile.Add(data);
-        CharmReturned?.Invoke();
+        CharmReturned?.Invoke(data);
     }
 
     public void AddCharm(CharmData data)

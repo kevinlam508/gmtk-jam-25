@@ -23,10 +23,10 @@ MonoBehaviour:
   _damage: 2
   _onHitStatus: []
   _returnEffect: []
-  _prefab: {fileID: 3005140030163739832, guid: 084a7fe0ff1088a4fb8fd632d9e3304b, type: 3}
+  _prefab: {fileID: 6405798097587109190, guid: a5f10b9ec187b204c985a34222f9c960, type: 3}
   _hitFx: {fileID: 105975757766759451, guid: 0dc5a1e8711f00349b98c8aae14b7a22, type: 3}
   _splashFx: {fileID: 105975757766759451, guid: 4f2c2ee43952f9e4e807db3cc987f9b9, type: 3}
   _splashExpandDuration: 0.1
   _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
-  _uiSprite: {fileID: 0}
+  _uiSprite: {fileID: 1679705329, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}

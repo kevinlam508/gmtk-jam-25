@@ -16,5 +16,8 @@ MonoBehaviour:
   _fxData:
   - Prefab: {fileID: 3297608759919486898, guid: 6ad04dc59da56e5478ea029afcbf91de, type: 3}
     TypeSize: []
+    Location: 1
+  - Prefab: {fileID: 8168136991690994107, guid: fa3ea8fe1d5729b4688f07869dcfe34e, type: 3}
+    TypeSize: []
     Location: 0
   _speedMultiplier: 0.5

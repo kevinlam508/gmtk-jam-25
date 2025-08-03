@@ -15,7 +15,15 @@ MonoBehaviour:
   _duration: 5
   _fxData:
   - Prefab: {fileID: 8124967683284721214, guid: 9fac851adf8b2884ca4af8dc5f634239, type: 3}
-    TypeSize: []
+    TypeSize:
+    - Type: 0
+      Scale: 2
+    - Type: 1
+      Scale: 2
+    - Type: 3
+      Scale: 2
+    - Type: 4
+      Scale: 2
     Location: 0
   _damagePerTick: 1
   _timeBetweenTicks: 1

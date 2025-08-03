@@ -24,6 +24,8 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Image _charmImage;
     [SerializeField] private Image _shadow;
 
+    public bool Interactable { get; set; } = true;
+
     public void Init(CharmData data)
     {
         _data = data;
@@ -47,6 +49,11 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
+        if (!Interactable)
+        {
+            return;
+        }
+
         _dragOffset = _dragParent.transform.position - Input.mousePosition;
         _dragRoutine = StartCoroutine(DragCoroutine());
         _shadow.enabled = false;
