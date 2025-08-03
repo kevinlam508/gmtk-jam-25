@@ -12,14 +12,16 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth;
 
     [SerializeField] private DamageTakenEvent _damageTaken;
+    [SerializeField] private DamageTakenEvent _healthChanged;
     [SerializeField] private DeathEvent _died;
 
     private int _currentHealth;
 
     public DamageTakenEvent DamageTaken => _damageTaken;
 
-    private void Awake()
+    private void Start()
     {
+        _currentHealth = _maxHealth;
     }
 
     public DeathEvent GetOnDeathEvent()
@@ -49,6 +51,8 @@ public class Health : MonoBehaviour
 
         _damageTaken.Invoke(amount, _currentHealth);
 
+        _healthChanged.Invoke(_currentHealth, _maxHealth);
+
         if (_currentHealth <= 0)
         {
             _died.Invoke(this.gameObject, true);
@@ -68,5 +72,7 @@ public class Health : MonoBehaviour
     {
         _currentHealth += amount;
         _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+
+        _healthChanged.Invoke(_currentHealth, _maxHealth);
     }
 }

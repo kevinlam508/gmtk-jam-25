@@ -8,6 +8,8 @@ public class SpawnerCore : MonoBehaviour
 {
     public static SpawnerCore Instance { get; private set; }
 
+    [SerializeField] private Player _player;
+
     public bool enableDebug = false;
     public int DebugStartAtSpecificRound = 1;
     public float delayUntilGameStarts = 2.3f;
@@ -372,7 +374,7 @@ public class SpawnerCore : MonoBehaviour
 
         GameObject newEnemy = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
         newEnemy.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
-        newEnemy.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
+        newEnemy.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType, _player);
         enemiesOnScreen++;
 
         if (enemyType == MobTypesNonFlag.Swarmer)
@@ -381,7 +383,7 @@ public class SpawnerCore : MonoBehaviour
             {
                 GameObject swamerExtra = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
                 swamerExtra.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
-                swamerExtra.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
+                swamerExtra.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType, _player);
                 swamerExtra.GetComponent<Health>().GetOnDeathEvent().AddListener(OnEnemyDeath);
                 enemiesOnScreen++;
             }
