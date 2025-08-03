@@ -32,6 +32,8 @@ public class Track : MonoBehaviour
     [SerializeField] private CharmInstance _charmPrefab;
     private readonly List<InstanceData> _activeCharms = new List<InstanceData>();
 
+    [SerializeField] private AudioSource _placeSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -163,6 +165,8 @@ public class Track : MonoBehaviour
 
     public void AddCharm(CharmData charm)
     {
+        _placeSource.Play();
+
         GameObject newInstance = Instantiate(charm.Prefab, transform);
         CharmData.TravelState travelState = charm.NewTravelStateData();
 
