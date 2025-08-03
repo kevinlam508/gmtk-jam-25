@@ -67,6 +67,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _died:
     m_PersistentCalls:
       m_Calls: []
@@ -163,7 +166,7 @@ AudioSource:
   m_GameObject: {fileID: 7022563152175018220}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

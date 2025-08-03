@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+
 public class AudioSettingManager : MonoBehaviour
 {
     public AudioClip MainMusicTrack;
     public AudioSource MainMusicAudioSource;
     public Slider attachedSlider;
+    public AudioMixer mixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +30,7 @@ public class AudioSettingManager : MonoBehaviour
 
     public void ChangeAudioVolume(float value)
     {
-        MainMusicAudioSource.volume = value;
+        mixer.SetFloat("MasterVolume", value);
         gameSettings.audioVolume = value;
     }
 
