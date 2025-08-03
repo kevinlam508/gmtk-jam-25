@@ -19,6 +19,8 @@ public class AudioSettingManager : MonoBehaviour
     private void OnEnable()
     {
         attachedSlider.value = gameSettings.audioVolume;
+        attachedSlider.onValueChanged.AddListener(ChangeAudioVolume);
+        mixer.SetFloat("MasterVolume", LinearToDecibel(gameSettings.audioVolume));
     }
 
     void PlayMusic()
@@ -30,8 +32,19 @@ public class AudioSettingManager : MonoBehaviour
 
     public void ChangeAudioVolume(float value)
     {
-        mixer.SetFloat("MasterVolume", value);
+        mixer.SetFloat("MasterVolume", LinearToDecibel(value));
         gameSettings.audioVolume = value;
+    }
+    private float LinearToDecibel(float linear)
+    {
+        float dB;
+
+        if (linear != 0)
+            dB = 20.0f * Mathf.Log10(linear);
+        else
+            dB = -144.0f;
+
+        return dB;
     }
 
     // Update is called once per frame
