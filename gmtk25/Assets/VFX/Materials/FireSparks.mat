@@ -60,11 +60,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _CenterHardness: 0.5
-    - _CenterOpacity: 10
+    - _CenterOpacity: 5
     - _CenterPower: 2
     - _CenterRadius: 0.25
-    - _ColorIntensity: 4
-    - _NoiseStrength: 0.09
+    - _ColorIntensity: 10
+    - _NoiseStrength: 0
     - _OuterHardness: 0.5
     - _OuterOpactiy: 1
     - _OuterPower: 2

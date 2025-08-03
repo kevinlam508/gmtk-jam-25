@@ -170,6 +170,9 @@
         },
         {
             "m_Id": "0f5879bbec0f4be18ca05ec278a90edd"
+        },
+        {
+            "m_Id": "0ac1b0df381e47589da47d81bbe9f4e3"
         }
     ],
     "m_GroupDatas": [
@@ -192,6 +195,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "a5ca1360b78d410b9c0f38747a61338e"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "0ac1b0df381e47589da47d81bbe9f4e3"
+                },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "5f4f138207564ac5ac8687627f3d2be5"
                 },
                 "m_SlotId": 0
             }
@@ -625,7 +642,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "5f4f138207564ac5ac8687627f3d2be5"
+                    "m_Id": "0ac1b0df381e47589da47d81bbe9f4e3"
                 },
                 "m_SlotId": 0
             }
@@ -901,6 +918,30 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "0744805de914471996b242a4cdf0b1a4",
+    "m_Id": 0,
+    "m_DisplayName": "In",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "In",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "0968f7a219e54075bfb52f99823f2090",
     "m_Group": {
@@ -973,6 +1014,44 @@
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SaturateNode",
+    "m_ObjectId": "0ac1b0df381e47589da47d81bbe9f4e3",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Saturate",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -158.77011108398438,
+            "y": 331.2299499511719,
+            "width": 209.3333282470703,
+            "height": 280.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "0744805de914471996b242a4cdf0b1a4"
+        },
+        {
+            "m_Id": "fd0ffaf900d647a886a6e9bae08194c3"
+        }
+    ],
+    "synonyms": [
+        "clamp"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": false,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
     }
 }
 
@@ -3781,8 +3860,8 @@
     "m_ObjectId": "989e7469e75949b7b37a0a0c4e92f0dc",
     "m_Title": "CenterGlow",
     "m_Position": {
-        "x": -2269.99951171875,
-        "y": 873.3333129882813
+        "x": -2270.0,
+        "y": 873.3333740234375
     }
 }
 
@@ -4495,9 +4574,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -219.33340454101563,
-            "y": 155.33326721191407,
-            "width": 127.33331298828125,
+            "x": -320.6667175292969,
+            "y": 213.3332977294922,
+            "width": 127.33335876464844,
             "height": 119.99998474121094
         }
     },
@@ -5326,6 +5405,30 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "faeaa699d77241449df2f1256a42ebdf",
+    "m_Id": 1,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "fd0ffaf900d647a886a6e9bae08194c3",
     "m_Id": 1,
     "m_DisplayName": "Out",
     "m_SlotType": 1,
