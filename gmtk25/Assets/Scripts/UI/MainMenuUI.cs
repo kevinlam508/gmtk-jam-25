@@ -34,12 +34,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSettingsClosed()
     {
-        FadeOutCoroutine();
+        StartCoroutine(FadeOutCoroutine());
     }
     private IEnumerator FadeOutCoroutine()
     {
         Tween myTween = _settingsUiBG.DOFade(0f, 1f).SetEase(_settingsUiElementsFadeIn);
-        
+        _settingsUiElements.DOMoveY(Screen.height * 1.5f, _settingsUiTweenTime).SetEase(_settingsUiElementsCurveIn);
         yield return myTween.WaitForCompletion();
         _settingsWindow.SetActive(false);
         // This log will happen after the tween has completed
