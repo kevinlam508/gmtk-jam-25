@@ -426,8 +426,8 @@ MonoBehaviour:
   _waitTimeMax: 0
   _waitTimeMin: 0
   source: {fileID: 0}
-  hover: {fileID: 8300000, guid: 7d25ca544d3516e4f956a6879caed31f, type: 3}
-  click: {fileID: 8300000, guid: 553a534018d30f445aa7fd7b9c98ef1b, type: 3}
+  hover: {fileID: 8300000, guid: d62d4f15d41bbec4297667d778946a61, type: 3}
+  click: {fileID: 8300000, guid: 9835197f41c889149a0b05bf9cbc0fca, type: 3}
   _charmMesh: {fileID: 9186120442285373681}
 --- !u!1 &3132140764723488093
 GameObject:
