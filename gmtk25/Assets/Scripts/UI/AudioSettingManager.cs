@@ -29,7 +29,6 @@ public class AudioSettingManager : MonoBehaviour
     void PlayMusic()
     {
         MainMusicAudioSource.clip = MainMusicTrack;
-        MainMusicAudioSource.volume = gameSettings.audioVolume;
         MainMusicAudioSource.Play();
     }
 
