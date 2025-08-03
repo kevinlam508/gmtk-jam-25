@@ -92,10 +92,10 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CenterHardness: 0
-    - _CenterOpacity: 0
-    - _CenterPower: 2
-    - _CenterRadius: 0.25
+    - _CenterHardness: 1
+    - _CenterOpacity: 1
+    - _CenterPower: 1
+    - _CenterRadius: 0.5
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorIntensity: 2
@@ -113,9 +113,9 @@ Material:
     - _Metallic: 0
     - _NoiseStrength: 0.09
     - _OcclusionStrength: 1
-    - _OuterHardness: 0
+    - _OuterHardness: 0.75
     - _OuterOpactiy: 0.5
-    - _OuterPower: 2
+    - _OuterPower: 1
     - _Parallax: 0.005
     - _Power: 1
     - _QueueControl: 0

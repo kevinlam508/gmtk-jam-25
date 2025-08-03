@@ -20,7 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _CenterOpacity
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -47,15 +47,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _CenterHardness: 0
-    - _CenterOpacity: 50
-    - _CenterPower: 3
+    - _CenterOpacity: 1
+    - _CenterPower: 2
     - _CenterRadius: 0.25
-    - _ColorIntensity: 10
+    - _ColorIntensity: 5
     - _Hardness: 0
     - _NoiseStrength: 0.01
     - _OuterHardness: 0
     - _OuterOpactiy: 1
-    - _OuterPower: 2
+    - _OuterPower: 3
     - _Power: 3
     - _QueueControl: 0
     - _QueueOffset: 0
