@@ -120,7 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3368851154025284213}
   m_HandleRect: {fileID: 1333316937590965957}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 2
   m_OnValueChanged:
@@ -1436,7 +1436,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _trayMoveInY: 0.45
+  _trayMoveInY: 0.4
   _canvasGroup: {fileID: 6445990716886495674}
   _removeStepCanvasGroup: {fileID: 1411358293879357086}
   _addStepCanvasGroup: {fileID: 910832680440683849}
