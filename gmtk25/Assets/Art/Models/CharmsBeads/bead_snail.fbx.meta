@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: M_CrayonDrawings
+    second: {fileID: 2100000, guid: e9bd3fa2f23f9df4f8f76e946b891ec0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_MasterPalette
     second: {fileID: 2100000, guid: 10eed1f8c9e5a5b4399688fe1ccf2a0d, type: 2}
   materials:

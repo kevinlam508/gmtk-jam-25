@@ -1,17 +1,20 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 
 
 public class SpawnerCore : MonoBehaviour
 {
     public static SpawnerCore Instance { get; private set; }
 
+    [SerializeField] private Player _player;
+
     public bool enableDebug = false;
     public int DebugStartAtSpecificRound = 1;
     public float delayUntilGameStarts = 2.3f;
     public float downTimeAfterWave = 1f;
+    public TextMeshProUGUI remainingEnemyText;
 
     public MobScriptableObject[] enemyGameStatArray;//Holds each mobs individual stats
     public GameObject basePawnPrefab;//the base pawn prefab that needs thats to function
@@ -87,6 +90,8 @@ public class SpawnerCore : MonoBehaviour
         AddCharmSelection.Instance.GetClosedEvent().AddListener(StartWave);
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -110,11 +115,15 @@ public class SpawnerCore : MonoBehaviour
             }
         }
 
+        remainingEnemyText.text = "" + NumberOfSpawnsForThisWave;
+
         if (waitingOnEnemiesToDie)
         {
             EndWaveStage2();
         }
     }
+
+
 
     /// <summary>
     /// Uses the defaultTimeBetweenSpawns and comes up with the next mob spawn time with a little bit of randomness
@@ -369,7 +378,7 @@ public class SpawnerCore : MonoBehaviour
 
         GameObject newEnemy = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
         newEnemy.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
-        newEnemy.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
+        newEnemy.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType, _player);
         enemiesOnScreen++;
 
         if (enemyType == MobTypesNonFlag.Swarmer)
@@ -378,7 +387,7 @@ public class SpawnerCore : MonoBehaviour
             {
                 GameObject swamerExtra = Instantiate(basePawnPrefab, DeterminePosition(playerTarget.position), Quaternion.identity);
                 swamerExtra.GetComponent<MobMovement>().SetTargetTransform(playerTarget, true);
-                swamerExtra.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType);
+                swamerExtra.GetComponent<Mob>().InitializeEnemy(enemyStats, enemyType, _player);
                 swamerExtra.GetComponent<Health>().GetOnDeathEvent().AddListener(OnEnemyDeath);
                 enemiesOnScreen++;
             }
@@ -637,6 +646,11 @@ public class SpawnerCore : MonoBehaviour
 
         //Debug.Log(randomValue);
         return randomValue;
+    }
+
+    public int GetWaveNumber()
+    {
+        return waveNumber;
     }
 
 }

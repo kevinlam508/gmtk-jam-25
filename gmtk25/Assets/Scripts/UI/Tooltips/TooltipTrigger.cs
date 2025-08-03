@@ -5,10 +5,11 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private string header;
+    [SerializeField] public string header;
     
     [TextArea(1, 10)]
-    [SerializeField] private string content;
+    [SerializeField] public string content;
+
     
     public void OnPointerEnter(PointerEventData eventData)
     {

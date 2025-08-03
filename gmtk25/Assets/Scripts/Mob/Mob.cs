@@ -38,13 +38,16 @@ public class Mob : MonoBehaviour
     public GameObject OnDeathSFXSpawner;
 
     public GameObject spawnFX;
+
+    private Player _player;
+
     private void Awake()
     {
         if (InitializeOnAwake)
         {
             if (MobStats != null)
             {
-                InitializeEnemy(MobStats, MobStats.MobTypeNonFlag);
+                InitializeEnemy(MobStats, MobStats.MobTypeNonFlag, null);
             }
         }
     }
@@ -81,8 +84,10 @@ public class Mob : MonoBehaviour
     /// Sets up the Default Enemy prefab with the stats that are included on a MobScriptableObject
     /// </summary>
     /// <param name="mobStats"></param>
-    public void InitializeEnemy(MobScriptableObject mobStats, MobTypesNonFlag mobTypeNonFlag)
+    public void InitializeEnemy(MobScriptableObject mobStats, MobTypesNonFlag mobTypeNonFlag, Player player)
     {
+        _player = player;
+
         MobStats = mobStats;
         mobAudioSource = GetComponent<AudioSource>();
         mobAudioSource.clip = MobStats.onHitSFX;
@@ -113,6 +118,7 @@ public class Mob : MonoBehaviour
     {
         //damage player?
         _health.EnemyFinish();
+        _player?.TakeDamage(MobStats.MobAttackDamage);
     }
 
     private void Start()
