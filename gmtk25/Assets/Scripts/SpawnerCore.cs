@@ -141,6 +141,7 @@ public class SpawnerCore : MonoBehaviour
         waveNumber = 1;
         agentTypesUnlocked |= MobTypes.Pawn;//100 -> Tnk 60 -> Spd 45 -> Swm 30 -> CCR 25
         currentSpawnRateStats = SpawnRatesPerWave[0];
+        defaultTimeBetweenSpawns = 2.5f;
         //EndWave();
         //extra stuff
     }
@@ -227,6 +228,12 @@ public class SpawnerCore : MonoBehaviour
         yield return new WaitForSeconds(timeTowait);
         waveNumber++;
 
+
+        if (waveNumber > 4)
+        {
+            defaultTimeBetweenSpawns = 2.5f - (0.1f * (waveNumber - 5));
+            defaultTimeBetweenSpawns = Mathf.Clamp(defaultTimeBetweenSpawns, 1.9f, 2.5f);
+        }
 
         if (waveNumber >= 10 && waveNumber <= 20)
         {

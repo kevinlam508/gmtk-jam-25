@@ -7,6 +7,7 @@ public class AddCharmButton : MonoBehaviour
     public event Action<CharmData> ButtonSelected;
 
     [SerializeField] public Button _addButton;
+    [SerializeField] private Image _iamge;
 
     private CharmData _data;
 
@@ -24,8 +25,7 @@ public class AddCharmButton : MonoBehaviour
     public void Assign(CharmData data)
     {
         _data = data;
-        _addButton.GetComponentInChildren<TMPro.TMP_Text>().text = data.name;
-        // TODO: Show visuals
+        _iamge.sprite = data.UiSprite;
     }
 
     private void OnButtonPressed()

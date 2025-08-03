@@ -36,7 +36,7 @@ Material:
   disabledShaderPasses:
   - MOTIONVECTORS
   - DepthOnly
-  m_LockedProperties: 
+  m_LockedProperties: _ZWriteControl
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:

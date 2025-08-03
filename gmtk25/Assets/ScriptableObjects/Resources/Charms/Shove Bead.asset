@@ -20,7 +20,7 @@ MonoBehaviour:
   _explosionRadius: 0
   _chainCount: 0
   _chainRadius: 0
-  _damage: 0
+  _damage: 1
   _onHitStatus: []
   _returnEffect: []
   _prefab: {fileID: 4229988558443951761, guid: 84ff7d3b774bce544a845c3972856da1, type: 3}

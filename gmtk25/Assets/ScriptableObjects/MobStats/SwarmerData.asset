@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MobType: 16
   MobTypeNonFlag: 3
-  MobHealth: 5
+  MobHealth: 1
   MobSpeed: 1.3
   MobAttackDamage: 1
   MobCCResist: 0
@@ -23,3 +23,5 @@ MonoBehaviour:
   ColliderCenter: {x: 0, y: 0, z: 0}
   ColliderRadius: 1
   ColliderHeight: 1
+  onHitSFX: {fileID: 0}
+  onDeathSFX: {fileID: 0}
