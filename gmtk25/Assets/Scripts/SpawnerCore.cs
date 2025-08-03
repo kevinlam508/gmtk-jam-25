@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,7 @@ using TMPro;
 
 public class SpawnerCore : MonoBehaviour
 {
+    [SerializeField] private UnityEvent _waveCompleted;
     public static SpawnerCore Instance { get; private set; }
 
     [SerializeField] private Player _player;
@@ -279,7 +281,9 @@ public class SpawnerCore : MonoBehaviour
             enemiesOnScreen--;
             Destroy(enemyThatEndedWave);
         }
-        EndWaveStage2();        
+        EndWaveStage2();
+
+        _waveCompleted.Invoke();
       //  if (!onAwake)        
     }
 
