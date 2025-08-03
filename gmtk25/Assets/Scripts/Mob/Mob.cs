@@ -67,7 +67,7 @@ public class Mob : MonoBehaviour
             }
             mobAudioSource.Play();
         }
-        else if (currentHealth == 0)
+        else if (currentHealth <= 0)
         {
             GameObject sfx = Instantiate(OnDeathSFXSpawner, transform.position, Quaternion.identity);
             sfx.GetComponent<AudioSource>().clip = MobStats.onDeathSFX;
