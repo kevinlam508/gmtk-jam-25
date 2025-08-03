@@ -135,7 +135,7 @@ Material:
     - _GradientEnabled: 0
     - _GradientSize: 10
     - _HitAmount: 0.8
-    - _HitDuration: 0.3
+    - _HitDuration: 0.2
     - _LightContribution: 1
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
