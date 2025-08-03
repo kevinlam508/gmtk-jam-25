@@ -91,10 +91,10 @@ public class AddCharmSelection : MonoBehaviour
         HashSet<CharmData> drawn = new HashSet<CharmData>();
         foreach (AddCharmButton button in _buttons)
         {
-            int i = Random.Range(0, _allCharms.Length - 1);
+            int i = Random.Range(0, _allCharms.Length);
             while (drawn.Contains(_allCharms[i]))
             {
-                i = Random.Range(0, _allCharms.Length - 1);
+                i = Random.Range(0, _allCharms.Length);
             }
 
             CharmData draw = _allCharms[i];
