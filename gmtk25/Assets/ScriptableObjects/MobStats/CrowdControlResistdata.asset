@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86428eeece3c65438033dfe3f0cb2a6, type: 3}
   m_Name: CrowdControlResistdata
   m_EditorClassIdentifier: 
-  MobType: 4
+  MobType: 32
   MobTypeNonFlag: 4
   MobHealth: 2
   MobSpeed: 2

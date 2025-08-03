@@ -24,12 +24,13 @@ public class MobScriptableObject : ScriptableObject
 [System.Flags]
 public enum MobTypes
 {
-    Pawn,
-    Tank,
-    Speedster,
-    Swarmer,
-    CrowdControlResist,
-    Splitter,
-    ArmorWhenHit,
+    None,
+    Pawn                = 1 << 1,
+    Tank                = 1 << 2,
+    Speedster           = 1 << 3,
+    Swarmer             = 1 << 4,
+    CrowdControlResist  = 1 << 5,
+    Splitter            = 1 << 6,
+    ArmorWhenHit        = 1 << 7,
     Count
 }

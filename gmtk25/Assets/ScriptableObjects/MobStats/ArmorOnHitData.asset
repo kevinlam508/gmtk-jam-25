@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86428eeece3c65438033dfe3f0cb2a6, type: 3}
   m_Name: ArmorOnHitData
   m_EditorClassIdentifier: 
-  MobType: 6
+  MobType: 128
   MobTypeNonFlag: 6
   MobHealth: 2
   MobSpeed: 2
