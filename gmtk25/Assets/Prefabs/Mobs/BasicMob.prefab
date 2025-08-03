@@ -138,6 +138,7 @@ MonoBehaviour:
   MobStats: {fileID: 0}
   artParentTransform: {fileID: 105720887845075469}
   OnDeathSFXSpawner: {fileID: 2153514520263707439, guid: 0bc08e54c82e9ab4cbb0fecc0e9b1dca, type: 3}
+  spawnFX: {fileID: 2921825083139560230, guid: 7651a3b485b2f5247b403ae5e3a88920, type: 3}
 --- !u!114 &7877165009029190834
 MonoBehaviour:
   m_ObjectHideFlags: 0

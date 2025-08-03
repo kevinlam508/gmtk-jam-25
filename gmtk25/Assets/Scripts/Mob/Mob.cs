@@ -36,7 +36,7 @@ public class Mob : MonoBehaviour
 
     private AudioSource mobAudioSource;
     public GameObject OnDeathSFXSpawner;
-
+    public GameObject spawnFX;
     private void Awake()
     {
         if (InitializeOnAwake)
@@ -73,8 +73,7 @@ public class Mob : MonoBehaviour
             sfx.GetComponent<AudioSource>().clip = MobStats.onDeathSFX;
             sfx.GetComponent<AudioSource>().Play();
         }
-    }
-
+    }    
 
     /// <summary>
     /// Sets up the Default Enemy prefab with the stats that are included on a MobScriptableObject
@@ -90,6 +89,7 @@ public class Mob : MonoBehaviour
         _health.SetMaxHealth(MobStats.MobHealth);
         _health.DamageTaken.AddListener(PlayOnHitSFX);
         GameObject modelInstance = Instantiate(MobStats.MobModel, artParentTransform.position, Quaternion.identity, artParentTransform);
+        Instantiate(spawnFX, artParentTransform.position, Quaternion.identity);
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         collider.center = mobStats.ColliderCenter;
         collider.radius = MobStats.ColliderRadius;
