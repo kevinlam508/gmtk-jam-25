@@ -58,6 +58,10 @@ MonoBehaviour:
   - {fileID: 5456558293028259212}
   - {fileID: 6124972755638243379}
   - {fileID: 7105289667631235789}
+  _animator: {fileID: 3350882495485085492}
+  _hitState: Starboy_Armature|Starboy_Hurt
+  _hitTrigger: Hurt
+  _deadParam: Dead
 --- !u!114 &126770451117641273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cae7fbae39aac544913163855b1fb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 20
   _damageTaken:
     m_PersistentCalls:
       m_Calls:
@@ -91,7 +95,19 @@ MonoBehaviour:
       m_Calls: []
   _died:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1167992747498424870}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4761423566614295532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,5 +1213,10 @@ PrefabInstance:
 --- !u!4 &561824152300982578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8047737235162089062, guid: 3a282bad1624dc543a0955ce797a6a8c, type: 3}
+  m_PrefabInstance: {fileID: 7521942077453096788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3350882495485085492 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5108198631636291680, guid: 3a282bad1624dc543a0955ce797a6a8c, type: 3}
   m_PrefabInstance: {fileID: 7521942077453096788}
   m_PrefabAsset: {fileID: 0}

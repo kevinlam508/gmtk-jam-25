@@ -8,6 +8,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Track[] _tracks;
 
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private string _hitState = "Starboy_Armature|Starboy_Hurt";
+    [SerializeField] private string _hitTrigger = "Hit";
+    [SerializeField] private string _deadParam = "Dead";
+
     private void Start()
     {
         foreach (Track t in _tracks)
@@ -24,7 +30,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount) => _health.TakeDamage(amount);
+    public void Kill()
+    {
+        if (_animator != null)
+        {
+            _animator.SetBool(_deadParam, true);
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _health.TakeDamage(amount);
+
+        if (_animator != null)
+        {
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+            if (!state.IsName(_hitState) && !_animator.IsInTransition(0))
+            {
+                _animator.SetTrigger(_hitTrigger);
+            }
+        }
+    }
+
     public void Heal(int amount) => _health.Heal(amount);
     public void ModifyDrawCooldown(float amount) => _tray.ModifyDrawCooldown(amount);
     public void ModifyMaxHandSize(int amount) => _tray.ModifyMaxHandSize(amount);
