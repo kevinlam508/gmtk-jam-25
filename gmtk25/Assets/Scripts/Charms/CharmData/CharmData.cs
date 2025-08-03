@@ -233,10 +233,17 @@ public class CharmData : ScriptableObject
 
     private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData)
     {
-        GameObject newHitFx = Instantiate(_hitFx);
-        newHitFx.transform.position = mob.transform.position;
+        if (HasHitEffects())
+        {
+            GameObject newHitFx = Instantiate(_hitFx);
+            newHitFx.transform.position = mob.transform.position;
+        }
 
-        mob.TakeDamage(_damage);
+        if (_damage > 0)
+        {
+            mob.TakeDamage(_damage);
+        }
+
         if (_onHitStatus != null)
         {
             foreach (BaseStatusEffect status in _onHitStatus)
@@ -246,6 +253,11 @@ public class CharmData : ScriptableObject
         }
 
         travelStateData.HitCount++;
+    }
+
+    private bool HasHitEffects()
+    {
+        return _damage > 0 || (_onHitStatus != null && _onHitStatus.Length > 0);
     }
 
     private static CharmData CombineEffects(CharmData main, CharmData sub1, CharmData sub2)
