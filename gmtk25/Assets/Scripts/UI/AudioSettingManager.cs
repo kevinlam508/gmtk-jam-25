@@ -60,6 +60,6 @@ public class AudioSettingManager : MonoBehaviour
 
 public static class gameSettings
 {
-    public static float audioVolume = .7f;
+    public static float audioVolume = .1f;
 }
 
