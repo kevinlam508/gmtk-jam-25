@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 5865779869928945021, guid: c90b52f06ea83cb4a813958d7d4de88d, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 7964222296113842431, guid: c211aeabca81e534a8fc6e40b7930e8d, type: 3}
+      objectReference: {fileID: -2616113647130116087, guid: 49bb4533245b77f489c704c118e63275, type: 3}
     - target: {fileID: 8302228753092581299, guid: c90b52f06ea83cb4a813958d7d4de88d, type: 3}
       propertyPath: m_Name
       value: Charm_Slow
