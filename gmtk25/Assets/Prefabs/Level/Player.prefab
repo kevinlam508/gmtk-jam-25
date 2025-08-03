@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62f6bfa141659d41a000ab94019ffe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableDebug: 1
+  enableDebug: 0
   DebugStartAtSpecificRound: 1
+  delayUntilGameStarts: 2.3
   enemyGameStatArray:
   - {fileID: 11400000, guid: a0ea0b9c08e3c9d4594a257e6c706808, type: 2}
   - {fileID: 11400000, guid: 57a8f113799d39b4cb0ff22711aff56d, type: 2}

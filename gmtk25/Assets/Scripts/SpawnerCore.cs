@@ -10,6 +10,7 @@ public class SpawnerCore : MonoBehaviour
 
     public bool enableDebug = false;
     public int DebugStartAtSpecificRound = 1;
+    public float delayUntilGameStarts = 2.3f;
 
     public MobScriptableObject[] enemyGameStatArray;//Holds each mobs individual stats
     public GameObject basePawnPrefab;//the base pawn prefab that needs thats to function
@@ -67,8 +68,19 @@ public class SpawnerCore : MonoBehaviour
         {
             waveNumber = DebugStartAtSpecificRound;
         }
+        else
+        {
+            StartCoroutine(WaitToStartGame(delayUntilGameStarts));
+        }
         SetSpawnRates();
     }
+
+    private IEnumerator WaitToStartGame(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        StartWave();
+    }
+
     private void Start()
     {
         AddCharmSelection.Instance.GetClosedEvent().AddListener(StartWave);
