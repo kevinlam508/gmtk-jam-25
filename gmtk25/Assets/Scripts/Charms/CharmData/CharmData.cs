@@ -44,6 +44,9 @@ public class CharmData : ScriptableObject
     [SerializeField] private int _damage;
     [SerializeField] private BaseStatusEffect[] _onHitStatus;
     [SerializeField] private BaseReturnEffect[] _returnEffect;
+    [SerializeField] private AudioClip _hitSfx;
+    [SerializeField] private AudioClip _chainSfx;
+    [SerializeField] private AudioClip _splashSfx;
 
     [Header("Appearance")]
     [SerializeField] private GameObject _prefab;
@@ -189,6 +192,8 @@ public class CharmData : ScriptableObject
                 yield break;
             }
 
+            instance.PlayChain(_chainSfx);
+
             GameObject chainFx = Instantiate(_chainFx);
             chainFx.transform.position = location;
             TweenToTarget tween = chainFx.GetComponent<TweenToTarget>();
@@ -210,6 +215,8 @@ public class CharmData : ScriptableObject
         {
             yield break;
         }
+
+        instance.PlaySplash(_splashSfx);
 
         GameObject newSplashFx = Instantiate(_splashFx);
         newSplashFx.transform.position = mob.transform.position;
@@ -238,10 +245,12 @@ public class CharmData : ScriptableObject
         }
     }
 
-    private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData)
+    private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData, CharmInstance instance)
     {
         if (HasHitEffects())
         {
+            instance.PlayHit(_hitSfx);
+
             GameObject newHitFx = Instantiate(_hitFx);
             newHitFx.transform.position = mob.transform.position;
         }

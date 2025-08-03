@@ -4,8 +4,30 @@ public class CharmInstance : MonoBehaviour
 {
     [SerializeField] private GameObject[] _states;
 
+    [SerializeField] private AudioSource _hitSource;
+    [SerializeField] private AudioSource _chainSource;
+    [SerializeField] private AudioSource _splashSource;
+
     private CharmData _data;
     private CharmData.TravelState _travelStateData;
+
+    public void PlayHit(AudioClip clip)
+    {
+        _hitSource.clip = clip;
+        _hitSource.Play();
+    }
+
+    public void PlayChain(AudioClip clip)
+    {
+        _chainSource.clip = clip;
+        _chainSource.Play();
+    }
+
+    public void PlaySplash(AudioClip clip)
+    {
+        _splashSource.clip = clip;
+        _splashSource.Play();
+    }
 
     public void AssignData(CharmData data, CharmData.TravelState travelStateData)
     {
