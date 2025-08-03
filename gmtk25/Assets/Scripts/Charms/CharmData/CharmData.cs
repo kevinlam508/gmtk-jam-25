@@ -149,7 +149,7 @@ public class CharmData : ScriptableObject
         switch (effectToApply)
         {
             case ImpactTypes.Single:
-                ApplyDamageAndStatusToMob(mob, travelStateData);
+                ApplyDamageAndStatusToMob(mob, travelStateData, instance);
                 break;
             case ImpactTypes.Splash:
                 yield return ApplySplash(remainingEffects, mob, location, travelStateData, instance);
