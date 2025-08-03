@@ -37,6 +37,7 @@ public class CharmTray : MonoBehaviour
 
     private void Start()
     {
+        _charmInventory.CharmReturned += OnCharmsRefilled;
         _charmInventory.Init();
         ResetForNextRound();
     }
@@ -61,7 +62,6 @@ public class CharmTray : MonoBehaviour
         AddCharmsToPile();
         DrawInitialHand();
 
-        _charmInventory.CharmReturned += OnCharmsRefilled;
         StartDrawCooldown();
     }
 
