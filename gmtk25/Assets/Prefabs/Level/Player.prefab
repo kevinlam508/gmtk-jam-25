@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5961826689034695649}
   - component: {fileID: 1167992747498424870}
   - component: {fileID: 126770451117641273}
+  - component: {fileID: 4761423566614295532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -72,10 +73,39 @@ MonoBehaviour:
   _maxHealth: 100
   _damageTaken:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4761423566614295532}
+        m_TargetAssemblyTypeName: ToggleFullscreenEffect, Assembly-CSharp
+        m_MethodName: Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _healthChanged:
+    m_PersistentCalls:
       m_Calls: []
   _died:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4761423566614295532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092247484231499951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8404474a360f1da4f82b898908714ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFX: {fileID: -5493063694591751864, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
+  screenFXMaterial: {fileID: -876546973899608171, guid: df9867b2518608f4cb637aa584f22bbd, type: 3}
 --- !u!1 &3264057440754718089
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +187,7 @@ MonoBehaviour:
   DebugStartAtSpecificRound: 1
   delayUntilGameStarts: 2.3
   downTimeAfterWave: 1
+  remainingEnemyText: {fileID: 0}
   enemyGameStatArray:
   - {fileID: 11400000, guid: a0ea0b9c08e3c9d4594a257e6c706808, type: 2}
   - {fileID: 11400000, guid: 57a8f113799d39b4cb0ff22711aff56d, type: 2}
