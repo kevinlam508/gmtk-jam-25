@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   _deck:
-  - {fileID: 11400000, guid: d5e6764ce1b723f49b85abb4eceb6f0c, type: 2}
-  - {fileID: 11400000, guid: d5e6764ce1b723f49b85abb4eceb6f0c, type: 2}
-  - {fileID: 11400000, guid: 6f79440486f6bcd4b8d0edf020e0f66c, type: 2}
-  - {fileID: 11400000, guid: 64f8d25eea153e9489ad5f3e99927c42, type: 2}
-  - {fileID: 11400000, guid: 371324358056f5e4e9fed1d3c3142dae, type: 2}
-  - {fileID: 11400000, guid: 7b09f4b5834d5d24a821262f2020da8c, type: 2}
-  - {fileID: 11400000, guid: d5e6764ce1b723f49b85abb4eceb6f0c, type: 2}
+  - {fileID: 11400000, guid: 38374ded9ece84d41876d71d45dfee36, type: 2}
+  - {fileID: 11400000, guid: 38374ded9ece84d41876d71d45dfee36, type: 2}
+  - {fileID: 11400000, guid: 38374ded9ece84d41876d71d45dfee36, type: 2}
