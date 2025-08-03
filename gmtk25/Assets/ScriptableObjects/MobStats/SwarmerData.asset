@@ -21,5 +21,5 @@ MonoBehaviour:
   MobArmorGainPerHit: 0
   MobModel: {fileID: 7341598793184711286, guid: e1cd371feff7c0f49abf7f5b9ba2b560, type: 3}
   ColliderCenter: {x: 0, y: 0, z: 0}
-  ColliderRadius: 0.5
+  ColliderRadius: 1
   ColliderHeight: 1

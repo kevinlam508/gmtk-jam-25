@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5cea0976c56fb41902fcfc08210f29, type: 3}
   m_Name: Shove Bead
   m_EditorClassIdentifier: 
+  _isBead: 1
   _speed: 10
   _canShove: 1
   _impactType: 0
@@ -28,3 +29,4 @@ MonoBehaviour:
   _splashExpandDuration: 0.1
   _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
+  _uiSprite: {fileID: 755062905, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}
