@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.38274294, b: 0.38274294, a: 0.25490198}
+  m_Color: {r: 0.2264151, g: 0.18049128, b: 0.18049128, a: 0.25490198}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -479,7 +479,6 @@ MonoBehaviour:
   _charmImage: {fileID: 3287401082335330624}
   _shadow: {fileID: 1573883560497763034}
   _tooltip: {fileID: 6050817333568900696}
-  _hoveredTrack: {fileID: 0}
 --- !u!114 &5698875408325414451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +510,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 15, y: 15, z: 15, w: 24.11}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
