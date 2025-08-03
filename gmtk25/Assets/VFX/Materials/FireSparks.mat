@@ -59,14 +59,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CenterHardness: 0
+    - _CenterHardness: 0.5
     - _CenterOpacity: 10
     - _CenterPower: 2
     - _CenterRadius: 0.25
-    - _ColorIntensity: 1
+    - _ColorIntensity: 4
     - _NoiseStrength: 0.09
-    - _OuterHardness: 0
-    - _OuterOpactiy: 0.5
+    - _OuterHardness: 0.5
+    - _OuterOpactiy: 1
     - _OuterPower: 2
     - _QueueControl: 0
     - _QueueOffset: 0
