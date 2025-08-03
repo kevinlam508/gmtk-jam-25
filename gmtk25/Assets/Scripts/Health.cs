@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
     private void OnDisable()
     {
         _died.RemoveAllListeners();
+        _damageTaken.RemoveAllListeners();
     }
 
     /// <summary>
