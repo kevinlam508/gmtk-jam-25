@@ -31,3 +31,6 @@ MonoBehaviour:
   _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
   _uiSprite: {fileID: 1227812954, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}
+  _tooltipName: Sweetheart Charm
+  _tooltipDescription: Heals on return if it doesn't hit any <sprite="UI_BeadsCharms"
+    name="UI_Charmless"> charmless

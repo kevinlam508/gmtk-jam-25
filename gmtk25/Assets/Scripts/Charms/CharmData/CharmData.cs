@@ -68,6 +68,8 @@ public class CharmData : ScriptableObject
     public bool IsBead => _isBead;
 
     public string TooltipName => _tooltipName;
+    // [Multiline(20)]
+    // [Space(10)]
     public string TooltipDescription => _tooltipDescription;
 
     public TravelState NewTravelStateData() => new TravelState();

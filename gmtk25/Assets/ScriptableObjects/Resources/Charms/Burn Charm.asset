@@ -31,3 +31,6 @@ MonoBehaviour:
   _chainFx: {fileID: 8416126146362815739, guid: d811c81745a032f4c8e8f880e635dfbd, type: 3}
   _chainJumpDelay: 0.1
   _uiSprite: {fileID: -1094872105, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}
+  _tooltipName: Fire Charm
+  _tooltipDescription: Burns the <sprite="UI_BeadsCharms" name="UI_Charmless"> charmless
+    it hits and applies damage over time
