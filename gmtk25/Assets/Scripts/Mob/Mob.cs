@@ -36,6 +36,7 @@ public class Mob : MonoBehaviour
 
     private AudioSource mobAudioSource;
     public GameObject OnDeathSFXSpawner;
+
     public GameObject spawnFX;
     private void Awake()
     {
@@ -70,6 +71,7 @@ public class Mob : MonoBehaviour
         else if (currentHealth <= 0)
         {
             GameObject sfx = Instantiate(OnDeathSFXSpawner, transform.position, Quaternion.identity);
+            Instantiate(spawnFX, artParentTransform.position, Quaternion.identity);
             sfx.GetComponent<AudioSource>().clip = MobStats.onDeathSFX;
             sfx.GetComponent<AudioSource>().Play();
         }

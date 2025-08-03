@@ -11,6 +11,7 @@ public class SpawnerCore : MonoBehaviour
     public bool enableDebug = false;
     public int DebugStartAtSpecificRound = 1;
     public float delayUntilGameStarts = 2.3f;
+    public float downTimeAfterWave = 1f;
 
     public MobScriptableObject[] enemyGameStatArray;//Holds each mobs individual stats
     public GameObject basePawnPrefab;//the base pawn prefab that needs thats to function
@@ -220,25 +221,34 @@ public class SpawnerCore : MonoBehaviour
         }
     }
 
+
+    private IEnumerator EndWaveStage3(float timeTowait)
+    {
+        yield return new WaitForSeconds(timeTowait);
+        waveNumber++;
+
+
+        if (waveNumber >= 10 && waveNumber <= 20)
+        {
+            float scaleFactor = (waveNumber - 10) / 10f; // Starts at 0 / 10 goes up to 10 / 10
+            float chanceIncrease = Mathf.Pow(scaleFactor, 1.6f) * 0.10f;
+            chanceForADoubleSpawn = 0.15f + chanceIncrease;
+            chanceForADoubleSpawn = Mathf.Clamp(chanceForADoubleSpawn, 0, 0.25f);
+        }
+
+        SetSpawnRates();
+
+
+        AddCharmSelection.Instance.ShowAndGenerate();
+    }
+
+
     void EndWaveStage2()
     {
         if (enemiesOnScreen <= 0)
         {
-            waveNumber++;
             waitingOnEnemiesToDie = false;
-
-            if (waveNumber >= 10 && waveNumber <= 20)
-            {
-                float scaleFactor = (waveNumber - 10) / 10f; // Starts at 0 / 10 goes up to 10 / 10
-                float chanceIncrease = Mathf.Pow(scaleFactor, 1.6f) * 0.10f;
-                chanceForADoubleSpawn = 0.15f + chanceIncrease;
-                chanceForADoubleSpawn = Mathf.Clamp(chanceForADoubleSpawn, 0, 0.25f);
-            }
-
-            SetSpawnRates();
-
-
-            AddCharmSelection.Instance.ShowAndGenerate();
+            StartCoroutine(EndWaveStage3(downTimeAfterWave));
         }
         else
         {
