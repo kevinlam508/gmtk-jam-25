@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86428eeece3c65438033dfe3f0cb2a6, type: 3}
   m_Name: SplitterData
   m_EditorClassIdentifier: 
-  MobType: 5
+  MobType: 64
   MobTypeNonFlag: 5
   MobHealth: 5
   MobSpeed: 1.5

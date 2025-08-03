@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86428eeece3c65438033dfe3f0cb2a6, type: 3}
   m_Name: TankData
   m_EditorClassIdentifier: 
-  MobType: 1
+  MobType: 4
   MobTypeNonFlag: 1
   MobHealth: 10
   MobSpeed: 0.75
