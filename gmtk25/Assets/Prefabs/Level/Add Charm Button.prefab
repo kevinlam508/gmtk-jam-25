@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3413889405773987469}
   - component: {fileID: 2073971074671862334}
+  - component: {fileID: 2632641737139938727}
+  - component: {fileID: 7099097465736627169}
   m_Layer: 5
   m_Name: Add Charm Button
   m_TagString: Untagged
@@ -52,6 +54,147 @@ MonoBehaviour:
   _addButton: {fileID: 3900198735347112705}
   _iamge: {fileID: 1000499525354128955}
   _tooltip: {fileID: 812873279582273910}
+--- !u!114 &2632641737139938727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724943225575840186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf6c1a0b7e906543a703d50a9d93c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHoverScale: 1.2
+  ButtonHoverScaleTime: 0.1
+  ButtonHoverScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _waitTimeMax: 0.05
+  _waitTimeMin: 0
+  source: {fileID: 7099097465736627169}
+  hover: {fileID: 8300000, guid: d62d4f15d41bbec4297667d778946a61, type: 3}
+  click: {fileID: 8300000, guid: 9835197f41c889149a0b05bf9cbc0fca, type: 3}
+  _charmMesh: {fileID: 4667611233310590831}
+--- !u!82 &7099097465736627169
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724943225575840186}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f0863cf4979eea44b670a8465707d1e, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5672394568395414666
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +284,7 @@ GameObject:
   - component: {fileID: 3900198735347112705}
   - component: {fileID: 1010802412056897673}
   - component: {fileID: 812873279582273910}
+  - component: {fileID: 1112055410037716749}
   m_Layer: 5
   m_Name: Add
   m_TagString: Untagged
@@ -249,7 +393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4525101119355484535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2632641737139938727}
+        m_TargetAssemblyTypeName: MenuCharmTweening, Assembly-CSharp
+        m_MethodName: OnClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1010802412056897673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,3 +434,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: 
   content: 
+--- !u!114 &1112055410037716749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952512597846664501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2632641737139938727}
+          m_TargetAssemblyTypeName: MenuCharmTweening, Assembly-CSharp
+          m_MethodName: OnHoverEnterTween
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3900198735347112705}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2632641737139938727}
+          m_TargetAssemblyTypeName: MenuCharmTweening, Assembly-CSharp
+          m_MethodName: OnHoverSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2632641737139938727}
+          m_TargetAssemblyTypeName: MenuCharmTweening, Assembly-CSharp
+          m_MethodName: OnHoverExitTween
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3900198735347112705}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
