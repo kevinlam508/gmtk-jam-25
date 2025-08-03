@@ -20,6 +20,7 @@ public class MainMenuUI : MonoBehaviour
     void Awake()
     {
         _settingsWindow.SetActive(false);
+        _creditsWindow.SetActive(false);
     }
 
     // Update is called once per frame
