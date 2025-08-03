@@ -702,8 +702,8 @@ MonoBehaviour:
       inWeight: 0.088203914
       outWeight: 1
     - serializedVersion: 3
-      time: 0.9003851
-      value: 0.98392427
+      time: 0.90435237
+      value: 0.9905733
       inSlope: -0.06916947
       outSlope: -0.06916947
       tangentMode: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _settingsUiElements: {fileID: 8785080025563717463}
   _settingsUiBG: {fileID: 8785080025563717462}
-  _settingsUiY: 0.282
+  _settingsUiY: 0.5
   _settingsUiTweenTime: 0.602
 --- !u!1 &184478615 stripped
 GameObject:
@@ -22690,6 +22690,34 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 125556318}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnSettingsClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenuUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797010604181823478, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5590266828206419865, guid: 640806346203333488bc39c8343d125f, type: 3}
       propertyPath: m_Name
       value: SettingsBG
@@ -22774,6 +22802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7714818403310683229, guid: 640806346203333488bc39c8343d125f, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 952582967}
     - target: {fileID: 7930146601772321940, guid: 640806346203333488bc39c8343d125f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
