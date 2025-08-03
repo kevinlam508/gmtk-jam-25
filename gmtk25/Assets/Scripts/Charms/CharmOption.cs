@@ -60,6 +60,11 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+        {
+            return;
+        }
+
         if (!Interactable)
         {
             return;
@@ -79,6 +84,11 @@ public class CharmOption : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+        {
+            return;
+        }
+
         if (_dragRoutine == null)
         {
             return;
