@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using DG.Tweening;
 
 using Random = UnityEngine.Random;
@@ -21,9 +22,13 @@ public class AddCharmSelection : MonoBehaviour
     [SerializeField] private Transform _removeParent;
     [SerializeField] private AddCharmButton _removePrefab;
     private readonly List<AddCharmButton> _removeButtonPool = new List<AddCharmButton>();
-
+    [SerializeField] private AnimationCurve _trayMoveInCurve;
+    [SerializeField][Range(0, 1)] private float _trayMoveInY;
     [SerializeField] private CanvasGroup _canvasGroup;
-
+    [SerializeField] private CanvasGroup _removeStepCanvasGroup;
+    [SerializeField] private CanvasGroup _addStepCanvasGroup;
+    [SerializeField] private Image _backgroundImage;
+    [SerializeField] private RectTransform _trayTransform;
     [SerializeField] private UnityEvent _opened;
     [SerializeField] private UnityEvent _closed;
 
@@ -50,23 +55,73 @@ public class AddCharmSelection : MonoBehaviour
 
     public void ShowAndGenerate()
     {
+        // _opened.Invoke();
+        // _canvasGroup.DOFade(1f, 3f).SetEase(Ease.OutQuad);
+        // // _canvasGroup.alpha = 1;
+        // _canvasGroup.blocksRaycasts = true;
+        // _canvasGroup.interactable = true;
+
+        // GenerateOptions();
+        // EnableAddButtons(true);
+        // GenerateRemoveOptions();
+        StartCoroutine(LoadRemoveStep());
+    }
+
+    private IEnumerator LoadRemoveStep()
+    {
         _opened.Invoke();
-
-        _canvasGroup.alpha = 1;
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.interactable = true;
-
         GenerateOptions();
         EnableAddButtons(true);
         GenerateRemoveOptions();
+        _canvasGroup.alpha = 1;
+        // yield return _backgroundImage.DOFade(1f, 1f).SetEase(Ease.OutQuad).WaitForCompletion();
+        Sequence TweenInSequence = DOTween.Sequence();
+        TweenInSequence.Prepend(_backgroundImage.DOFade(.98f, 1f).SetEase(Ease.OutQuad));
+        TweenInSequence.Append(_trayTransform.DOMoveY(Screen.height * _trayMoveInY, 1f).SetEase(_trayMoveInCurve));
+        TweenInSequence.Join(_removeStepCanvasGroup.DOFade(1f, 1f).SetEase(Ease.OutQuad));
+        yield return TweenInSequence.WaitForCompletion();
+        _removeStepCanvasGroup.blocksRaycasts = true;
+        _removeStepCanvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
+
+        // yield return null;
+    }
+    public void OnLoadAddStepButtonPress()
+    {
+        StartCoroutine(LoadAddStep());
+    }
+    private IEnumerator LoadAddStep()
+    {
+        _removeStepCanvasGroup.blocksRaycasts = false;
+        _removeStepCanvasGroup.interactable = false;
+        // yield return _backgroundImage.DOFade(1f, 1f).SetEase(Ease.OutQuad).WaitForCompletion();
+        Sequence TweenInSequence = DOTween.Sequence();
+        TweenInSequence.Join(_removeStepCanvasGroup.DOFade(0f, 1f).SetEase(Ease.OutQuad));
+        TweenInSequence.Append(_addStepCanvasGroup.DOFade(1f, 1f).SetEase(Ease.OutQuad));
+        yield return TweenInSequence.WaitForCompletion();
+        _addStepCanvasGroup.blocksRaycasts = true;
+        _addStepCanvasGroup.interactable = true;
+
     }
 
     public void Hide(bool triggerCallback = true)
     {
+        StartCoroutine(HideStep(triggerCallback));
+    }
+    private IEnumerator HideStep(bool triggerCallback)
+    {
+        Sequence TweenInSequence = DOTween.Sequence();
+        TweenInSequence.Prepend(_backgroundImage.DOFade(0f, 1f).SetEase(Ease.OutQuad));
+        TweenInSequence.Join(_removeStepCanvasGroup.DOFade(0f, 1f).SetEase(Ease.OutQuad));
+        TweenInSequence.Join(_trayTransform.DOMoveY(Screen.height * -2f, 1f).SetEase(_trayMoveInCurve));
+        TweenInSequence.Join(_addStepCanvasGroup.DOFade(0f, 1f).SetEase(Ease.OutQuad));
+        yield return TweenInSequence.WaitForCompletion();
+        _addStepCanvasGroup.blocksRaycasts = false;
+        _addStepCanvasGroup.interactable = false;
         _canvasGroup.alpha = 0;
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.interactable = false;
-
         if (triggerCallback)
         {
             _closed.Invoke();
