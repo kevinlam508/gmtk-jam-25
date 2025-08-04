@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MobType: 4
   MobTypeNonFlag: 1
-  MobHealth: 6
-  MobSpeed: 0.75
-  MobAttackDamage: 1
+  MobHealth: 15
+  MobSpeed: 0.375
+  MobAttackDamage: 5
   MobCCResist: 0
   MobArmorGainPerHit: 0
   MobModel: {fileID: 4431405722788906483, guid: b2f45e0ef130d714480223f29052d0da, type: 3}
