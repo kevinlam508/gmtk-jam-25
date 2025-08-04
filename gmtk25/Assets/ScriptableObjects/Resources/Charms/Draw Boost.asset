@@ -36,4 +36,4 @@ MonoBehaviour:
   _uiSprite: {fileID: -512501318, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}
   _tooltipName: Speed Boost Charm
   _tooltipDescription: Increases your reload speed on return if it hits at least
-    3 <sprite="UI_BeadsCharms" name="UI_Charmless"> charmless
+    6 <sprite="UI_BeadsCharms" name="UI_Charmless"> charmless
