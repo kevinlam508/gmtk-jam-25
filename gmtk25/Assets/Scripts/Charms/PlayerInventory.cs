@@ -20,6 +20,7 @@ public class PlayerInventory : ScriptableObject
 
     public void Init()
     {
+        _entireDeck.Clear();
         _entireDeck.AddRange(_deck);
     }
 
