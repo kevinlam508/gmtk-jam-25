@@ -296,9 +296,16 @@ public class CharmData : ScriptableObject
         result._chainCount += WeightedAdd(sub1?._chainCount, sub2?._chainCount, 1);
         result._chainRadius += WeightedAdd(sub1?._chainRadius, sub2?._chainRadius, .5f);
 
-        result._damage += WeightedAdd(sub1?._damage, sub2?._damage, .33f);
+        result._damage += WeightedAdd(sub1?._damage, sub2?._damage, .75f);
         result._onHitStatus = CombineArrays(result._onHitStatus, sub1?._onHitStatus, sub2?._onHitStatus);
         //result._returnEffect = CombineArrays(result._returnEffect, sub1?._returnEffect, sub2?._returnEffect);
+
+        result._splashFx = main._splashFx;
+        result._chainFx = main._chainFx;
+        result._hitFx = main._hitFx;
+        result._hitSfx = main._hitSfx;
+        result._chainSfx = main._chainSfx;
+        result._splashSfx = main._splashSfx;
         return result;
     }
 
