@@ -195,5 +195,7 @@ public class AddCharmSelection : MonoBehaviour
         {
             button.Interactable = false;
         }
+
+        OnLoadAddStepButtonPress();
     }
 }
