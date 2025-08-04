@@ -250,6 +250,7 @@ public class SpawnerCore : MonoBehaviour
 
     private IEnumerator EndWaveStage3(float timeTowait)
     {
+        _waveCompleted.Invoke();
         yield return new WaitForSeconds(timeTowait);
         waveNumber++;
 
@@ -296,7 +297,6 @@ public class SpawnerCore : MonoBehaviour
         }
         EndWaveStage2();
 
-        _waveCompleted.Invoke();
       //  if (!onAwake)        
     }
 
