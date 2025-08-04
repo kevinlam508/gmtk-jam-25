@@ -15,7 +15,7 @@ MonoBehaviour:
   MobType: 32
   MobTypeNonFlag: 4
   MobHealth: 8
-  MobSpeed: 1
+  MobSpeed: 0.8
   MobAttackDamage: 2
   MobCCResist: 0.5
   MobArmorGainPerHit: 0
