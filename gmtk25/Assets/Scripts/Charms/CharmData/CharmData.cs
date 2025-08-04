@@ -199,10 +199,9 @@ public class CharmData : ScriptableObject
             TweenToTarget tween = chainFx.GetComponent<TweenToTarget>();
             tween.Init(nextHit.transform.position, _chainJumpDelay);
 
-            yield return new WaitForSeconds(_chainJumpDelay);
             location = nextHit.transform.position;
+            yield return new WaitForSeconds(_chainJumpDelay);
             instance.StartCoroutine(ApplyImpact(types, nextHit, location, travelStateData, instance));
-
 
             alreadyHit.Add(nextHit);
         }
@@ -247,6 +246,12 @@ public class CharmData : ScriptableObject
 
     private void ApplyDamageAndStatusToMob(Mob mob, TravelState travelStateData, CharmInstance instance)
     {
+        // Mob died during the animation, skip
+        if (mob == null)
+        {
+            return;
+        }
+
         if (HasHitEffects())
         {
             instance.PlayHit(_hitSfx);
