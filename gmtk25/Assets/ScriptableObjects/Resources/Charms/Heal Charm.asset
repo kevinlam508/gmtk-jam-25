@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal Charm
   m_EditorClassIdentifier: 
   _isBead: 0
-  _speed: 6
+  _speed: 4
   _canShove: 0
   _impactType: 0
   _explosionCount: 0
@@ -36,4 +36,4 @@ MonoBehaviour:
   _uiSprite: {fileID: 1227812954, guid: ef724b6bf2121b3428a850cd681ed270, type: 3}
   _tooltipName: Sweetheart Charm
   _tooltipDescription: Heals on return if it doesn't hit any <sprite="UI_BeadsCharms"
-    name="UI_Charmless"> charmless
+    name="UI_Charmless"> charmless. Heals more based on how long it took to return
