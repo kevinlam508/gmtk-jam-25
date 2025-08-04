@@ -41,6 +41,8 @@ public class Mob : MonoBehaviour
 
     private Player _player;
 
+    private Animator _animator;
+
     private void Awake()
     {
         if (InitializeOnAwake)
@@ -108,6 +110,8 @@ public class Mob : MonoBehaviour
         {
             _health.DamageTaken.AddListener((_, __) => glow.Hit());
         }
+
+        _animator = modelInstance.GetComponentInChildren<Animator>();
     }
 
     /// <summary>
@@ -235,7 +239,14 @@ public class Mob : MonoBehaviour
         _currentArmor += MobStats.MobArmorGainPerHit;
     }
 
-    public void ApplySpeedMultiplier(float multiplier) => _movement.ApplySpeedMultiplier(multiplier);
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        _movement.ApplySpeedMultiplier(multiplier);
+        if (_animator != null)
+        {
+            _animator.SetFloat("speed", _movement.SpeedMultiplier);
+        }
+    }
 
     private void TickStatusEffects()
     {

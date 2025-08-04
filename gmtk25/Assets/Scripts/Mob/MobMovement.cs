@@ -19,6 +19,8 @@ public class MobMovement : MonoBehaviour
 
     private float _speedMultiplier = 1f;
 
+    public float SpeedMultiplier => _speedMultiplier;
+
     // Update is called once per frame
     void Update()
     {
