@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139a5faf82f9ffa4f9f633b9673d16eb, type: 3}
   m_Name: Draw Booster
   m_EditorClassIdentifier: 
-  _minContactsToTrigger: 6
+  _minContactsToTrigger: 4
   _drawTimerChange: -0.1
