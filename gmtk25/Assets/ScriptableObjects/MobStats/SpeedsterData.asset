@@ -16,7 +16,7 @@ MonoBehaviour:
   MobTypeNonFlag: 2
   MobHealth: 1
   MobSpeed: 2.3
-  MobAttackDamage: 3
+  MobAttackDamage: 2
   MobCCResist: 0
   MobArmorGainPerHit: 0
   MobModel: {fileID: 6078385607709717332, guid: 15af25aebc724104bab7e7ed12d21892, type: 3}
