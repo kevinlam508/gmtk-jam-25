@@ -287,11 +287,11 @@ public class CharmData : ScriptableObject
         result._impactType |= (sub1?._impactType ?? ImpactTypes.Single)
                         | (sub2?._impactType ?? ImpactTypes.Single);
         result._explosionCount += WeightedAdd(sub1?._explosionCount, sub2?._explosionCount, 1);
-        result._explosionRadius += WeightedAdd(sub1?._explosionRadius, sub2?._explosionRadius, 1);
+        result._explosionRadius += WeightedAdd(sub1?._explosionRadius, sub2?._explosionRadius, .5f);
         result._chainCount += WeightedAdd(sub1?._chainCount, sub2?._chainCount, 1);
-        result._chainRadius += WeightedAdd(sub1?._chainRadius, sub2?._chainRadius, 1);
+        result._chainRadius += WeightedAdd(sub1?._chainRadius, sub2?._chainRadius, .5f);
 
-        result._damage += WeightedAdd(sub1?._damage, sub2?._damage, 1);
+        result._damage += WeightedAdd(sub1?._damage, sub2?._damage, .33f);
         result._onHitStatus = CombineArrays(result._onHitStatus, sub1?._onHitStatus, sub2?._onHitStatus);
         //result._returnEffect = CombineArrays(result._returnEffect, sub1?._returnEffect, sub2?._returnEffect);
         return result;
