@@ -123,8 +123,8 @@ public class CharmData : ScriptableObject
 
         IEnumerator RunEffects()
         {
-            yield return CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor)
-                .ApplyImpact(_impactType, mob, mob.transform.position, copy, instance);
+            CharmData combined = CombineEffects(this, travelStateData.FrontNeighbor, travelStateData.BackNeighbor);
+            yield return combined.ApplyImpact(combined._impactType, mob, mob.transform.position, copy, instance);
             travelStateData.HitCount += copy.HitCount;
 
             bool changeState = false;

@@ -687,6 +687,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _charmInventory: {fileID: 11400000, guid: 6cf8fd26480d77746966532ec201621b, type: 2}
+  _charmSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  _charmUnselected:
+    m_PersistentCalls:
+      m_Calls: []
   _optionTemplate: {fileID: 5214043989819594979, guid: c0c2c3e2ef5883e428fe7088e485d27b, type: 3}
   _handParent: {fileID: 4480252846927838126}
   _pileParent: {fileID: 8565512575209880215}
@@ -694,7 +700,7 @@ MonoBehaviour:
   _startingMaxHandSize: 3
   _minMaxHandSize: 1
   _maxMaxHandSize: 5
-  _startingDrawCooldown: 2
+  _startingDrawCooldown: 1.5
   _minDrawCooldown: 0.1
   _maxDrawCooldown: 3
   _drawCooldownVisual: {fileID: 6988844518033634733}
