@@ -22,6 +22,6 @@ MonoBehaviour:
   MobModel: {fileID: 6078385607709717332, guid: 15af25aebc724104bab7e7ed12d21892, type: 3}
   ColliderCenter: {x: 0, y: 0.5506425, z: 0}
   ColliderRadius: 1
-  ColliderHeight: 2.101285
+  ColliderHeight: 2
   onHitSFX: {fileID: 0}
   onDeathSFX: {fileID: 8300000, guid: 4bca9d4e5ac4fcc4b9d684e6bbefe8b8, type: 3}

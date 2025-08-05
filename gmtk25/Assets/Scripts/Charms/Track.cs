@@ -26,6 +26,7 @@ public class Track : MonoBehaviour
 
     [SerializeField] private LineRenderer _line;
     [SerializeField] private LineRenderer _hoverHighlight;
+    [SerializeField] private LineRenderer[] _copyLines;
     [SerializeField] private float _minSeparation = .5f;
     private readonly List<float> _segmentDistances = new List<float>();
 
@@ -43,8 +44,12 @@ public class Track : MonoBehaviour
 
         Vector3[] points = new Vector3[_line.positionCount];
         _line.GetPositions(points);
-        _hoverHighlight.positionCount = _line.positionCount;
-        _hoverHighlight.SetPositions(points);
+
+        foreach (LineRenderer line in _copyLines)
+        {
+            line.positionCount = _line.positionCount;
+            line.SetPositions(points);
+        }
         ShowHighlight(false);
         ShowDropHighlight(false);
     }
